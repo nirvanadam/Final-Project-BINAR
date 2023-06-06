@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Register() {
+  const [showStatus, setShowStatus] = useState(false);
+  const [typePassword, setTypePassword] = useState("password");
+
+  const togglePassword = () => {
+    setShowStatus(!showStatus);
+  };
+
   return (
     <div className="grid grid-rows-[1fr,3fr] lg:grid-rows-1 lg:grid-cols-2 h-screen overflow-hidden bg-primary font-quickSand">
       {/* Left */}
@@ -26,7 +33,7 @@ function Register() {
               name=""
               id="namalengkap"
               placeholder="Nama Lengkap"
-              className="px-10 py-2 w-full border border-slate-400 rounded-xl outline-none placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
+              className="px-10 py-2 w-full border border-slate-400 rounded-xl font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             />
           </div>
           {/* Nama Input End*/}
@@ -39,7 +46,7 @@ function Register() {
               name=""
               id="email"
               placeholder="Email"
-              className="px-10 py-2 w-full border border-slate-400 rounded-xl outline-none placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
+              className="px-10 py-2 w-full border border-slate-400 rounded-xl font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             />
           </div>
           {/* Email Input End*/}
@@ -52,7 +59,7 @@ function Register() {
               name=""
               id="phonenumber"
               placeholder="Nomor Telepon"
-              className="px-10 py-2 w-full border border-slate-400 rounded-xl outline-none placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
+              className="px-10 py-2 w-full border border-slate-400 rounded-xl font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             />
           </div>
           {/* Nomor Telepon Input End*/}
@@ -61,30 +68,37 @@ function Register() {
           <div className="relative flex items-center">
             <img src="/icons/password_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
             <input
-              type="password"
+              type={showStatus ? "text" : "password"}
               name=""
               id="password"
               placeholder="Password"
-              className="px-10 py-2 w-full border border-slate-400 rounded-xl outline-none placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
+              className="px-10 py-2 w-full border border-slate-400 rounded-xl font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             />
-            <button className="absolute right-3">
-              <img src="/icons/show_password_icon.svg" alt="" className="w-[20px]" />
+            <button type="button" onClick={togglePassword} className="absolute right-3">
+              <img src={showStatus ? "/icons/show_password_off_icon.svg" : "/icons/show_password_icon.svg"} alt="" className="w-[20px] opacity-50" />
             </button>
           </div>
           {/* Password Input End */}
 
           {/* Button Submit */}
-          <button type="submit" className="bg-primary py-2 rounded-xl text-secondary text-sm font-medium">
+          <button type="submit" className="bg-primary py-3 rounded-xl text-white text-sm font-medium">
             Daftar
           </button>
           {/* Button Submit End */}
         </form>
 
         <p className="self-center my-2 font-bold">Or</p>
-        <div className="mb-3 py-2 border border-black rounded-xl text-center">Google</div>
-        <p className="self-center text-sm">
+
+        {/* Google Login */}
+        <div className="mb-3 flex justify-center items-center gap-3 py-2 border border-slate-300 rounded-xl text-center">
+          <img src="/icons/google_logo.svg" alt="" className="w-4" />
+          <h1 className="text-sm font-semibold">Sign in with Google</h1>
+        </div>
+        {/* Google Login End */}
+
+        <p className="self-center text-sm font-medium">
           Sudah punya akun?{" "}
-          <Link to={"/"} className="underline font-bold text-primary">
+          <Link to={"/login"} className="underline font-bold text-primary">
             Masuk di sini
           </Link>
         </p>

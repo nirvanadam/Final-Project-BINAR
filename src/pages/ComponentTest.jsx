@@ -3,17 +3,13 @@ import React from "react";
 function ComponentTest() {
   return (
     <div className="h-screen flex justify-center items-center">
-      <form action="" className="">
-        <select name="" id="" className="bg-primary px-10 py-2 text-white rounded-lg focus:rounded-b-none transition-all">
-          <option value="item1" className="bg-yellow-400 transition">
-            Item 1
-          </option>
-          <option value="item2">Item 2</option>
-          <option value="item3">Item 3</option>
-          <option value="item4">Item 4</option>
-          <option value="item5">Item 5</option>
-        </select>
-      </form>
+      {/* <div className="whitespace-nowrap overflow-auto touch-auto p-10 gap-5 w-[500px] h-[400px] border border-cyan-400 rounded-xl">
+        <div className="inline-flex mr-4 bg-primary rounded-xl w-[200px] h-[290px]"></div>
+        <div className="inline-flex mr-4 bg-primary rounded-xl w-[200px] h-[290px]"></div>
+        <div className="inline-flex mr-4 bg-primary rounded-xl w-[200px] h-[290px]"></div>
+      </div> */}
+      <input type="email" name="" id="" className="peer" />
+      <p className="hidden peer-invalid:block">Hai</p>
     </div>
   );
 }

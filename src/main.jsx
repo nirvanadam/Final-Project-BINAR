@@ -13,6 +13,11 @@ import ComponentTest from "./pages/ComponentTest.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Dashboard />,
+    // errorElement: <NotFoundPage />,
+  },
+  {
+    path: "/login",
     element: <Login />,
     // errorElement: <NotFoundPage />,
   },
@@ -24,11 +29,6 @@ const router = createBrowserRouter([
   {
     path: "/otpinput",
     element: <OtpInput />,
-    // errorElement: <NotFoundPage />,
-  },
-  {
-    path: "/dashboard",
-    element: <Dashboard />,
     // errorElement: <NotFoundPage />,
   },
   {

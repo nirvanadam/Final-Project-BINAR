@@ -33,7 +33,7 @@ function Login() {
               name=""
               id="email"
               placeholder="Email"
-              className="px-10 py-2 w-full border border-slate-400 rounded-xl outline-none placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
+              className="px-10 py-2 w-full border border-slate-400 rounded-xl font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             />
           </div>
           {/* Email Input End*/}
@@ -46,11 +46,11 @@ function Login() {
               name=""
               id="password"
               placeholder="Password"
-              className="px-10 py-2 w-full border border-slate-400 rounded-xl outline-none placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
+              className="px-10 py-2 w-full border border-slate-400 rounded-xl outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             />
 
-            <button type="button" onClick={togglePassword} className="absolute right-3 opacity-50">
-              <img src={showStatus ? "/icons/show_password_off_icon.svg" : "/icons/show_password_icon.svg"} alt="" className="w-[20px]" />
+            <button type="button" onClick={togglePassword} className="absolute right-3">
+              <img src={showStatus ? "/icons/show_password_off_icon.svg" : "/icons/show_password_icon.svg"} alt="" className="w-[20px] opacity-50" />
             </button>
           </div>
           {/* Password Input End */}
@@ -60,7 +60,7 @@ function Login() {
           </a>
 
           {/* Button Submit */}
-          <button type="submit" className="mt-5 bg-primary py-2 rounded-xl text-secondary text-sm font-medium">
+          <button type="submit" className="mt-5 bg-primary py-3 rounded-xl text-white text-sm font-medium">
             Masuk
           </button>
           {/* Button Submit End */}
@@ -68,14 +68,16 @@ function Login() {
 
         <p className="self-center my-2 text-sm  font-bold">Or</p>
 
+        {/* Google Login */}
         <div className="mb-3 flex justify-center items-center gap-3 py-2 border border-slate-300 rounded-xl text-center">
           <img src="/icons/google_logo.svg" alt="" className="w-4" />
           <h1 className="text-sm font-semibold">Sign in with Google</h1>
         </div>
+        {/* Google Login End */}
 
-        <p className="self-center text-sm">
+        <p className="self-center text-sm font-medium">
           Belum punya akun?{" "}
-          <Link to={"/register"} className="underline font-semibold text-primary ">
+          <Link to={"/register"} className="underline font-bold text-primary">
             Daftar di sini
           </Link>
         </p>
