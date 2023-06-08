@@ -11,6 +11,7 @@ import Dashboard2 from "./pages/Dashboard2.jsx";
 import ComponentTest from "./pages/ComponentTest.jsx";
 import SearchResult from "./pages/SearchResult.jsx";
 import FlightDetail from "./pages/FlightDetailPage.jsx";
+import ModalFrom from "./components/ModalFrom.jsx";
 
 const router = createBrowserRouter([
   {
