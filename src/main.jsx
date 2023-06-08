@@ -9,6 +9,8 @@ import OtpInput from "./pages/OtpInput.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Dashboard2 from "./pages/Dashboard2.jsx";
 import ComponentTest from "./pages/ComponentTest.jsx";
+import SearchResult from "./pages/SearchResult.jsx";
+import FlightDetail from "./pages/FlightDetailPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,11 @@ const router = createBrowserRouter([
     // errorElement: <NotFoundPage />,
   },
   {
+    path: "/search-result",
+    element: <SearchResult />,
+    // errorElement: <NotFoundPage />,
+  },
+  {
     path: "/register",
     element: <Register />,
     // errorElement: <NotFoundPage />,
@@ -29,6 +36,11 @@ const router = createBrowserRouter([
   {
     path: "/otpinput",
     element: <OtpInput />,
+    // errorElement: <NotFoundPage />,
+  },
+  {
+    path: "/flight-detail",
+    element: <FlightDetail />,
     // errorElement: <NotFoundPage />,
   },
   {
