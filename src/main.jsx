@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/Login.jsx";
@@ -12,6 +11,8 @@ import ComponentTest from "./pages/ComponentTest.jsx";
 import SearchResult from "./pages/SearchResult.jsx";
 import FlightDetail from "./pages/FlightDetailPage.jsx";
 import ModalFrom from "./components/ModalFrom.jsx";
+import ForgotPassword from "./pages/ForgotPassword.jsx";
+import CheckoutPage from "./pages/CheckoutPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,37 +23,38 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
-    // errorElement: <NotFoundPage />,
   },
   {
     path: "/search-result",
     element: <SearchResult />,
-    // errorElement: <NotFoundPage />,
   },
   {
     path: "/register",
     element: <Register />,
-    // errorElement: <NotFoundPage />,
   },
   {
     path: "/otpinput",
     element: <OtpInput />,
-    // errorElement: <NotFoundPage />,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPassword />,
   },
   {
     path: "/flight-detail",
     element: <FlightDetail />,
-    // errorElement: <NotFoundPage />,
+  },
+  {
+    path: "/checkout",
+    element: <CheckoutPage />,
   },
   {
     path: "/test",
     element: <Dashboard2 />,
-    // errorElement: <NotFoundPage />,
   },
   {
     path: "/test2",
     element: <ComponentTest />,
-    // errorElement: <NotFoundPage />,
   },
 ]);
 
