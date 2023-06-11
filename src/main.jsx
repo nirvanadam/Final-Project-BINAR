@@ -12,6 +12,8 @@ import ComponentTest from "./pages/ComponentTest.jsx";
 import SearchResult from "./pages/SearchResult.jsx";
 import FlightDetail from "./pages/FlightDetailPage.jsx";
 import ModalFrom from "./components/ModalFrom.jsx";
+import FlightResult from "./components/FlightResult.jsx";
+import ResultNotFound from "./components/ResultNotFound.jsx";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +54,11 @@ const router = createBrowserRouter([
   {
     path: "/test2",
     element: <ComponentTest />,
+    // errorElement: <NotFoundPage />,
+  },
+  {
+    path: "/test3",
+    element: <FlightResult />,
     // errorElement: <NotFoundPage />,
   },
 ]);
