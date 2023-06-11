@@ -63,9 +63,8 @@ function Dashboard() {
 
       <div className="font-quickSand overflow-hidden">
         {/* Navbar */}
-
-        <Navbar />
         {/* Navbar End */}
+        <Navbar />
 
         {/* Header */}
         <div className="hidden lg:block relative">
@@ -157,7 +156,7 @@ function Dashboard() {
                     <h1 className="lg:absolute -top-4 left-14 text-slate-400 text-sm font-bold lg:order-last">Passenger</h1>
                     <img src="/icons/passengers_icon.svg" alt="" className="w-[30px] opacity-50" />
                   </div>
-                  <input onClick={handlePassengers} type="text" name="" id="" className="self-end w-full h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none" />
+                  <input onClick={handlePassengers} type="" name="" id="" className="self-end w-full h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none" />
                 </div>
                 {/* Passenger */}
 
@@ -167,7 +166,7 @@ function Dashboard() {
                     <h1 className="lg:absolute -top-4 left-14 text-slate-400 text-sm font-bold lg:order-last">SeatClass</h1>
                     <img src="/icons/seat_icon.svg" alt="" className="w-[30px] opacity-50" />
                   </div>
-                  <input onClick={handleSeatClass} type="text" name="" id="" className="self-end w-full h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none" />
+                  <input onClick={handleSeatClass} type="" name="" id="" className="self-end w-full h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none" />
                 </div>
                 {/* Seat Class End */}
               </div>

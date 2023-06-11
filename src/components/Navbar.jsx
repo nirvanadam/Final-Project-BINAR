@@ -22,7 +22,11 @@ function Navbar() {
           />
 
           <button className="absolute right-5">
-            <img src="/icons/search_icon.svg" alt="" className="invert opacity-40" />
+            <img
+              src="/icons/search_icon.svg"
+              alt=""
+              className="invert opacity-40"
+            />
           </button>
         </div>
         {/* Search Input End */}
@@ -35,7 +39,10 @@ function Navbar() {
       {/* Profile Icon [Mobile ]End */}
 
       {/* Login Button */}
-      <Link to={"/login"} className="hidden lg:flex justify-center items-center gap-2 px-3 py-2 bg-white rounded-lg font-semibold">
+      <Link
+        to={"/login"}
+        className="hidden lg:flex justify-center items-center gap-2 px-3 py-2 bg-white rounded-lg font-semibold"
+      >
         <img src="/icons/login_icon.svg" alt="" className="w-5" />
         <h1>Login</h1>
       </Link>
