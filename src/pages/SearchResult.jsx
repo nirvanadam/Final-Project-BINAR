@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import FlightResult from "../components/FlightResult";
 import ResultNotFound from "../components/ResultNotFound";
 import ModalSort from "../components/ModalSort";
+import Loading from "../components/search-result/Loading";
+import Sorry from "../components/search-result/Sorry";
 
 function SearchResult() {
   const [isOpenSort, setIsOpenSort] = useState();
@@ -231,14 +233,13 @@ function SearchResult() {
           </div>
           {/* Filter Container End */}
 
-          {}
-
           {/* Content */}
           <FlightResult />
           {/* <ResultNotFound /> */}
           {/* Content End */}
         </div>
         {/* Main Content Container End*/}
+
       </div>
     </>
   );
