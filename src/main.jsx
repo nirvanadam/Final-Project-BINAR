@@ -15,7 +15,8 @@ import FlightResult from "./components/FlightResult.jsx";
 import ResultNotFound from "./components/ResultNotFound.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
-
+import DetailAccount from "./pages/DetailAccount";
+import EditAccount from "./components/EditAccount";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
     element: <CheckoutPage />,
   },
   {
+    path: "/edit-account",
+    element: <EditAccount />,
+  },
+  {
     path: "/test",
     element: <Dashboard2 />,
   },
@@ -61,7 +66,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/test3",
-    element: <FlightResult />,
+    element: <DetailAccount />,
     // errorElement: <NotFoundPage />,
   },
 ]);
