@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 function Login() {
   const [showStatus, setShowStatus] = useState(false);
-  const [typePassword, setTypePassword] = useState("password");
 
   const togglePassword = () => {
     setShowStatus(!showStatus);
@@ -55,9 +54,11 @@ function Login() {
           </div>
           {/* Password Input End */}
 
-          <a href="#" className="mt-2 underline font-bold text-primary text-xs self-end">
+          {/* Forgot Password */}
+          <Link to={"/forgot-password"} className="mt-2 underline font-bold text-primary text-xs self-end">
             Lupa Kata Sandi
-          </a>
+          </Link>
+          {/* Forgot Password End */}
 
           {/* Button Submit */}
           <button type="submit" className="mt-5 bg-primary py-3 rounded-xl text-white text-sm font-medium">

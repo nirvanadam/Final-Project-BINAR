@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import FlightResult from "../components/FlightResult";
+import Loading from "../components/search-result/Loading";
+import Sorry from "../components/search-result/Sorry";
 
 function SearchResult() {
   return (
@@ -177,7 +179,9 @@ function SearchResult() {
         {/* Filter Container End */}
 
         {/* Content */}
-        <FlightResult />
+        {/* <FlightResult /> */}
+        {/* <Loading /> */}
+        <Sorry />
         {/* Content End */}
       </div>
       {/* Main Content Container End*/}
