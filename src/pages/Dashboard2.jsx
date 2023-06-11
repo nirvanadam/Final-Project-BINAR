@@ -30,8 +30,12 @@ function Dashboard2() {
   };
 
   return (
-    <div className={`h-screen flex flex-col justify-center items-center ${blur}`}>
-      <div className={`${modalOpen} absolute flex flex-col justify-center items-center bg-[#263238] rounded-lg px-5 py-5`}>
+    <div
+      className={`h-screen flex flex-col justify-center items-center ${blur}`}
+    >
+      <div
+        className={`${modalOpen} absolute flex flex-col justify-center items-center bg-[#263238] rounded-lg px-5 py-5`}
+      >
         <h1 className="text-white ">Hello. This is modal!</h1>
         <button onClick={closeSwitch} className="bg-white rounded-lg px-4 py-1">
           Close
@@ -42,7 +46,12 @@ function Dashboard2() {
       <button onClick={openSearch}>
         <img src="/icons/search_icon.svg" width="50px" alt="" />
       </button>
-      <input type="text" name="" id="" className={`${searchOpen} border border-black transition-all`} />
+      <input
+        type="text"
+        name=""
+        id=""
+        className={`${searchOpen} border border-black transition-all`}
+      />
 
       <button onClick={toggleSwitch}>{switchStatus ? "On" : "Off"}</button>
     </div>

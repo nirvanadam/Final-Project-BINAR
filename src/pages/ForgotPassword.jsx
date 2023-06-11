@@ -30,7 +30,11 @@ function ForgotPassword() {
         <form action="" className="flex flex-col gap-5">
           {/* Password Baru Input */}
           <div className="relative flex items-center">
-            <img src="/icons/password_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
+            <img
+              src="/icons/password_icon.svg"
+              alt=""
+              className="absolute left-3 w-[20px] opacity-50"
+            />
             <input
               type={showStatus1 ? "text" : "password"}
               name=""
@@ -39,15 +43,31 @@ function ForgotPassword() {
               className="px-10 py-2 w-full border border-slate-400 rounded-xl outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             />
 
-            <button type="button" onClick={togglePassword1} className="absolute right-3">
-              <img src={showStatus1 ? "/icons/show_password_off_icon.svg" : "/icons/show_password_icon.svg"} alt="" className="w-[20px] opacity-50" />
+            <button
+              type="button"
+              onClick={togglePassword1}
+              className="absolute right-3"
+            >
+              <img
+                src={
+                  showStatus1
+                    ? "/icons/show_password_off_icon.svg"
+                    : "/icons/show_password_icon.svg"
+                }
+                alt=""
+                className="w-[20px] opacity-50"
+              />
             </button>
           </div>
           {/* Password Baru Input End*/}
 
           {/* Ulang Password Baru Input*/}
           <div className="relative flex items-center">
-            <img src="/icons/password_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
+            <img
+              src="/icons/password_icon.svg"
+              alt=""
+              className="absolute left-3 w-[20px] opacity-50"
+            />
             <input
               type={showStatus2 ? "text" : "password"}
               name=""
@@ -56,14 +76,29 @@ function ForgotPassword() {
               className="px-10 py-2 w-full border border-slate-400 rounded-xl outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             />
 
-            <button type="button" onClick={togglePassword2} className="absolute right-3">
-              <img src={showStatus2 ? "/icons/show_password_off_icon.svg" : "/icons/show_password_icon.svg"} alt="" className="w-[20px] opacity-50" />
+            <button
+              type="button"
+              onClick={togglePassword2}
+              className="absolute right-3"
+            >
+              <img
+                src={
+                  showStatus2
+                    ? "/icons/show_password_off_icon.svg"
+                    : "/icons/show_password_icon.svg"
+                }
+                alt=""
+                className="w-[20px] opacity-50"
+              />
             </button>
           </div>
           {/* Ulang Password Baru Input End */}
 
           {/* Button Submit */}
-          <button type="submit" className="mt-5 bg-primary py-3 rounded-xl text-white text-sm font-medium">
+          <button
+            type="submit"
+            className="mt-5 bg-primary py-3 rounded-xl text-white text-sm font-medium"
+          >
             Simpan
           </button>
           {/* Button Submit End */}
