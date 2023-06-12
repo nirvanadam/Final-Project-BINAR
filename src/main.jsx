@@ -17,6 +17,7 @@ import ForgotPassword from "./pages/ForgotPassword.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
 import DetailAccount from "./pages/DetailAccount";
 import EditAccount from "./components/EditAccount";
+import Notifikasi from "./pages/Notifikasi";
 
 const router = createBrowserRouter([
   {
@@ -65,9 +66,8 @@ const router = createBrowserRouter([
     element: <ComponentTest />,
   },
   {
-    path: "/test3",
-    element: <DetailAccount />,
-    // errorElement: <NotFoundPage />,
+    path: "/notifikasi",
+    element: <Notifikasi />,
   },
 ]);
 
