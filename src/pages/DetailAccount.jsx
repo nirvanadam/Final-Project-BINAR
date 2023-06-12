@@ -45,7 +45,7 @@ function DetailAccount() {
         </div>
         {/* option end  */}
         {/* form edit account */}
-        <div className="flex lg:hidden">
+        <div className="">
           <EditAccount />
         </div>
         {/* form edit account end  */}
