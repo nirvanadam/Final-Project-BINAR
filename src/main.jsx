@@ -66,9 +66,8 @@ const router = createBrowserRouter([
     element: <ComponentTest />,
   },
   {
-    path: "/test3",
+    path: "/notifikasi",
     element: <Notifikasi />,
-    // errorElement: <NotFoundPage />,
   },
 ]);
 
