@@ -1,5 +1,5 @@
 import React from "react";
-import FlightDetail from "../FlightDetail";
+import FlightDetail from "../search-result/FlightDetail";
 
 function CheckoutDetail() {
   return (

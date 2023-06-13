@@ -6,17 +6,12 @@ import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import OtpInput from "./pages/OtpInput.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
-import Dashboard2 from "./pages/Dashboard2.jsx";
 import ComponentTest from "./pages/ComponentTest.jsx";
 import SearchResult from "./pages/SearchResult.jsx";
 import FlightDetail from "./pages/FlightDetailPage.jsx";
-import ModalFrom from "./components/ModalFrom.jsx";
-import FlightResult from "./components/FlightResult.jsx";
-import ResultNotFound from "./components/ResultNotFound.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
-import DetailAccount from "./pages/DetailAccount";
-import EditAccount from "./components/EditAccount";
+import DetailAccount from "./pages/DetailAccount.jsx";
 import Notifikasi from "./pages/Notifikasi";
 
 const router = createBrowserRouter([
@@ -55,19 +50,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/edit-account",
-    element: <EditAccount />,
-  },
-  {
-    path: "/test",
-    element: <Dashboard2 />,
-  },
-  {
-    path: "/test2",
-    element: <ComponentTest />,
+    element: <DetailAccount />,
   },
   {
     path: "/notifikasi",
     element: <Notifikasi />,
+  },
+  {
+    path: "/test",
+    element: <ComponentTest />,
   },
 ]);
 

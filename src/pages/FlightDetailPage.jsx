@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import FlightDetail from "../components/FlightDetail";
+import FlightDetail from "../components/search-result/FlightDetail";
 
 function FlightDetailPage() {
   return (

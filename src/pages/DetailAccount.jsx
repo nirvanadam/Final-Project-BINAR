@@ -1,7 +1,7 @@
 import React from "react";
 import NavbarMobile from "../components/NavbarMobile";
 import Navbar from "../components/Navbar";
-import EditAccount from "../components/EditAccount";
+import EditAccount from "../components/account/EditAccount";
 import { Link } from "react-router-dom";
 
 function DetailAccount() {
@@ -12,9 +12,7 @@ function DetailAccount() {
       {/* navbar end  */}
 
       <div className="lg:py-12">
-        <h1 className="text-2xl font-bold mx-7 md:mx-12 lg:mx-36 mt-5 mb-7">
-          Akun
-        </h1>
+        <h1 className="text-2xl font-bold mx-7 md:mx-12 lg:mx-36 mt-5 mb-7">Akun</h1>
 
         <div className="hidden lg:flex items-center bg-primary px-6 py-3 mx-40 gap-5 rounded-lg">
           <button>

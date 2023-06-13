@@ -3,11 +3,11 @@ import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
-import ModalFrom from "../components/ModalFrom";
-import ModalTo from "../components/ModalTo.Jsx";
+import ModalFrom from "../components/dashboard/ModalFrom";
+import ModalTo from "../components/dashboard/ModalTo.Jsx";
 import ReactDatePicker from "react-datepicker";
-import ModalSeatClass from "../components/ModalSeatClass";
-import ModalPassenger from "../components/ModalPassenger";
+import ModalSeatClass from "../components/dashboard/ModalSeatClass";
+import ModalPassenger from "../components/dashboard/ModalPassenger";
 import Navbar from "../components/Navbar";
 import NavbarMobile from "../components/NavbarMobile";
 

@@ -2,7 +2,7 @@ import React from "react";
 import BioDataPemesan from "../components/checkout/BioDataPemesan";
 import BioDataPenumpang from "../components/checkout/BioDataPenumpang";
 import Navbar from "../components/Navbar";
-import FlightDetail from "../components/FlightDetail";
+import FlightDetail from "../components/search-result/FlightDetail";
 import CheckoutDetail from "../components/checkout/CheckoutDetail";
 import Payment from "../components/checkout/Payment";
 import SuccessPayment from "../components/checkout/SuccessPayment";
