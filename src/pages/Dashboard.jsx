@@ -10,6 +10,7 @@ import ModalSeatClass from "../components/dashboard/ModalSeatClass";
 import ModalPassenger from "../components/dashboard/ModalPassenger";
 import Navbar from "../components/Navbar";
 import NavbarMobile from "../components/NavbarMobile";
+import DestinasiFavorit from "../components/dashboard/DestinasiFavorit";
 
 function Dashboard() {
   // {ModalFrom}
@@ -64,8 +65,8 @@ function Dashboard() {
 
       <div className="font-quickSand overflow-hidden">
         {/* Navbar */}
-        {/* Navbar End */}
         <Navbar />
+        {/* Navbar End */}
 
         {/* Header */}
         <div className="hidden lg:block relative">
@@ -180,115 +181,7 @@ function Dashboard() {
         {/* Main Form End */}
 
         {/* Destinasi Favorit */}
-        <div className="mx-4 md:mx-8 lg:mx-28 -translate-y-16">
-          <h1 className="text-lg font-bold mb-4">Destinasi Favorit</h1>
-
-          <div className="flex flex-wrap justify-between lg:justify-start gap-x-3 gap-y-4 lg:gap-5">
-            {/* Semua Button */}
-            <button className="flex justify-center items-center gap-3  rounded-lg bg-primary px-4 py-2">
-              <img src="/icons/search_icon.svg" alt="" />
-              <h1 className="text-white">Semua</h1>
-            </button>
-            {/* Semua Button End */}
-
-            {/* Asia Button */}
-            <button className="flex justify-center items-center gap-3  rounded-lg bg-primary px-4 py-2">
-              <img src="/icons/search_icon.svg" alt="" />
-              <h1 className="text-white">Asia</h1>
-            </button>
-            {/* Asia Button End */}
-
-            {/* Amerika Button */}
-            <button className="flex justify-center items-center gap-3  rounded-lg bg-primary px-4 py-2">
-              <img src="/icons/search_icon.svg" alt="" />
-              <h1 className="text-white">Amerika</h1>
-            </button>
-            {/* Amerika Button End */}
-
-            {/* Australia Button */}
-            <button className="flex justify-center items-center gap-3  rounded-lg bg-primary px-4 py-2">
-              <img src="/icons/search_icon.svg" alt="" />
-              <h1 className="text-white">Australia</h1>
-            </button>
-            {/* Australia Button End */}
-
-            {/* Eropa Button */}
-            <button className="flex justify-center items-center gap-3  rounded-lg bg-primary px-4 py-2">
-              <img src="/icons/search_icon.svg" alt="" />
-              <h1 className="text-white">Eropa</h1>
-            </button>
-            {/* Eropa Button End */}
-
-            {/* Afrika Button */}
-            <button className="flex justify-center items-center gap-3  rounded-lg bg-primary px-4 py-2">
-              <img src="/icons/search_icon.svg" alt="" />
-              <h1 className="text-white">Afrika</h1>
-            </button>
-            {/* Afrika Button End */}
-          </div>
-
-          <div className="mt-5 lg:mt-10 lg:flex lg:flex-wrap lg:gap-6 whitespace-nowrap overflow-auto lg:whitespace-normal touch-auto w-[110%] lg:w-full h-[300px] lg:h-full">
-            <Link to={"#"} className="inline-flex flex-col min-w-[200px] max-w-[350px] mr-4 lg:mr-0 px-3 pt-2 pb-3 border border-slate-300 shadow-md rounded-xl">
-              <img src="/images/poster_bangkok.svg" alt="" className="mb-2" />
-              <h1 className="text-sm font-bold">Jakarta -{">"} Bangkok</h1>
-              <h1 className="text-xs text-secondary font-bold ">Air Asia</h1>
-              <h1 className="text-xs font-semibold">20 -30 Maret 2023</h1>
-              <h1 className="text-sm font-semibold">
-                Mulai dari <span className="font-bold text-red-600">IDR 950.000</span>
-              </h1>
-            </Link>
-
-            <Link to={"#"} className="inline-flex flex-col min-w-[200px] max-w-[350px] mr-4 lg:mr-0 px-3 pt-2 pb-3 border border-slate-300 shadow-md rounded-xl">
-              <img src="/images/poster_bangkok.svg" alt="" className="mb-2" />
-              <h1 className="text-sm font-bold">Jakarta -{">"} Bangkok</h1>
-              <h1 className="text-xs text-secondary font-bold ">Air Asia</h1>
-              <h1 className="text-xs font-semibold">20 -30 Maret 2023</h1>
-              <h1 className="text-sm font-semibold">
-                Mulai dari <span className="font-bold text-red-600">IDR 950.000</span>
-              </h1>
-            </Link>
-
-            <Link to={"#"} className="inline-flex flex-col min-w-[200px] max-w-[350px] mr-4 lg:mr-0 px-3 pt-2 pb-3 border border-slate-300 shadow-md rounded-xl">
-              <img src="/images/poster_bangkok.svg" alt="" className="mb-2" />
-              <h1 className="text-sm font-bold">Jakarta -{">"} Bangkok</h1>
-              <h1 className="text-xs text-secondary font-bold ">Air Asia</h1>
-              <h1 className="text-xs font-semibold">20 -30 Maret 2023</h1>
-              <h1 className="text-sm font-semibold">
-                Mulai dari <span className="font-bold text-red-600">IDR 950.000</span>
-              </h1>
-            </Link>
-
-            <Link to={"#"} className="inline-flex flex-col min-w-[200px] max-w-[350px] mr-4 lg:mr-0 px-3 pt-2 pb-3 border border-slate-300 shadow-md rounded-xl">
-              <img src="/images/poster_bangkok.svg" alt="" className="mb-2" />
-              <h1 className="text-sm font-bold">Jakarta -{">"} Bangkok</h1>
-              <h1 className="text-xs text-secondary font-bold ">Air Asia</h1>
-              <h1 className="text-xs font-semibold">20 -30 Maret 2023</h1>
-              <h1 className="text-sm font-semibold">
-                Mulai dari <span className="font-bold text-red-600">IDR 950.000</span>
-              </h1>
-            </Link>
-
-            <Link to={"#"} className="inline-flex flex-col min-w-[200px] max-w-[350px] mr-4 lg:mr-0 px-3 pt-2 pb-3 border border-slate-300 shadow-md rounded-xl">
-              <img src="/images/poster_bangkok.svg" alt="" className="mb-2" />
-              <h1 className="text-sm font-bold">Jakarta -{">"} Bangkok</h1>
-              <h1 className="text-xs text-secondary font-bold ">Air Asia</h1>
-              <h1 className="text-xs font-semibold">20 -30 Maret 2023</h1>
-              <h1 className="text-sm font-semibold">
-                Mulai dari <span className="font-bold text-red-600">IDR 950.000</span>
-              </h1>
-            </Link>
-
-            <Link to={"#"} className="inline-flex flex-col min-w-[200px] max-w-[350px] mr-4 lg:mr-0 px-3 pt-2 pb-3 border border-slate-300 shadow-md rounded-xl">
-              <img src="/images/poster_bangkok.svg" alt="" className="mb-2" />
-              <h1 className="text-sm font-bold">Jakarta -{">"} Bangkok</h1>
-              <h1 className="text-xs text-secondary font-bold ">Air Asia</h1>
-              <h1 className="text-xs font-semibold">20 -30 Maret 2023</h1>
-              <h1 className="text-sm font-semibold">
-                Mulai dari <span className="font-bold text-red-600">IDR 950.000</span>
-              </h1>
-            </Link>
-          </div>
-        </div>
+        <DestinasiFavorit />
         {/* Destinasi Favorit End */}
 
         {/* Navbar 2.0 */}
