@@ -82,6 +82,14 @@ function Dashboard() {
   };
   // Passenger Logic End
 
+  // Round Trip Toggle Logic
+  const [displayReturnDate, setDisplayReturnDate] = useState(false);
+  const handleDisplayReturnDate = () => {
+    setDisplayReturnDate(!displayReturnDate);
+  };
+
+  // Round Trip Toggle Logic Ens
+
   return (
     <>
       {isOpenFrom ? <ModalFrom close={handleCloseFrom} onDataSubmit={handleDataSubmitFrom} /> : null}
@@ -130,7 +138,7 @@ function Dashboard() {
                     name=""
                     id=""
                     placeholder="Kota atau Bandara"
-                    className="self-end w-[85%] h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none group-focus/input:opacity-100"
+                    className="self-end w-[85%] h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none font-semibold group-focus/input:opacity-100"
                   />
 
                   <button onClick={swapValues} type="button" className="absolute translate-y-3 bottom-0 right-2 flex justify-center items-center py-1 px-1 bg-slate-300 rounded-full">
@@ -147,13 +155,13 @@ function Dashboard() {
                   <img src="/icons/plane_to.svg" alt="" className="w-[30px] opacity-50" />
                 </div>
                 <div className="lg:ml-10">
-                  <input onClick={handleTo} value={submitTo} placeholder="Mau Kemana ?" type="text" name="" id="" className="self-end w-full h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none" />
+                  <input onClick={handleTo} value={submitTo} placeholder="Mau Kemana ?" type="text" name="" id="" className="self-end w-full h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none font-semibold" />
                 </div>
               </div>
               {/* To End */}
 
               {/* Departure & Return */}
-              <div className="grid lg:grid-cols-2 gap-5">
+              <div className="relative grid lg:grid-cols-2 gap-5">
                 {/* Departure */}
                 <div className="lg:relative grid grid-cols-[35px,1fr] gap-5 ">
                   <div className="flex flex-col lg:flex-row gap-1 items-start lg:items-center">
@@ -161,27 +169,32 @@ function Dashboard() {
                     <img src="/icons/date_icon.svg" alt="" className="w-[30px] opacity-50" />
                   </div>
 
-                  <input type="date" name="" id="" className="self-end w-[60%] lg:w-full h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none" />
+                  <input type="date" name="" id="" className="self-end w-[60%] lg:w-full h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none font-semibold" />
                 </div>
                 {/* Departure End */}
 
                 {/* Return */}
-                <div className="lg:relative grid grid-cols-[35px,1fr] gap-5 ">
-                  <div className="flex flex-col lg:flex-row gap-1 items-start lg:items-center">
-                    <h1 className="lg:absolute -top-4 left-14 text-slate-400 text-sm font-bold lg:order-last">Return</h1>
-                    <img src="/icons/date_icon.svg" alt="" className="w-[30px] opacity-50" />
-                  </div>
-                  <div className="relative self-end">
-                    <input type="date" name="" id="" className="self-end w-[60%] lg:w-full h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none" />
-                    <div className="absolute bottom-2 lg:bottom-7 right-0 flex flex-col">
-                      <h1 className="lg:hidden text-slate-400 text-xs font-bold">Round Trip?</h1>
-                      <button className="self-end">
-                        <img src="/icons/toggle_off_icon.svg" alt="" className="w-[35px]" />
-                      </button>
+                {displayReturnDate && (
+                  <div className="lg:relative grid grid-cols-[35px,1fr] gap-5 ">
+                    <div className="flex flex-col lg:flex-row gap-1 items-start lg:items-center">
+                      <h1 className="lg:absolute -top-4 left-14 text-slate-400 text-sm font-bold lg:order-last">Return</h1>
+                      <img src="/icons/date_icon.svg" alt="" className="w-[30px] opacity-50" />
+                    </div>
+                    <div className="self-end">
+                      <input type="date" name="" id="" className="self-end w-[60%] lg:w-full h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none font-semibold" />
                     </div>
                   </div>
-                </div>
+                )}
                 {/* Return End */}
+
+                {/* Round Trip Toggle */}
+                <div className="absolute bottom-2 lg:bottom-10 right-0 flex flex-col">
+                  <h1 className="lg:hidden text-slate-400 text-xs font-bold">Round Trip?</h1>
+                  <button type="button" onClick={handleDisplayReturnDate} className="self-end">
+                    <img src={displayReturnDate ? `/icons/toggle_on_icon.svg` : `/icons/toggle_off_icon.svg`} alt="" className="w-[35px]" />
+                  </button>
+                </div>
+                {/* Round Trip Toggle End */}
               </div>
               {/* Departure & Return End */}
 

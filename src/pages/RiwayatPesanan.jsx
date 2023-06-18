@@ -1,9 +1,11 @@
 import React from "react";
+import DetailPayment from "../components/checkout/DetailPayment";
 import NavbarMobile from "../components/NavbarMobile";
 import Navbar from "../components/Navbar";
+import CheckoutDetail from "../components/checkout/CheckoutDetail";
 import { Link } from "react-router-dom";
 
-function Notifikasi() {
+function RiwayatPesanan() {
   return (
     <div className="font-quickSand">
       {/* Navbar */}
@@ -13,7 +15,7 @@ function Notifikasi() {
       {/* Navbar End */}
 
       {/* Header */}
-      <h1 className="mx-6 lg:mx-36 mt-7 mb-4 text-2xl font-bold">Notifikasi</h1>
+      <h1 className="mx-6 lg:mx-36 mt-7 mb-4 text-2xl font-bold">Riwayat Pesanan</h1>
       {/* Header End */}
 
       {/* Bar, Filter, Search Button */}
@@ -40,39 +42,38 @@ function Notifikasi() {
       </div>
       {/* Bar, Filter, Search Button End */}
 
-      <div className="flex flex-col mx-7 lg:mx-36 my-4">
-        <div className="flex gap-2 items-start">
-          <img src="/icons/notification-icon-solid.svg" alt="" className="w-6 invert bg-black" />
-          <div className="w-full flex flex-col">
-            <div className="flex justify-between text-sm font-medium text-gray-500">
-              <h1>Promosi</h1>
-              <h1>20 Maret, 14:04</h1>
-            </div>
-            <h1 className="font-semibold">Dapatkan Potongan 50% Tiket!</h1>
-            <h1 className="text-sm font-medium text-gray-600">Syarat ketentuan berlaku!</h1>
+      {/* Content */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-4 mx-6 lg:mx-36">
+        {/* Column 1 */}
+        <div className="">
+          {/* Date */}
+          <div className="flex justify-between items-center">
+            <h1 className="font-bold">Maret 2023</h1>
           </div>
-        </div>
+          {/* Date End */}
 
-        <span className="w-full h-[1px] bg-gray-400 my-4"></span>
-
-        <div className="flex gap-2 items-start">
-          <img src="/icons/notification-icon-solid.svg" alt="" className="w-6 invert bg-black" />
-          <div className="w-full flex flex-col">
-            <div className="flex justify-between text-sm font-medium text-gray-500">
-              <h1>Promosi</h1>
-              <h1>20 Maret, 14:04</h1>
-            </div>
-            <h1 className="font-semibold">Dapatkan Potongan 50% Tiket!</h1>
-            <h1 className="text-sm font-medium text-gray-600">Syarat ketentuan berlaku!</h1>
+          {/* Detail Payment */}
+          <div className="flex flex-col  p-4 border border-gray-400 rounded-lg">
+            <h1 className="mb-5 w-fit px-3 py-1 rounded-full bg-red-600 text-white text-sm font-semibold">Unpaid</h1>
+            <DetailPayment />
           </div>
+          {/* Detail Payment End */}
         </div>
+        {/* Column 1 End */}
+
+        {/* Column 2 */}
+        <div className="border border-gray-400">
+          <CheckoutDetail></CheckoutDetail>
+        </div>
+        {/* Column 2 End */}
       </div>
+      {/* Content End */}
 
-      {/* navbar */}
+      {/* Navbar (Mobile) */}
       <NavbarMobile />
-      {/* navbar end */}
+      {/* Navbar (Mobile) End */}
     </div>
   );
 }
 
-export default Notifikasi;
+export default RiwayatPesanan;

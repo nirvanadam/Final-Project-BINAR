@@ -6,9 +6,11 @@ import { Link } from "react-router-dom";
 
 function DetailAccount() {
   return (
-    <div>
+    <div className="font-quickSand">
       {/* navbar */}
-      <Navbar />
+      <div className="hidden lg:block">
+        <Navbar />
+      </div>
       {/* navbar end  */}
 
       <div className="lg:py-12">
@@ -25,21 +27,29 @@ function DetailAccount() {
       <div className="flex lg:grid grid-cols-[1fr,4fr] lg:mb-10 flex-col mx-7 md:mx-12 lg:mx-40 gap-12">
         {/* option */}
         <div className="flex flex-col gap-3">
-          <Link to={"/edit-account"} className="lg:hidden flex gap-5 py-3">
-            <img src="/icons/icon_edit.svg" alt="" />
-            <h1>Ubah Profile</h1>
+          {/* Edit Profile */}
+          <Link to={"/edit-account"} className="lg:hidden flex gap-5">
+            <img src="/icons/edit-icon.svg" alt="" className="w-6" />
+            <h1 className="font-semibold text-lg">Ubah Profile</h1>
           </Link>
-          <div className="hidden lg:flex gap-5 py-3">
-            <img src="/icons/icon_edit.svg" alt="" />
-            <h1>Ubah Profile</h1>
+          {/* Edit Profile End */}
+
+          <div className="hidden lg:flex gap-5">
+            <img src="/icons//edit-icon.svg" alt="" className="w-6" />
+            <h1 className="font-semibold text-lg">Ubah Profile</h1>
           </div>
-          <span className="w-full h-[1px] bg-gray-400"></span>
-          <button className="flex gap-5 py-3">
-            <img src="/icons/icon_logout.svg" alt="" />
-            <h1>Keluar</h1>
+
+          <span className="w-full h-[1px] my-3 bg-gray-400"></span>
+
+          {/* logout */}
+          <button className="flex gap-5">
+            <img src="/icons/logout-icon.svg" alt="" className="w-7" />
+            <h1 className="font-semibold text-lg">Keluar</h1>
           </button>
-          <span className="w-full h-[1px] bg-gray-400"></span>
-          <h1 className="text-center">Version 1.1.0</h1>
+          {/* logout End */}
+          <span className="w-full h-[1px] my-3 bg-gray-400"></span>
+
+          <h1 className="text-center font-medium">Version 1.1.0</h1>
         </div>
         {/* option end  */}
         {/* form edit account */}
