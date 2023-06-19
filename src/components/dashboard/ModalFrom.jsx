@@ -7,7 +7,7 @@ function ModalFrom({ close, onDataSubmit }) {
     setInputValue(inputValue.label);
   };
 
-  const options = [
+  const data = [
     { value: "jakarta", label: "Jakarta" },
     { value: "bandung", label: "Bandung" },
     { value: "surabaya", label: "Surabaya" },
@@ -36,8 +36,9 @@ function ModalFrom({ close, onDataSubmit }) {
             className="w-full flex flex-col gap-2 my-5"
           >
             <Select
-              options={options}
-              value={options.value}
+
+              options={data}
+              value={data.value}
               onChange={handleChange}
               placeholder="Masukan Kota"
             />
