@@ -1,10 +1,17 @@
 import React, { useRef, useState } from "react";
+import Select from "react-select";
 
 function ModalFrom({ close, onDataSubmit }) {
-  const [inputValue, setInputValue] = useState();
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
+  const [inputValue, setInputValue] = useState(null);
+  const handleChange = (inputValue) => {
+    setInputValue(inputValue.value);
   };
+
+  const options = [
+    { value: "Jakarta", label: "Jakarta" },
+    { value: "Bandung", label: "Bandung" },
+    { value: "Surabaya", label: "Surabaya" },
+  ];
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,21 +34,21 @@ function ModalFrom({ close, onDataSubmit }) {
           <form
             onChange={handleChange}
             onSubmit={handleSubmit}
-            className="w-full flex flex-col gap-2 mt-5"
+            className="w-full flex flex-col gap-2 my-5"
           >
-            <input
+            {/* <input
               value={inputValue}
               onChange={handleChange}
               className="w-full border-2 px-2.5 py-2 rounded-md"
               placeholder="Search Country"
               type="text"
+            /> */}
+            <Select
+              options={options}
+              value={inputValue}
+              onChange={handleChange}
+              placeholder="Masukan Kota"
             />
-            <button
-              className="w-fit px-5 py-3 mb-3 bg-primary rounded-md text-white"
-              type="submit"
-            >
-              Submit
-            </button>
           </form>
         </div>
       </div>
