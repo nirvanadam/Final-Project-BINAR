@@ -18,7 +18,7 @@ function ModalSeatClass({ action }) {
                   for="radio1"
                   className="ml-2 text-sm font-medium text-gray-400 dark:text-gray-500"
                 >
-                  <h1>Termurah</h1>
+                  <h1>Economy</h1>
                   <h2>IDR 4.950.000</h2>
                 </label>
                 <input
