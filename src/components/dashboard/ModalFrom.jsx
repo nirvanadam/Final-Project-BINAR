@@ -36,6 +36,7 @@ function ModalFrom({ close, onDataSubmit }) {
             className="w-full flex flex-col gap-2 my-5"
           >
             <Select
+
               options={data}
               value={data.value}
               onChange={handleChange}
