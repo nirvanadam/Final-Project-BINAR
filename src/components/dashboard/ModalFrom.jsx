@@ -4,13 +4,13 @@ import Select from "react-select";
 function ModalFrom({ close, onDataSubmit }) {
   const [inputValue, setInputValue] = useState(null);
   const handleChange = (inputValue) => {
-    setInputValue(inputValue.value);
+    setInputValue(inputValue.label);
   };
 
   const options = [
-    { value: "Jakarta", label: "Jakarta" },
-    { value: "Bandung", label: "Bandung" },
-    { value: "Surabaya", label: "Surabaya" },
+    { value: "jakarta", label: "Jakarta" },
+    { value: "bandung", label: "Bandung" },
+    { value: "surabaya", label: "Surabaya" },
   ];
 
   const handleSubmit = (event) => {
@@ -32,20 +32,12 @@ function ModalFrom({ close, onDataSubmit }) {
             x
           </button>
           <form
-            onChange={handleChange}
             onSubmit={handleSubmit}
             className="w-full flex flex-col gap-2 my-5"
           >
-            {/* <input
-              value={inputValue}
-              onChange={handleChange}
-              className="w-full border-2 px-2.5 py-2 rounded-md"
-              placeholder="Search Country"
-              type="text"
-            /> */}
             <Select
               options={options}
-              value={inputValue}
+              value={options.value}
               onChange={handleChange}
               placeholder="Masukan Kota"
             />
