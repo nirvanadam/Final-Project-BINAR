@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import FlightDetail from "./FlightDetail";
+import axios from "axios";
 
 function FlightResult() {
   const [detailBtnSts, setDetailBtnSts] = useState(false);
   const detailButton = () => {
     setDetailBtnSts(!detailBtnSts);
   };
+
   return (
     <div className="flex flex-col gap-5 mx-4">
       {/* Flight Information Container */}
@@ -41,7 +43,9 @@ function FlightResult() {
             {/* Price */}
             <div className="flex flex-col items-end gap-1">
               <h1 className="text-lg w-fit font-bold ">IDR 4.950.000</h1>
-              <button className="hidden lg:inline w-fit bg-primary text-white font-medium px-9 py-1 rounded-lg">Pilih</button>
+              <button className="hidden lg:inline w-fit bg-primary text-white font-medium px-9 py-1 rounded-lg">
+                Pilih
+              </button>
             </div>
             {/* Price End */}
           </div>
@@ -62,11 +66,18 @@ function FlightResult() {
             {/* Seat Class Info End */}
 
             {/* Detail Button */}
-            <Link to={"/flight-detail"} className="flex lg:hidden justify-center items-center border border-gray-300 rounded-full p-1">
+            <Link
+              to={"/flight-detail"}
+              className="flex lg:hidden justify-center items-center border border-gray-300 rounded-full p-1"
+            >
               <img src="/icons/chevron_down.svg" alt="" className="w-5" />
             </Link>
 
-            <button type="button" onClick={detailButton} className="hidden lg:flex justify-center items-center border border-gray-300 rounded-full p-1">
+            <button
+              type="button"
+              onClick={detailButton}
+              className="hidden lg:flex justify-center items-center border border-gray-300 rounded-full p-1"
+            >
               <img src="/icons/chevron_down.svg" alt="" className="w-5" />
             </button>
             {/* Detail Button End */}
