@@ -9,6 +9,7 @@ function FlightResult() {
     setDetailBtnSts(!detailBtnSts);
   };
 
+
   const [data, setData] = useState();
 
   const url = `https://final-project-develop.up.railway.app/api/flight`;
@@ -102,6 +103,29 @@ function FlightResult() {
                   </h1>
                   <img src="/icons/luggage_icon.svg" alt="" className="w-5" />
                 </div>
+
+            {/* Price */}
+            <div className="flex flex-col items-end gap-1">
+              <h1 className="text-lg w-fit font-bold ">IDR 4.950.000</h1>
+              <button className="hidden lg:inline w-fit bg-primary text-white font-medium px-9 py-1 rounded-lg">
+                Pilih
+              </button>
+            </div>
+            {/* Price End */}
+          </div>
+          {/* From, Duration, To, Price End */}
+
+          <span className="lg:order-2 bg-gray-400 my-2 w-full h-[1px]"></span>
+
+          {/*  Airline - Seat Class & Detail Button */}
+          <div className="lg:order-1 flex justify-between items-center">
+            {/* Seat Class Info */}
+            <div className="flex items-center gap-2">
+              <img src="/icons/airline_logo.svg" alt="" />
+              <div className="flex flex-col gap-1">
+                <h1 className="text-sm font-semibold">Jet Air- Economy</h1>
+                <img src="/icons/luggage_icon.svg" alt="" className="w-5" />
+
               </div>
               {/* Seat Class Info End */}
 
@@ -123,6 +147,23 @@ function FlightResult() {
               {/* Detail Button End */}
             </div>
             {/*  Airline - Seat Class & Detail Button End */}
+
+            {/* Detail Button */}
+            <Link
+              to={"/flight-detail"}
+              className="flex lg:hidden justify-center items-center border border-gray-300 rounded-full p-1"
+            >
+              <img src="/icons/chevron_down.svg" alt="" className="w-5" />
+            </Link>
+
+            <button
+              type="button"
+              onClick={detailButton}
+              className="hidden lg:flex justify-center items-center border border-gray-300 rounded-full p-1"
+            >
+              <img src="/icons/chevron_down.svg" alt="" className="w-5" />
+            </button>
+            {/* Detail Button End */}
           </div>
 
           <FlightDetail
