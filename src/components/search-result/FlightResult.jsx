@@ -5,8 +5,15 @@ import axios from "axios";
 
 function FlightResult() {
   const [detailBtnSts, setDetailBtnSts] = useState(false);
-  const detailButton = () => {
-    setDetailBtnSts(!detailBtnSts);
+  // const detailButton = () => {
+  //   setDetailBtnSts(!detailBtnSts);
+  // };
+
+  const detailButton = (index) => {
+    setDetailBtnSts((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index]
+    }));
   };
 
   const [data , setData] = useState();
@@ -37,7 +44,7 @@ function FlightResult() {
   return (
     <div className="flex flex-col gap-5 mx-4">
       {/* Flight Information Container */}
-      {data?.slice(0, 20).map((datas, index)=> (
+      {data?.slice(0, 20 ).map((datas, index)=> (
 
       <div 
       key={index}
@@ -97,7 +104,7 @@ function FlightResult() {
               <img src="/icons/chevron_down.svg" alt="" className="w-5" />
             </Link>
 
-            <button type="button" onClick={detailButton} className="hidden lg:flex justify-center items-center border border-gray-300 rounded-full p-1">
+            <button type="button" onClick={()=> detailButton(index)} className="hidden lg:flex justify-center items-center border border-gray-300 rounded-full p-1">
               <img src="/icons/chevron_down.svg" alt="" className="w-5" />
             </button>
             {/* Detail Button End */}
@@ -117,7 +124,7 @@ function FlightResult() {
         Informasi1={datas.free_baggage}
         Informasi2={datas.cabin_baggage}
         Informasi3={datas.capacity}
-        display={detailBtnSts ? "block" : "hidden"} />
+        display={detailBtnSts[index] ? "block" : "hidden"} />
       </div>
       ))}
       {/* Flight Information Container End */}
