@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import FlightResult from "../components/search-result/FlightResult";
 import ResultNotFound from "../components/search-result/ResultNotFound";
@@ -6,7 +6,8 @@ import ModalSort from "../components/ModalSort";
 import Loading from "../components/search-result/Loading";
 import Sorry from "../components/search-result/Sorry";
 import Navbar from "../components/Navbar";
-
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 function SearchResult() {
   // Modal Sort
   const [isOpenSort, setIsOpenSort] = useState();
@@ -38,6 +39,30 @@ function SearchResult() {
     return new Intl.DateTimeFormat("id-ID", options).format(date);
   }
   // Hari , Tanggal , Bulan , Tahun
+
+  //Use location
+  const location = useLocation();
+  const formData = location.state;
+
+  console.log(formData);
+
+  // const [data, setData] = useState();
+  // const url = `https://finalproject-develop.up.railway.app/api/flight`;
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.post(url, formData);
+  //     console.log(response);
+  //     setData(response.data.data);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, [url]);
+
+  // console.log(data);
 
   return (
     <>
@@ -188,7 +213,7 @@ function SearchResult() {
           {/* Filter Container End */}
 
           {/* Content */}
-          <FlightResult />
+          <FlightResult formData={formData} />
           {/* <ResultNotFound /> */}
           {/* Content End */}
         </div>

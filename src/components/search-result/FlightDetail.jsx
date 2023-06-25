@@ -13,7 +13,6 @@ function FlightDetail(props) {
     airplaneID,
     Informasi1,
     Informasi2,
-    Informasi3,
   } = props;
 
   return (
@@ -58,7 +57,6 @@ function FlightDetail(props) {
               <h1 className="font-bold">Informasi</h1>
               <h1 className="font-semibold">Baggage {Informasi1}</h1>
               <h1 className="font-semibold">Cabin baggage {Informasi2}</h1>
-              <h1 className="font-semibold">Capacity {Informasi3}</h1>
             </div>
           </div>
         </div>
