@@ -23,13 +23,12 @@ function ModalFrom({ close, onDataSubmit }) {
   // Fetch API Logic
   const [data, setData] = useState(null);
 
-  const url = "https://final-project-develop.up.railway.app/airport";
+  const url = "https://finalproject-develop.up.railway.app/airport";
 
   const fetchData = async () => {
     try {
       const response = await axios.get(url);
       setData(response.data.data);
-      setLoading(false);
     } catch (error) {
       console.error(error);
     }

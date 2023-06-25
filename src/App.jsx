@@ -36,6 +36,7 @@ function App() {
         <Route path="/test" element={<ComponentTest />} />
         <Route path="/riwayat" element={<RiwayatPesanan />} />
         <Route path="/test1" element={<FlightDetail />} />
+        <Route path="/flight-result" element={<FlightResult />} />
       </Routes>
     </BrowserRouter>
   );
