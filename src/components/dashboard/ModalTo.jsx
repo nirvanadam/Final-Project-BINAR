@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import axios from "axios";
 
-function ModalTo(props) {
+function ModalTo({ action, onDataSubmit }) {
   const [inputValue, SetInputValueTo] = useState();
   const handleChange = (inputValue) => {
     SetInputValueTo(inputValue.label);
@@ -13,6 +13,12 @@ function ModalTo(props) {
   //   { value: "bandung", label: "Bandung" },
   //   { value: "surabaya", label: "Surabaya" },
   // ];
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onDataSubmit(inputValue);
+    action();
+  };
 
   // Fetch API Logic
   const [data, setData] = useState(null);
@@ -35,11 +41,6 @@ function ModalTo(props) {
 
   console.log(JSON.stringify(data));
   // Fetch API Logic End
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    props.onDataSubmit(inputValue);
-    action();
-  };
 
   return (
     // ToModal
@@ -47,12 +48,13 @@ function ModalTo(props) {
       <div className="flex w-full h-full sm:justify-center sm:items-center">
         <div className="relative w-full sm:w-1/3 sm:bg-white sm:rounded-md flex flex-col px-5 pt-8 gap-8">
           <button
-            onClick={props.action}
+            onClick={action}
             className="absolute top-0 right-5 text-[28px] font-semibold"
           >
             x
           </button>
           <form
+            onChange={handleChange}
             onSubmit={handleSubmit}
             className="w-full flex flex-col gap-2 my-5"
           >
@@ -60,7 +62,7 @@ function ModalTo(props) {
               <Select
                 options={data}
                 value={data.value}
-                on={handleChange}
+                onChange={handleChange}
                 placeholder="Masukan Kota"
               />
             )}
