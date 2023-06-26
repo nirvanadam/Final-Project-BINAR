@@ -23,7 +23,7 @@ function SearchResult() {
 
   // looping Date
   const currentDate = Date.now();
-  const dates = Array(30)
+  const dates = Array(7)
     .fill()
     .map((_, index) => new Date(currentDate + index * 24 * 60 * 60 * 1000));
   // looping date end
@@ -87,15 +87,23 @@ function SearchResult() {
               </button>
 
               <div className="flex self-center items-center gap-1">
-                <h1 className=" text-white font-bold">JKT</h1>
+                <h1 className=" text-white font-bold">
+                  {formData.departure_airport}
+                </h1>
                 <img
                   src="/icons/navigate_next_icon.svg"
                   alt=""
                   className="invert w-5"
                 />
-                <h1 className=" text-white font-bold">MLB</h1>
-                <h1 className=" text-white font-medium">- 2 Penumpang</h1>
-                <h1 className=" text-white font-medium">- Ekonomy</h1>
+                <h1 className=" text-white font-bold">
+                  {formData.arrival_airport}
+                </h1>
+                <h1 className=" text-white font-medium">
+                  - {formData.passenger} Penumpang
+                </h1>
+                <h1 className=" text-white font-medium">
+                  - {formData.seat_type}
+                </h1>
               </div>
             </div>
             {/* Info Destination End */}

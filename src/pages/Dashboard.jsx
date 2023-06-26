@@ -12,7 +12,7 @@ import ModalPassenger from "../components/dashboard/ModalPassenger";
 import Navbar from "../components/Navbar";
 import NavbarMobile from "../components/NavbarMobile";
 import DestinasiFavorit from "../components/dashboard/DestinasiFavorit";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Dashboard() {
   // {ModalFrom}
@@ -63,7 +63,7 @@ function Dashboard() {
   const handleDataSubmitFrom = (dataFrom) => {
     setSubmitFrom(dataFrom);
   };
-
+  console.log(submitFrom);
   // save Value To
   const [submitTo, setSubmitTo] = useState();
   const handleDataSubmitTo = (dataTo) => {
@@ -82,6 +82,12 @@ function Dashboard() {
   const handleDataSubmitPassenger = (dataPassenger) => {
     setSubmitedDataPassenger(dataPassenger);
   };
+
+  const [category, setCategory] = useState({});
+  const handleCategory = (category) => {
+    setCategory(category);
+
+  };
   // Passenger Logic End
 
   // Seat Class Logic
@@ -98,8 +104,13 @@ function Dashboard() {
   };
   // Round Trip Toggle Logic End
 
-  const navigate = useNavigate();
 
+  // Terima data Passenger
+  const location = useLocation();
+  const total = location.state;
+  console.log(total);
+
+  const navigate = useNavigate();
   // Submit Form
   const handleSubmitForm = (event) => {
     event.preventDefault();
@@ -109,8 +120,12 @@ function Dashboard() {
       departure_airport: event.target.elements.from.value,
       arrival_airport: event.target.elements.to.value,
       date: event.target.elements.date.value,
-      // passengger: event.target.elements.passenger.value,
+      passenger: event.target.elements.passenger.value,
       seat_type: event.target.elements.seat.value,
+      adult: total.totalAdults,
+      child: total.totalKids,
+      baby: total.totalBabies,
+
     };
 
     navigate("/search-result", { state: dataForm });
@@ -137,6 +152,7 @@ function Dashboard() {
         <ModalPassenger
           action={handleClosePassengers}
           onDataSubmit={handleDataSubmitPassenger}
+          onDataCategory={handleCategory}
         />
       ) : null}
 
@@ -188,6 +204,7 @@ function Dashboard() {
                 </div>
                 <div className="relative self-end lg:ml-10">
                   <input
+                    required
                     onClick={handleFrom}
                     value={submitFrom}
                     type="text"
@@ -222,6 +239,7 @@ function Dashboard() {
                 </div>
                 <div className="lg:ml-10">
                   <input
+                    required
                     onClick={handleTo}
                     value={submitTo}
                     placeholder="Mau Kemana ?"
@@ -250,6 +268,7 @@ function Dashboard() {
                   </div>
 
                   <input
+                    required
                     type="date"
                     name="date"
                     id="date"
@@ -324,6 +343,7 @@ function Dashboard() {
                     />
                   </div>
                   <input
+                    required
                     onClick={handlePassengers}
                     type=""
                     name="passenger"
@@ -347,6 +367,7 @@ function Dashboard() {
                     />
                   </div>
                   <input
+                    required
                     onClick={handleSeatClass}
                     type="text"
                     value={submitedDataSeatClass}

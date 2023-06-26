@@ -13,12 +13,16 @@ function FlightDetail(props) {
     airplaneID,
     Informasi1,
     Informasi2,
+    departureCity,
+    arrivalCity,
+    Duration,
+
   } = props;
 
   return (
     <div className={`${display} mx-4 mt-3`}>
       <h1 className="lg:hidden mb-3 font-bold">
-        {departureAirport} - {arrivalAirport} <span>{departureTime}</span>
+        {departureCity} - {arrivalCity} <span>{Duration}</span>
       </h1>
 
       <h1 className="hidden lg:block mb-3 font-bold">Detail Penerbangan</h1>
@@ -34,9 +38,7 @@ function FlightDetail(props) {
             <h1 className="text-sm font-semibold">Keberangkatan</h1>
           </div>
 
-          <h1 className="text-sm font-semibold">
-            {departureAirport} - {arrivalAirport}
-          </h1>
+          <h1 className="text-sm font-semibold">Bandara {departureAirport}</h1>
         </div>
         {/* Keberangkatan End */}
 
@@ -72,7 +74,7 @@ function FlightDetail(props) {
             <h1 className="text-sm font-semibold">Kedatangan</h1>
           </div>
 
-          <h1 className="text-sm font-semibold">{arrivalAirport}</h1>
+          <h1 className="text-sm font-semibold">Bandara {arrivalAirport}</h1>
         </div>
         {/* Kedatangan End */}
       </div>

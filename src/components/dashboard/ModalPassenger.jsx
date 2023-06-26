@@ -1,6 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function ModalPassenger({ action, onDataSubmit }) {
+function ModalPassenger({ action, onDataSubmit, onDataCategory }) {
+  const [totalPassanger, setTotalPassanger] = useState({
+    totalAdults: 0,
+    totalKids: 0,
+    totalBabies: 0,
+  });
   // Adult State
   const [totalAdult, setTotalAdult] = useState(0);
   const addAdult = () => {
@@ -56,11 +62,22 @@ function ModalPassenger({ action, onDataSubmit }) {
   // Baby State End
 
   // Submit Logic
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    onDataSubmit(totalAdult + totalKid + totalBaby);
+    const total = {
+      totalAdults: totalAdult,
+      totalKids: totalKid,
+      totalBabies: totalBaby,
+    };
+
+    const totalPassengers = totalAdult + totalKid + totalBaby;
+    navigate("/", { state: total });
+    onDataSubmit(totalPassengers);
+    // onDataCategory(totalPassanger);
     action();
   };
+
   // Submit Logic End
   return (
     <div className="fixed w-full h-[80%] bottom-0 z-50 bg-white sm:bg-slate-500 sm:bg-opacity-80 sm:h-screen sm:w-screen">

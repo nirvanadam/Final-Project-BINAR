@@ -8,12 +8,6 @@ function ModalFrom({ close, onDataSubmit }) {
     setInputValue(inputValue.label);
   };
 
-  // const option = [
-  //   { value: "jakarta", label: "Jakarta" },
-  //   { value: "bandung", label: "Bandung" },
-  //   { value: "surabaya", label: "Surabaya" },
-  // ];
-
   const handleSubmit = (event) => {
     event.preventDefault();
     onDataSubmit(inputValue);
@@ -36,9 +30,9 @@ function ModalFrom({ close, onDataSubmit }) {
 
   useEffect(() => {
     fetchData();
+    console.log(JSON.stringify(data));
   }, [url]);
 
-  console.log(JSON.stringify(data));
   // Fetch API Logic End
 
   return (
