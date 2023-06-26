@@ -4,6 +4,7 @@ import FlightDetail from "./FlightDetail";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import ResultNotFound from "./ResultNotFound";
+import Loading from "./Loading";
 
 function FlightResult(props) {
   const { formData } = props;
@@ -54,6 +55,10 @@ function FlightResult(props) {
     <div className="flex flex-col gap-5 mx-4">
       {/* Flight Information Container */}
       {data === undefined ? (
+        <Loading />
+      ) : data === null ? (
+        <ResultNotFound />
+      ) : data.length === 0 ? (
         <ResultNotFound />
       ) : (
         data.slice(0, 20).map((datas, index) => (
@@ -71,7 +76,7 @@ function FlightResult(props) {
                       {datas.departure_airport.departure_time}
                     </h1>
                     <h1 className="text-sm font-semibold">
-                      {datas.departure_airport.departure_airport}
+                      {datas.departure_city}
                     </h1>
                   </div>
                   {/* From Information End */}
@@ -90,7 +95,7 @@ function FlightResult(props) {
                       {datas.arrival_airport.arrival_time}
                     </h1>
                     <h1 className="text-sm font-semibold">
-                      {datas.arrival_airport.arrival_airport}
+                      {datas.arrival_city}
                     </h1>
                   </div>
                   {/* To Information End */}
@@ -115,7 +120,7 @@ function FlightResult(props) {
               <div className="lg:order-1 flex justify-between items-center">
                 {/* Seat Class Info */}
                 <div className="flex items-center gap-2">
-                  <img src="/icons/airline_logo.svg" alt="" />
+                  <img className="h-6 w-6" src={datas.logo} alt="" />
                   <div className="flex flex-col gap-1">
                     <h1 className="text-sm font-semibold">
                       {datas.info_flight.airline} - {datas.class}
@@ -141,6 +146,9 @@ function FlightResult(props) {
 
             <FlightDetail
               flightDate={datas.departure_airport.date}
+              departureCity={datas.departure_city}
+              arrivalCity={datas.arrival_city}
+              Duration={datas.duration}
               departureAirport={datas.departure_airport.departure_airport}
               arrivalAirport={datas.arrival_airport.arrival_airport}
               airlineCode={datas.info_flight.airplane_code}
