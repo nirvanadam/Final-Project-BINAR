@@ -1,7 +1,30 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 
 function OtpInput() {
+  const location = useLocation();
+  const user_id = location.state;
+  console.log(user_id);
+
+  const navigate = useNavigate();
+
+  const [inputOtp1, setInputOtp1] = useState();
+  const [inputOtp2, setInputOtp2] = useState();
+  const [inputOtp3, setInputOtp3] = useState();
+  const [inputOtp4, setInputOtp4] = useState();
+  const [inputOtp5, setInputOtp5] = useState();
+  const [inputOtp6, setInputOtp6] = useState();
+
+  const otp = `${inputOtp1}${inputOtp2}${inputOtp3}${inputOtp4}${inputOtp5}${inputOtp6}`;
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await axios.post("https://finalproject-develop.up.railway.app/validasi", { user_id, otp: +otp });
+    navigate(`/login`);
+  };
+
+  console.log(otp);
+
   return (
     <div className="h-screen overflow-hidden font-quickSand">
       {/* Header */}
@@ -19,14 +42,14 @@ function OtpInput() {
         <p className="text-xs font-medium mb-5">
           Ketik 6 digit kode yang dikirimkan ke <span className="font-bold">J*****@gmail.com</span>
         </p>
-        <form action="" className="flex flex-col items-center">
+        <form onSubmit={handleSubmit} className="flex flex-col items-center">
           <div className="flex gap-5 mb-5">
-            <input type="text" name="" id="" className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="text" name="" id="" className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="text" name="" id="" className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="text" name="" id="" className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="text" name="" id="" className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="text" name="" id="" className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
+            <input type="number" name="" id="" value={inputOtp1} onChange={(e) => setInputOtp1(e.target.value)} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
+            <input type="number" name="" id="" value={inputOtp2} onChange={(e) => setInputOtp2(e.target.value)} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
+            <input type="number" name="" id="" value={inputOtp3} onChange={(e) => setInputOtp3(e.target.value)} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
+            <input type="number" name="" id="" value={inputOtp4} onChange={(e) => setInputOtp4(e.target.value)} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
+            <input type="number" name="" id="" value={inputOtp5} onChange={(e) => setInputOtp5(e.target.value)} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
+            <input type="number" name="" id="" value={inputOtp6} onChange={(e) => setInputOtp6(e.target.value)} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
           </div>
           <p className="text-xs font-bold mb-16">Kirim ulang OTP dalam 60 detik</p>
 
