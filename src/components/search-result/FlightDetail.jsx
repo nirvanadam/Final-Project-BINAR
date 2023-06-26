@@ -16,6 +16,7 @@ function FlightDetail(props) {
     departureCity,
     arrivalCity,
     Duration,
+
   } = props;
 
   return (

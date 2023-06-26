@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import ResultNotFound from "./ResultNotFound";
 import Loading from "./Loading";
 
+
 function FlightResult(props) {
   const { formData } = props;
   const [detailBtnSts, setDetailBtnSts] = useState(false);
@@ -59,6 +60,7 @@ function FlightResult(props) {
       ) : data === null ? (
         <ResultNotFound />
       ) : data.length === 0 ? (
+
         <ResultNotFound />
       ) : (
         data.slice(0, 20).map((datas, index) => (

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Login() {
   const [showStatus, setShowStatus] = useState(false);
@@ -7,6 +8,24 @@ function Login() {
   const togglePassword = () => {
     setShowStatus(!showStatus);
   };
+
+  // Data Form
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  // Data Form End
+
+  const navigate = useNavigate();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const dataForm = {
+      email,
+      password,
+    };
+    await axios.post("https://finalproject-develop.up.railway.app/auth/login", dataForm);
+    navigate(`/`);
+  };
+
+  console.log([email, password]);
 
   return (
     <div className="grid grid-rows-[1fr,3fr] lg:grid-rows-1 lg:grid-cols-2 h-screen overflow-hidden bg-primary font-quickSand">
@@ -23,7 +42,7 @@ function Login() {
       {/* Right */}
       <div className="bg-white flex flex-col justify-center px-14 lg:px-20 rounded-tl-[90px]">
         <h1 className="text-2xl font-bold mb-6">Masuk</h1>
-        <form action="" className="flex flex-col">
+        <form onSubmit={handleSubmit} className="flex flex-col">
           {/* Email Input */}
           <div className="relative w-full flex items-center mb-4">
             <img src="/icons/email_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
@@ -31,6 +50,8 @@ function Login() {
               type="email"
               name=""
               id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
               className="px-10 py-2 w-full border border-slate-400 rounded-xl font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             />
@@ -44,6 +65,8 @@ function Login() {
               type={showStatus ? "text" : "password"}
               name=""
               id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               className="px-10 py-2 w-full border border-slate-400 rounded-xl outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             />

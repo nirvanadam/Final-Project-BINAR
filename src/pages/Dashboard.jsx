@@ -86,6 +86,7 @@ function Dashboard() {
   const [category, setCategory] = useState({});
   const handleCategory = (category) => {
     setCategory(category);
+
   };
   // Passenger Logic End
 
@@ -102,6 +103,7 @@ function Dashboard() {
     setDisplayReturnDate(!displayReturnDate);
   };
   // Round Trip Toggle Logic End
+
 
   // Terima data Passenger
   const location = useLocation();
@@ -123,6 +125,7 @@ function Dashboard() {
       adult: total.totalAdults,
       child: total.totalKids,
       baby: total.totalBabies,
+
     };
 
     navigate("/search-result", { state: dataForm });
