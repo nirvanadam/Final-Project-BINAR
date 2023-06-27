@@ -66,14 +66,15 @@ function ModalPassenger({ action, onDataSubmit, onDataCategory }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const total = {
-      totalAdults: totalAdult,
-      totalKids: totalKid,
-      totalBabies: totalBaby,
+      adult: totalAdult,
+      kid: totalKid,
+      baby: totalBaby,
     };
 
     const totalPassengers = totalAdult + totalKid + totalBaby;
     navigate("/", { state: total });
     onDataSubmit(totalPassengers);
+    console.log(total);
     // onDataCategory(totalPassanger);
     action();
   };

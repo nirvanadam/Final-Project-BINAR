@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import BioDataPemesan from "../components/checkout/BioDataPemesan";
 import BioDataPenumpang from "../components/checkout/BioDataPenumpang";
 import Navbar from "../components/Navbar";
@@ -7,8 +7,32 @@ import FlightDetail from "../components/search-result/FlightDetail";
 import CheckoutDetail from "../components/checkout/CheckoutDetail";
 import Payment from "../components/checkout/Payment";
 import SuccessPayment from "../components/checkout/SuccessPayment";
+import axios from "axios";
 
 function CheckoutPage() {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const id = queryParams.get("id");
+  const adult = queryParams.get("adult");
+  const child = queryParams.get("child");
+
+  const [data, setData] = useState();
+
+  const url = `https://finalproject-develop.up.railway.app/flight/price/${id}?adult=${adult}&child=${child}`;
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(url);
+      console.log(response);
+      setData(response.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [url]);
+
   return (
     <div className="flex flex-col font-quickSand">
       {/* Navbar */}
