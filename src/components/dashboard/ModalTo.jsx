@@ -29,7 +29,7 @@ function ModalTo({ action, onDataSubmit }) {
     try {
       const response = await axios.get(url);
       setData(response.data.data);
-      setLoading(false);
+      // setLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -39,7 +39,7 @@ function ModalTo({ action, onDataSubmit }) {
     fetchData();
   }, [url]);
 
-  console.log(JSON.stringify(data));
+  // console.log(JSON.stringify(data));
   // Fetch API Logic End
 
   return (
@@ -66,6 +66,13 @@ function ModalTo({ action, onDataSubmit }) {
                 placeholder="Masukan Kota"
               />
             )}
+
+            <button
+              type="submit"
+              className="w-full mt-10 py-3 px-10 bg-primary mb-4 text-white rounded-md"
+            >
+              Submit
+            </button>
           </form>
         </div>
       </div>

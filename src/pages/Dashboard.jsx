@@ -63,7 +63,6 @@ function Dashboard() {
   const handleDataSubmitFrom = (dataFrom) => {
     setSubmitFrom(dataFrom);
   };
-  console.log(submitFrom);
   // save Value To
   const [submitTo, setSubmitTo] = useState();
   const handleDataSubmitTo = (dataTo) => {
@@ -86,7 +85,6 @@ function Dashboard() {
   const [category, setCategory] = useState({});
   const handleCategory = (category) => {
     setCategory(category);
-
   };
   // Passenger Logic End
 
@@ -104,11 +102,10 @@ function Dashboard() {
   };
   // Round Trip Toggle Logic End
 
-
   // Terima data Passenger
   const location = useLocation();
   const total = location.state;
-  console.log(total);
+  // console.log(total);
 
   const navigate = useNavigate();
   // Submit Form
@@ -122,10 +119,9 @@ function Dashboard() {
       date: event.target.elements.date.value,
       passenger: event.target.elements.passenger.value,
       seat_type: event.target.elements.seat.value,
-      adult: total.totalAdults,
-      child: total.totalKids,
-      baby: total.totalBabies,
-
+      adult: total.adult,
+      child: total.kid,
+      baby: total.baby,
     };
 
     navigate("/search-result", { state: dataForm });

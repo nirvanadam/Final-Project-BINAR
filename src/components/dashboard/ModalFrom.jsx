@@ -30,7 +30,7 @@ function ModalFrom({ close, onDataSubmit }) {
 
   useEffect(() => {
     fetchData();
-    console.log(JSON.stringify(data));
+    // console.log(JSON.stringify(data));
   }, [url]);
 
   // Fetch API Logic End
@@ -59,6 +59,13 @@ function ModalFrom({ close, onDataSubmit }) {
                 placeholder="Masukan Kota"
               />
             )}
+
+            <button
+              type="submit"
+              className="w-full mt-10 py-3 px-10 bg-primary mb-4 text-white rounded-md"
+            >
+              Submit
+            </button>
           </form>
         </div>
       </div>
