@@ -59,7 +59,7 @@ function CheckoutPage() {
       <div className="lg:grid grid-cols-2 gap-5 mx-4 lg:mx-36 mt-5">
         <div className="">
           {/* <BioDataPemesan /> */}
-          <BioDataPenumpang />
+          <BioDataPenumpang id={id} adults={adult} kids={child} />
           {/* <Payment /> */}
           {/* <SuccessPayment /> */}
         </div>
