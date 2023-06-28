@@ -64,7 +64,9 @@ function CheckoutPage() {
           {/* <SuccessPayment /> */}
         </div>
 
-        <div className="">{/* <CheckoutDetail /> */}</div>
+        <div className="">
+          <CheckoutDetail />
+        </div>
       </div>
       {/* Content End */}
     </div>
