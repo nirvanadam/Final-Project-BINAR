@@ -23,12 +23,9 @@ function Login() {
       password,
     };
 
-    const response = await axios.post(
-      "https://finalproject-develop.up.railway.app/auth/login",
-      dataForm
-    );
+    const response = await axios.post("https://finalproject-develop.up.railway.app/auth/login", dataForm);
     axios.defaults.headers.common["authorization"] = response.data.data;
-    Cookies.set("token", response.data.data, { expires: 1 });
+    Cookies.set("token", response.data.data, { expires: 30 });
     navigate(`/`);
   };
 
@@ -50,11 +47,7 @@ function Login() {
         <form onSubmit={handleSubmit} className="flex flex-col">
           {/* Email Input */}
           <div className="relative w-full flex items-center mb-4">
-            <img
-              src="/icons/email_icon.svg"
-              alt=""
-              className="absolute left-3 w-[20px] opacity-50"
-            />
+            <img src="/icons/email_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
             <input
               type="email"
               name=""
@@ -69,11 +62,7 @@ function Login() {
 
           {/* Password Input*/}
           <div className="relative flex items-center">
-            <img
-              src="/icons/password_icon.svg"
-              alt=""
-              className="absolute left-3 w-[20px] opacity-50"
-            />
+            <img src="/icons/password_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
             <input
               type={showStatus ? "text" : "password"}
               name=""
@@ -84,38 +73,20 @@ function Login() {
               className="px-10 py-2 w-full border border-slate-400 rounded-xl outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             />
 
-            <button
-              type="button"
-              onClick={togglePassword}
-              className="absolute right-3"
-            >
-              <img
-                src={
-                  showStatus
-                    ? "/icons/show_password_off_icon.svg"
-                    : "/icons/show_password_icon.svg"
-                }
-                alt=""
-                className="w-[20px] opacity-50"
-              />
+            <button type="button" onClick={togglePassword} className="absolute right-3">
+              <img src={showStatus ? "/icons/show_password_off_icon.svg" : "/icons/show_password_icon.svg"} alt="" className="w-[20px] opacity-50" />
             </button>
           </div>
           {/* Password Input End */}
 
           {/* Forgot Password */}
-          <Link
-            to={"/forgot-password"}
-            className="mt-2 underline font-bold text-primary text-xs self-end"
-          >
+          <Link to={"/forgot-password"} className="mt-2 underline font-bold text-primary text-xs self-end">
             Lupa Kata Sandi
           </Link>
           {/* Forgot Password End */}
 
           {/* Button Submit */}
-          <button
-            type="submit"
-            className="mt-5 bg-primary py-3 rounded-xl text-white text-sm font-medium"
-          >
+          <button type="submit" className="mt-5 bg-primary py-3 rounded-xl text-white text-sm font-medium">
             Masuk
           </button>
           {/* Button Submit End */}

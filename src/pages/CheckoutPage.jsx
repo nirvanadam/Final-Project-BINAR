@@ -19,10 +19,11 @@ function CheckoutPage() {
   const [data, setData] = useState();
 
   const url = `https://finalproject-develop.up.railway.app/flight/price/${id}?adult=${adult}&child=${child}`;
+  let response;
   const fetchData = async () => {
     try {
-      const response = await axios.get(url);
-      console.log(response);
+      response = await axios.get(url);
+      // console.log(response);
       setData(response.data.data);
     } catch (error) {
       console.error(error);
@@ -32,6 +33,10 @@ function CheckoutPage() {
   useEffect(() => {
     fetchData();
   }, [url]);
+
+  // console.log(data.arrival_airport.arrival_time);
+  // console.log(data.arrival_airport.date);
+  const [order, setOrder] = useState();
 
   return (
     <div className="flex flex-col font-quickSand">
@@ -57,16 +62,33 @@ function CheckoutPage() {
 
       {/* Content */}
       <div className="lg:grid grid-cols-2 gap-5 mx-4 lg:mx-36 mt-5">
+        {/* Left */}
         <div className="">
           {/* <BioDataPemesan /> */}
-          <BioDataPenumpang id={id} adults={adult} kids={child} />
+          <BioDataPenumpang id={id} adults={adult} kids={child} setOrder={setOrder} />
           {/* <Payment /> */}
           {/* <SuccessPayment /> */}
         </div>
+        {/* Left End */}
 
+        {/* Right */}
         <div className="">
-          <CheckoutDetail />
+          <CheckoutDetail
+            arrivalTime={data.arrival_airport.arrival_time}
+            arrivalDate={data.arrival_airport.date}
+            arrivalAirport={data.arrival_airport.arrival_airport}
+            departureTime={data.departure_airport.departure_time}
+            departureDate={data.departure_airport.date}
+            departureAirport={data.departure_airport.departure_airport}
+            airlineClass={data.flight.airline_class}
+            airlineCode={data.flight.airplane_code}
+            airlineName={data.flight.airline_name}
+            baggage={data.flight.baggage}
+            cabinBaggage={data.flight.cabin_baggage}
+            logo={data.flight.logo}
+          />
         </div>
+        {/* Right End */}
       </div>
       {/* Content End */}
     </div>
