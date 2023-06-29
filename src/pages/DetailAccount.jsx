@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import NavbarMobile from "../components/NavbarMobile";
 import Navbar from "../components/Navbar";
 import EditAccount from "../components/account/EditAccount";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function DetailAccount() {
+  const location = useLocation();
+  const dataForm = location.state;
+
   return (
     <div className="font-quickSand">
       {/* navbar */}
@@ -14,14 +17,18 @@ function DetailAccount() {
       {/* navbar end  */}
 
       <div className="lg:py-12">
-        <h1 className="text-2xl font-bold mx-7 md:mx-12 lg:mx-36 mt-5 mb-7">Akun</h1>
+        <h1 className="text-2xl font-bold mx-7 md:mx-12 lg:mx-36 mt-5 mb-7">
+          Akun
+        </h1>
 
-        <div className="hidden lg:flex items-center bg-primary px-6 py-3 mx-40 gap-5 rounded-lg">
-          <button>
-            <img className="invert" src="/icons/arrow_left.svg" alt="" />
-          </button>
-          <h1 className="text-white text-lg font-medium">Beranda</h1>
-        </div>
+        <Link to={"/"}>
+          <div className="hidden lg:flex items-center bg-primary px-6 py-3 mx-40 gap-5 rounded-lg">
+            <button>
+              <img className="invert" src="/icons/arrow_left.svg" alt="" />
+            </button>
+            <h1 className="text-white text-lg font-medium">Beranda</h1>
+          </div>
+        </Link>
       </div>
       {/* content  */}
       <div className="flex lg:grid grid-cols-[1fr,4fr] lg:mb-10 flex-col mx-7 md:mx-12 lg:mx-40 gap-12">
@@ -54,7 +61,7 @@ function DetailAccount() {
         {/* option end  */}
         {/* form edit account */}
         <div className="">
-          <EditAccount />
+          <EditAccount dataForm={dataForm} />
         </div>
         {/* form edit account end  */}
       </div>
