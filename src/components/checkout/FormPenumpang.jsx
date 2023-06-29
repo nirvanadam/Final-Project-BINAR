@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function FormPenumpang({ totalPassenger, setData }) {
+function FormPenumpang({ totalPassenger, setData, adult }) {
   // State Penumapng
   const [passengers, setPassengers] = useState([]);
   // console.log(passengers);
@@ -14,11 +14,11 @@ function FormPenumpang({ totalPassenger, setData }) {
 
   useEffect(() => {
     // Inisialisasi data penumpang dengan nilai awal
-    const initialPassengers = Array.from({ length: totalPassenger }, () => ({
+    const initialPassengers = Array.from({ length: totalPassenger }, (_, index) => ({
       fullname: "",
       gender: "Laki-Laki",
       birthday: "",
-      person: "Dewasa",
+      person: index < adult ? "Dewasa" : "Anak-anak",
       nationality: "",
       no_ktp: "",
     }));
@@ -90,9 +90,8 @@ function FormPenumpang({ totalPassenger, setData }) {
     <div>
       {passengers.map((passenger, index) => (
         <div className="mb-9" key={index}>
-          <h1 className="w-full px-5 py-3 rounded-lg bg-primary text-white">Data Diri Pemesan</h1>
           {/* Kategori */}
-          <div className="flex flex-col gap-2 mt-5">
+          {/* <div className="flex flex-col gap-2 mt-5">
             <label htmlFor="kategori" className="font-bold">
               Kategori
             </label>
@@ -112,7 +111,9 @@ function FormPenumpang({ totalPassenger, setData }) {
                 Anak-Anak
               </option>
             </select>
-          </div>
+          </div> */}
+          <h1 className="w-full px-5 py-3 rounded-lg bg-primary text-white">{passenger.person === "Dewasa" ? `Penumpang Dewasa ${index + 1}` : `Penumpang Anak-Anak ${index - adult + 1}`}</h1>
+
           {/* Kategori End */}
 
           {/* Nama Lengkap */}
@@ -169,7 +170,6 @@ function FormPenumpang({ totalPassenger, setData }) {
               id="jenis_kelamin"
               value={passenger.gender}
               onChange={(e) => handleChangeGender(index, e.target.value)}
-              defaultValue={"Laki-Laki"}
               required
               className="px-3 py-2 border border-slate-400 rounded-lg font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary focus:rounded-b-none invalid:focus:border-red-600"
             >

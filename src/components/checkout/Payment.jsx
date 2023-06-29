@@ -1,7 +1,10 @@
-import React, { useState } from "react";
-import DetailPayment from "./DetailPayment";
+import React, { useState, useEffect } from "react";
+import DetailPayment from "../history/DetailPayment";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
-function Payment() {
+function Payment({ order_id }) {
   const [creditCardBtnSts, setCreditCardBtnSts] = useState(false);
   const [arrowPosition, setArrowPosition] = useState();
   const [displayForm, setDisplayForm] = useState("hidden");
@@ -10,77 +13,127 @@ function Payment() {
     setArrowPosition(creditCardBtnSts ? "rotate-180" : " ");
     setDisplayForm(creditCardBtnSts ? "flex" : "hidden");
   };
+
+  const [data, setData] = useState();
+  const url = "https://finalproject-develop.up.railway.app/payment";
+  const fetchData = async () => {
+    try {
+      axios.defaults.headers.common["authorization"] = Cookies.get("token");
+      const response = await axios.get(url);
+      setData(response.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const [inputValue, setInputValue] = useState();
+  const [displayWallet, setDisplayWallet] = useState(false);
+  const [displayVirtualAcc, setDisplayVirtualAcc] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const dataForm = {
+      order_id,
+      payment_id: +inputValue,
+    };
+    try {
+      axios.defaults.headers.common["authorization"] = Cookies.get("token");
+      const response = await axios.post("https://finalproject-develop.up.railway.app/payment/checkout", dataForm);
+      navigate("/success-payment", { state: order_id });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       {/* Detail Payment Container */}
-      <div className="flex flex-col px-4 py-3 border border-gray-400 rounded-xl">
+      {/* <div className="flex flex-col px-4 py-3 border border-gray-400 rounded-xl">
         <DetailPayment />
-      </div>
+      </div> */}
       {/* Detail Payment Container End */}
 
       {/* Method Payment: E-Money */}
-      <button className="flex justify-between items-center w-full mt-6 py-2 px-4 bg-primary rounded-lg">
-        <h1 className="text-white font-medium">Gopay</h1>
-        <img src="/icons/chevron_down.svg" alt="" className="invert w-5" />
-      </button>
+      <h1 className="text-xl font-bold mb-4">Isi Data Pembayaran</h1>
+
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        {/* E-Wallet Payment */}
+        <div className="">
+          <button
+            type="button"
+            onClick={() => setDisplayWallet(!displayWallet)}
+            className={`${displayWallet ? `rounded-b-0` : `rounded-b-lg`} flex justify-between items-center w-full py-3 px-4 bg-primary rounded-x-lg rounded-t-lg transition-all`}
+          >
+            <h1 className="text-white font-medium">E-Wallet</h1>
+            <img src="/icons/chevron_down.svg" alt="" className="invert w-5" />
+          </button>
+
+          {displayWallet && (
+            <div className={`bg-gray-100 rounded-b-lg`}>
+              {data &&
+                data.slice(0, 4).map((payment) => {
+                  return (
+                    <div key={payment.id} className={`bg-transparent relative flex items-center w-full px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-300`}>
+                      <input type="radio" value={payment.id} onChange={(event) => setInputValue(event.target.value)} name="seat-class" id="" className="absolute top-1/2 -translate-y-1/2 left-4 w-full h-[60px] opacity-0 cursor-pointer" />
+                      <div className="flex flex-col">
+                        <h1 className="font-bold">{payment.name}</h1>
+                      </div>
+                      <img src="/icons/check-icon.svg" alt="" className={`${inputValue == payment.id ? `visible` : `invisible`} absolute top-1/2 -translate-y-1/2 right-3 w-8`} />
+                    </div>
+                  );
+                })}
+            </div>
+          )}
+        </div>
+        {/* E-Wallet Payment End */}
+
+        {/* Virtual Account Payment */}
+        <div className="">
+          <button
+            type="button"
+            onClick={() => setDisplayVirtualAcc(!displayVirtualAcc)}
+            className={`${displayVirtualAcc ? `rounded-b-0` : `rounded-b-lg`} flex justify-between items-center w-full py-3 px-4 bg-primary rounded-x-lg rounded-t-lg transition-all`}
+          >
+            <h1 className="text-white font-medium">Virtual Account</h1>
+            <img src="/icons/chevron_down.svg" alt="" className="invert w-5" />
+          </button>
+          {displayVirtualAcc && (
+            <div className={`bg-gray-100 rounded-b-lg`}>
+              {data &&
+                data.slice(4, 8).map((payment) => {
+                  return (
+                    <div key={payment.id} className={`bg-transparent relative flex items-center w-full h-[60px] px-4 rounded-lg transition-all duration-200 hover:bg-gray-300`}>
+                      <input type="radio" value={payment.id} onChange={(event) => setInputValue(event.target.value)} name="seat-class" id="" className="absolute top-1/2 -translate-y-1/2 left-4 w-full h-[60px] opacity-0 cursor-pointer" />
+                      <div className="flex flex-col">
+                        <h1 className="font-bold">{payment.name}</h1>
+                      </div>
+                      <img src="/icons/check-icon.svg" alt="" className={`${inputValue == payment.id ? `visible` : `invisible`} absolute top-1/2 -translate-y-1/2 right-3 w-8`} />
+                    </div>
+                  );
+                })}
+            </div>
+          )}
+        </div>
+        {/* Virtual Account Payment End */}
+        <button type="submit" className="bg-primary mt-5 py-3 px-4 text-white font-medium rounded-lg">
+          Bayar
+        </button>
+      </form>
+
       {/* Method Payment: E-Money End*/}
 
       {/* Method Payment: Credit Card */}
-      <button type="button" onClick={handleCreditCardBtn} className="flex justify-between items-center w-full mt-2 py-2 px-4 bg-primary rounded-lg">
+      {/* <button type="button" onClick={handleCreditCardBtn} className="flex justify-between items-center w-full mt-2 py-2 px-4 bg-primary rounded-lg">
         <h1 className="text-white font-medium">Credit Card</h1>
         <img src="/icons/chevron_down.svg" alt="" className={`invert w-5 transition ${arrowPosition}`} />
-      </button>
+      </button> */}
 
-      <form action="" className={`${displayForm} flex-col gap-5 p-4 transition`}>
-        {/* Card Number Input */}
-        <div className="flex flex-col gap-1">
-          <label htmlFor="card-number" className="font-bold">
-            Card Number
-          </label>
-          <input type="text" name="" id="card-number" className="border-b border-gray-400 outline-none" />
-        </div>
-        {/* Card Number Input End */}
-
-        {/* Card Holder Name Input */}
-        <div className="flex flex-col gap-1">
-          <label htmlFor="card-holder" className="font-bold">
-            Card Holder Name
-          </label>
-          <input type="text" name="" id="card-holder" className="border-b border-gray-400 outline-none" />
-        </div>
-        {/* Card Holder Name Input End */}
-
-        {/* CVV & Expiry Date */}
-        <div className="grid grid-cols-2 gap-4">
-          {/* CVV */}
-          <div className="flex flex-col gap-1">
-            <label htmlFor="card-holder" className="font-bold">
-              CVV
-            </label>
-            <input type="text" name="" id="card-holder" className="border-b border-gray-400 outline-none" />
-          </div>
-          {/* CVV End */}
-
-          {/* Expiry Date */}
-          <div className="flex flex-col gap-1">
-            <label htmlFor="card-holder" className="font-bold">
-              Expiry Date
-            </label>
-            <input type="date" name="" id="card-holder" className="border-b border-gray-400 font-medium outline-none" />
-          </div>
-          {/* Expiry Date End */}
-        </div>
-        {/* CVV & Expiry Date End*/}
-
-        <div className="flex justify-center gap-4 mt-4">
-          <img src="/images/mastercard-logo.svg" alt="" className="w-10" />
-          <img src="/images/visa-logo.svg" alt="" className="w-10" />
-          <img src="/images/amex-logo.svg" alt="" className="w-10" />
-          <img src="/images/paypal-logo.svg" alt="" className="w-10" />
-        </div>
-
-        <button className="bg-primary mt-7 text-white rounded-xl py-3">Bayar</button>
-      </form>
       {/* Method Payment: Credit Card End */}
     </div>
   );

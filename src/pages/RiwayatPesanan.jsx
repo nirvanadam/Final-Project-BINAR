@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DetailPayment from "../components/checkout/DetailPayment";
+import DetailPayment from "../components/history/DetailPayment";
 import NavbarMobile from "../components/NavbarMobile";
 import Navbar from "../components/Navbar";
 import CheckoutDetail from "../components/checkout/CheckoutDetail";
@@ -31,9 +31,7 @@ function RiwayatPesanan() {
         {/* Navbar End */}
 
         {/* Header */}
-        <h1 className="mx-6 lg:mx-36 mt-7 mb-4 text-2xl font-bold">
-          Riwayat Pesanan
-        </h1>
+        <h1 className="mx-6 lg:mx-36 mt-7 mb-4 text-2xl font-bold">Riwayat Pesanan</h1>
         {/* Header End */}
 
         {/* Bar, Filter, Search Button */}
@@ -46,10 +44,7 @@ function RiwayatPesanan() {
           </div>
 
           {/* Filter Button */}
-          <button
-            type="button"
-            className="flex justify-between items-center gap-3 pl-3 pr-4 py-2 border border-gray-400 rounded-full"
-          >
+          <button type="button" className="flex justify-between items-center gap-3 pl-3 pr-4 py-2 border border-gray-400 rounded-full">
             <img src="/icons/filter_icon.svg" alt="" className="invert" />
             <h1 className="text-sm font-semibold">Filter</h1>
           </button>
@@ -57,12 +52,7 @@ function RiwayatPesanan() {
 
           {/* Search Button */}
           <button type="button">
-            <img
-              src="/icons/search_icon.svg"
-              alt=""
-              onClick={handleOpenSearch}
-              className="invert"
-            />
+            <img src="/icons/search_icon.svg" alt="" onClick={handleOpenSearch} className="invert" />
           </button>
           {/* Search Button End */}
         </div>
@@ -80,9 +70,7 @@ function RiwayatPesanan() {
 
             {/* Detail Payment */}
             <div className="flex flex-col  p-4 border border-gray-400 rounded-lg">
-              <h1 className="mb-5 w-fit px-3 py-1 rounded-full bg-red-600 text-white text-sm font-semibold">
-                Unpaid
-              </h1>
+              <h1 className="mb-5 w-fit px-3 py-1 rounded-full bg-red-600 text-white text-sm font-semibold">Unpaid</h1>
               <DetailPayment />
             </div>
             {/* Detail Payment End */}

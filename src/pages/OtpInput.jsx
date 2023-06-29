@@ -44,12 +44,12 @@ function OtpInput() {
         </p>
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
           <div className="flex gap-5 mb-5">
-            <input type="number" name="" id="" value={inputOtp1} onChange={(e) => setInputOtp1(e.target.value)} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="number" name="" id="" value={inputOtp2} onChange={(e) => setInputOtp2(e.target.value)} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="number" name="" id="" value={inputOtp3} onChange={(e) => setInputOtp3(e.target.value)} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="number" name="" id="" value={inputOtp4} onChange={(e) => setInputOtp4(e.target.value)} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="number" name="" id="" value={inputOtp5} onChange={(e) => setInputOtp5(e.target.value)} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="number" name="" id="" value={inputOtp6} onChange={(e) => setInputOtp6(e.target.value)} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
+            <input type="number" name="" id="" value={inputOtp1} onChange={(e) => setInputOtp1(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
+            <input type="number" name="" id="" value={inputOtp2} onChange={(e) => setInputOtp2(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
+            <input type="number" name="" id="" value={inputOtp3} onChange={(e) => setInputOtp3(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
+            <input type="number" name="" id="" value={inputOtp4} onChange={(e) => setInputOtp4(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
+            <input type="number" name="" id="" value={inputOtp5} onChange={(e) => setInputOtp5(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
+            <input type="number" name="" id="" value={inputOtp6} onChange={(e) => setInputOtp6(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
           </div>
           <p className="text-xs font-bold mb-16">Kirim ulang OTP dalam 60 detik</p>
 
