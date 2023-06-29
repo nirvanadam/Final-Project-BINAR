@@ -6,18 +6,30 @@ import { useLocation } from "react-router-dom";
 
 function EditAccount(props) {
   const { dataForm } = props;
-  console.log(dataForm.dataFrom.name);
+  // console.log(dataForm.dataFrom.name);
   const [name, setName] = useState();
+  const [phone, setPhone] = useState();
+  const [email, setEmail] = useState();
 
   const handleNameChange = (event) => {
     setName(event.target.value);
+  };
+  const handlePhoneChange = (event) => {
+    setPhone(event.target.value);
+  };
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
   const url = `https://finalproject-develop.up.railway.app/user/update`;
   const handleFormSubmit = (event) => {
     event.preventDefault();
     axios.defaults.headers.common["authorization"] = Cookies.get("token");
-    const data = { name: name };
+    const data = {
+      name: name,
+      phone: phone,
+      email: email,
+    };
     axios
       .put(url, data)
       .then((response) => {
@@ -54,7 +66,7 @@ function EditAccount(props) {
             Nomer Telepon
           </label>
           <input
-            disabled
+            onChange={handlePhoneChange}
             defaultValue={dataForm.dataFrom.phone}
             className="border border-gray-300 rounded-lg py-2 px-4"
             type="text"
@@ -65,7 +77,7 @@ function EditAccount(props) {
             Email
           </label>
           <input
-            disabled
+            onChange={handleEmailChange}
             defaultValue={dataForm.dataFrom.email}
             className="border border-gray-300 rounded-lg py-2 px-4"
             type="text"
