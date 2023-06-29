@@ -13,6 +13,8 @@ import ComponentTest from "./pages/ComponentTest";
 import RiwayatPesanan from "./pages/RiwayatPesanan";
 import FlightDetail from "./components/search-result/FlightDetail";
 import FlightResult from "./components/search-result/FlightResult";
+import PaymentPage from "./pages/PaymentPage";
+import SuccessPayment from "./pages/SuccessPayment";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
         <Route path="/riwayat" element={<RiwayatPesanan />} />
         <Route path="/test1" element={<FlightDetail />} />
         <Route path="/flight-result" element={<FlightResult />} />
+        <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/success-payment" element={<SuccessPayment />} />
       </Routes>
     </BrowserRouter>
   );

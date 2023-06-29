@@ -21,7 +21,7 @@ function Navbar() {
       axios.defaults.headers.common["authorization"] = Cookies.get("token");
       const response = await axios.get(url);
       setDataForm(response.data.data);
-      console.log(response.data.data);
+      // console.log(response.data.data);
     } catch (err) {
       console.log(err);
     }
@@ -30,7 +30,7 @@ function Navbar() {
   useEffect(() => {
     fetchData(dataFrom);
   }, [url]);
-  console.log(dataFrom);
+  // console.log(dataFrom);
 
   const handleOnClick = (event) => {
     event.preventDefault();
@@ -61,11 +61,7 @@ function Navbar() {
           />
 
           <button className="absolute right-5">
-            <img
-              src="/icons/search_icon.svg"
-              alt=""
-              className="invert opacity-40"
-            />
+            <img src="/icons/search_icon.svg" alt="" className="invert opacity-40" />
           </button>
         </div>
         {/* Search Input End */}
@@ -73,34 +69,18 @@ function Navbar() {
 
       {isLoggedIn ? (
         <div className="hidden lg:flex gap-6 items-center">
-          <Link
-            to={"/riwayat"}
-            className="transition-all duration-200 active:scale-90"
-          >
+          <Link to={"/riwayat"} className="transition-all duration-200 active:scale-90">
             <img src="/icons/history_icon.svg" alt="" className="w-7 invert" />
           </Link>
-          <Link
-            to={"/notifikasi"}
-            className="transition-all duration-200 active:scale-90"
-          >
-            <img
-              src="/icons/notification_icon.svg"
-              alt=""
-              className="w-7 invert fill-white"
-            />
+          <Link to={"/notifikasi"} className="transition-all duration-200 active:scale-90">
+            <img src="/icons/notification_icon.svg" alt="" className="w-7 invert fill-white" />
           </Link>
           <button
             onClick={handleOnClick}
             className="relative overflow-hidden flex justify-between items-center gap-3 pl-3 pr-4 py-1 rounded-md transition-all group before:content-[''] before:absolute before:-left-2 before:-skew-x-[15deg] before:w-0 before:h-full before:bg-white before:transition-all before:duration-500 hover:before:w-[110%]"
           >
-            <img
-              src="/icons/profile_icon.svg"
-              alt=""
-              className="w-7 invert transition-all duration-300 group-hover:invert-0"
-            />
-            <h1 className="z-10 text-white font-semibold transition-all duration-300 group-hover:text-primary">
-              Hi, {dataFrom?.name}
-            </h1>
+            <img src="/icons/profile_icon.svg" alt="" className="w-7 invert transition-all duration-300 group-hover:invert-0" />
+            <h1 className="z-10 text-white font-semibold transition-all duration-300 group-hover:text-primary">Hi, {dataFrom?.name}</h1>
           </button>
         </div>
       ) : (
@@ -108,14 +88,8 @@ function Navbar() {
           to={"/login"}
           className="relative overflow-hidden hidden lg:flex justify-between items-center gap-2 px-4 py-2 border-2 border-white rounded-md transition-all group before:content-[''] before:absolute before:-left-2 before:-skew-x-[15deg] before:w-0 before:h-full before:bg-white before:transition-all before:duration-500 hover:before:w-[113%]"
         >
-          <img
-            src="/icons/login_icon.svg"
-            alt=""
-            className="w-5 invert transition-all duration-300 group-hover:invert-0"
-          />
-          <h1 className="z-10 text-white font-semibold transition-all duration-300 group-hover:text-primary">
-            Login
-          </h1>
+          <img src="/icons/login_icon.svg" alt="" className="w-5 invert transition-all duration-300 group-hover:invert-0" />
+          <h1 className="z-10 text-white font-semibold transition-all duration-300 group-hover:text-primary">Login</h1>
         </Link>
       )}
 

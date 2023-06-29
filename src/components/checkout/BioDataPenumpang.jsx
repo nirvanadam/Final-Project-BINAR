@@ -34,7 +34,7 @@ function BioDataPenumpang(props) {
   const renderForm = () => {
     const formElements = [];
     for (let i = 0; i < totalPassenger; i++) {
-      formElements.push(<FormPenumpang key={i} totalPassenger={totalPassenger} setData={setData} />);
+      formElements.push(<FormPenumpang key={i} totalPassenger={totalPassenger} setData={setData} adult={intAdult} />);
       return formElements;
     }
   };
