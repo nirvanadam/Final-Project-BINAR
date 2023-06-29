@@ -1,7 +1,4 @@
-import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
@@ -13,13 +10,11 @@ import CheckoutPage from "./pages/CheckoutPage";
 import DetailAccount from "./pages/DetailAccount";
 import Notifikasi from "./pages/Notifikasi";
 import ComponentTest from "./pages/ComponentTest";
-import RiwayatPesanan from "./pages/RIwayatPesanan";
+import RiwayatPesanan from "./pages/RiwayatPesanan";
 import FlightDetail from "./components/search-result/FlightDetail";
 import FlightResult from "./components/search-result/FlightResult";
 
 function App() {
-  // const [count, setCount] = useState(0);
-
   return (
     <BrowserRouter>
       <Routes>
