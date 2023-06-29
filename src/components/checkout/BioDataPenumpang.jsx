@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import FormPenumpang from "./FormPenumpang";
 
 function BioDataPenumpang(props) {
-  const { id, adults, kids } = props;
+  const { id, adults, kids, setOrder } = props;
 
   // Total Passengers
   const intAdult = +adults;
@@ -13,18 +13,19 @@ function BioDataPenumpang(props) {
   const totalPassenger = intAdult + intKid;
   // Total Passengers End
 
-  const [dataForm, setDataForm] = useState([]);
+  const [data, setData] = useState([]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const dataForm = {
       flight_id: Number(id),
-      data_passengers: dataForm,
+      data_passengers: data,
       passengers: { adult: Number(adults), child: Number(kids) },
     };
     try {
       axios.defaults.headers.common["authorization"] = Cookies.get("token");
-      await axios.post("https://finalproject-develop.up.railway.app/order/create", dataForm);
+      const response = await axios.post("https://finalproject-develop.up.railway.app/order/create", dataForm);
+      setOrder(response.data.data.order_id);
     } catch (error) {
       console.error(error);
     }
@@ -33,13 +34,9 @@ function BioDataPenumpang(props) {
   const renderForm = () => {
     const formElements = [];
     for (let i = 0; i < totalPassenger; i++) {
-      formElements.push(i);
-      // return <FormPenumpang />;
-      // <div className="">test</div>;
+      formElements.push(<FormPenumpang key={i} totalPassenger={totalPassenger} setData={setData} />);
+      return formElements;
     }
-    return formElements.map((item, i) => {
-      return <FormPenumpang key={i} dataForm={dataForm} setDataForm={setDataForm} index={i} />;
-    });
   };
 
   return (

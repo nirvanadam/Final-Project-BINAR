@@ -57,9 +57,7 @@ function FlightResult(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    navigate(
-      `/checkout?id=${id}&adult=${formData.adult}&child=${formData.child}`
-    );
+    navigate(`/checkout?id=${id}&adult=${formData.adult}&child=${formData.child}`);
   };
 
   return (
@@ -73,22 +71,15 @@ function FlightResult(props) {
         <ResultNotFound />
       ) : (
         data?.slice(0, 20).map((datas, index) => (
-          <div
-            key={index}
-            className="flex flex-col gap-2 p-4 border border-gray-300 rounded-lg shadow-md"
-          >
+          <div key={index} className="flex flex-col gap-2 p-4 border border-gray-300 rounded-lg shadow-md">
             <div className="flex flex-col ">
               {/* From, Duration, To, Price */}
               <div className="lg:order-3 flex justify-between ">
                 <div className="flex gap-3">
                   {/* From Information */}
                   <div className="flex flex-col items-center">
-                    <h1 className="font-bold">
-                      {datas.departure_airport.departure_time}
-                    </h1>
-                    <h1 className="text-sm font-semibold">
-                      {datas.departure_city}
-                    </h1>
+                    <h1 className="font-bold">{datas.departure_airport.departure_time}</h1>
+                    <h1 className="text-sm font-semibold">{datas.departure_city}</h1>
                   </div>
                   {/* From Information End */}
 
@@ -102,27 +93,17 @@ function FlightResult(props) {
 
                   {/* To Information */}
                   <div className="flex flex-col items-center">
-                    <h1 className="font-bold">
-                      {datas.arrival_airport.arrival_time}
-                    </h1>
-                    <h1 className="text-sm font-semibold">
-                      {datas.arrival_city}
-                    </h1>
+                    <h1 className="font-bold">{datas.arrival_airport.arrival_time}</h1>
+                    <h1 className="text-sm font-semibold">{datas.arrival_city}</h1>
                   </div>
                   {/* To Information End */}
                 </div>
 
                 {/* Price */}
                 <div className="flex flex-col items-end gap-1">
-                  <h1 className="text-lg w-fit font-bold ">
-                    {formatCurrency(datas.price)}
-                  </h1>
+                  <h1 className="text-lg w-fit font-bold ">{formatCurrency(datas.price)}</h1>
                   <form onSubmit={handleSubmit}>
-                    <button
-                      onClick={() => handleClick(datas.id)}
-                      type="submit"
-                      className="lg:inline w-fit bg-primary text-white font-medium px-9 py-1 rounded-lg"
-                    >
+                    <button onClick={() => handleClick(datas.id)} type="submit" className="lg:inline w-fit bg-primary text-white font-medium px-9 py-1 rounded-lg">
                       Pilih
                     </button>
                   </form>
@@ -149,11 +130,7 @@ function FlightResult(props) {
 
                 {/* Detail Button */}
 
-                <button
-                  type="button"
-                  onClick={() => detailButton(index)}
-                  className="flex justify-center items-center border border-gray-300 rounded-full p-1"
-                >
+                <button type="button" onClick={() => detailButton(index)} className="flex justify-center items-center border border-gray-300 rounded-full p-1">
                   <img src="/icons/chevron_down.svg" alt="" className="w-5" />
                 </button>
                 {/* Detail Button End */}
