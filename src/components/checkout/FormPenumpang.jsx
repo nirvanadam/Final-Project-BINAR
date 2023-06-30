@@ -1,29 +1,27 @@
 import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function FormPenumpang({ totalPassenger, setData, adult }) {
   // State Penumapng
   const [passengers, setPassengers] = useState([]);
   // console.log(passengers);
 
-  // Toogle Button
-  const [keluargaBtnSts, setKeluargaBtnSts] = useState(false);
-  const keluargaBtn = () => {
-    setKeluargaBtnSts(!keluargaBtnSts);
-  };
-  // Toogle Button end
-
   useEffect(() => {
     // Inisialisasi data penumpang dengan nilai awal
-    const initialPassengers = Array.from({ length: totalPassenger }, (_, index) => ({
-      fullname: "",
-      gender: "Laki-Laki",
-      birthday: "",
-      person: index < adult ? "Dewasa" : "Anak-anak",
-      nationality: "",
-      no_ktp: "",
-    }));
+    const initialPassengers = Array.from(
+      { length: totalPassenger },
+      (_, index) => ({
+        fullname: "",
+        gender: "Laki-Laki",
+        birthday: "",
+        person: index < adult ? "Dewasa" : "Anak-anak",
+        nationality: "",
+        no_ktp: "",
+      })
+    );
     setPassengers(initialPassengers);
-  }, [totalPassenger]);
+  }, []);
 
   useEffect(() => {
     // Memasukkan data penumpang ke setData saat nilai sudah terpenuhi
@@ -40,24 +38,12 @@ function FormPenumpang({ totalPassenger, setData, adult }) {
     });
   };
 
-  const handleChangePerson = (index, value) => {
-    setPassengers((prevPassengers) => {
-      const updatedPassengers = [...prevPassengers];
-      if (value !== "Dewasa") {
-        updatedPassengers[index].person = value;
-      } else {
-        updatedPassengers[index].person = "Dewasa";
-      }
-      return updatedPassengers;
-    });
-  };
-
   const handleChangeGender = (index, value) => {
     setPassengers((prevPassengers) => {
       const updatedPassengers = [...prevPassengers];
-      if (value !== "Laki-laki") {
-        updatedPassengers[index].person = value;
-      }
+
+      updatedPassengers[index].gender = value;
+
       return updatedPassengers;
     });
   };
@@ -112,7 +98,11 @@ function FormPenumpang({ totalPassenger, setData, adult }) {
               </option>
             </select>
           </div> */}
-          <h1 className="w-full px-5 py-3 rounded-lg bg-primary text-white">{passenger.person === "Dewasa" ? `Penumpang Dewasa ${index + 1}` : `Penumpang Anak-Anak ${index - adult + 1}`}</h1>
+          <h1 className="w-full px-5 py-3 rounded-lg bg-primary text-white">
+            {passenger.person === "Dewasa"
+              ? `Penumpang Dewasa ${index + 1}`
+              : `Penumpang Anak-Anak ${index - adult + 1}`}
+          </h1>
 
           {/* Kategori End */}
 
@@ -134,32 +124,6 @@ function FormPenumpang({ totalPassenger, setData, adult }) {
           </div>
           {/* Nama Lengkap End */}
 
-          {/* Switch Nama Keluarga */}
-          {/* <div className="flex justify-between items-center">
-          <h1 className="font-medium">Punya Nama Keluarga?</h1>
-          <button type="button" onClick={keluargaBtn}>
-            <img src={keluargaBtnSts ? "/icons/toggle_on_icon.svg" : "/icons/toggle_off_icon.svg"} alt="" className="w-14 opacity-70" />
-          </button>
-        </div> */}
-          {/* Switch Nama Keluarga End */}
-
-          {/* Nama Keluarga */}
-          {/* <div className={${keluargaBtnSts ? "flex" : "hidden"} flex-col gap-2 mb-4}>
-          <label htmlFor="nama-keluarga" className="font-bold">
-            Nama Keluarga
-          </label>
-          <input
-            type="text"
-            name=""
-            id="nama-keluarga"
-            placeholder=""
-            value={familyName}
-            onChange={(e) => handleChangeName(index, e.target.value)}
-            className="w-full px-3 py-2 border border-slate-400 rounded-lg font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
-          />
-        </div> */}
-          {/* Nama Keluarga End */}
-
           {/* Gender */}
           <div className="flex flex-col gap-2">
             <label htmlFor="jenis-kelamin" className="font-bold">
@@ -173,7 +137,11 @@ function FormPenumpang({ totalPassenger, setData, adult }) {
               required
               className="px-3 py-2 border border-slate-400 rounded-lg font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary focus:rounded-b-none invalid:focus:border-red-600"
             >
-              <option value="Laki-Laki" selected className="text-lg font-medium">
+              <option
+                value="Laki-Laki"
+                selected
+                className="text-lg font-medium"
+              >
                 Laki-Laki
               </option>
               <option value="Perempuan" className="text-lg font-medium">
