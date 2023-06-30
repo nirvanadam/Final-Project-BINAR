@@ -50,13 +50,19 @@ function CheckoutDetail(props) {
               <h1 className="text-sm font-semibold">Keberangkatan</h1>
             </div>
 
-            <h1 className="text-sm font-semibold">Bandara {departureAirport}</h1>
+            <h1 className="text-sm font-semibold">
+              Bandara {departureAirport}
+            </h1>
           </div>
           {/* Keberangkatan End */}
 
           {/* Flight Info */}
           <div className="flex items-center gap-5 py-3 my-3 border-y border-gray-400">
-            <img src={`${logo}`} alt="" className="w-[5%] h-[5%] order border-red-500" />
+            <img
+              src={`${logo}`}
+              alt=""
+              className="w-[5%] h-[5%] order border-red-500"
+            />
             <div className="flex flex-col gap-2">
               <div className="flex flex-col">
                 <h1 className="font-bold">
@@ -104,7 +110,7 @@ function CheckoutDetail(props) {
             <h1>{formatCurrency(adultPrice)}</h1>
           </div>
           <div className="flex justify-between ">
-            <h1>{childTotal} Baby</h1>
+            <h1>{childTotal} Childs</h1>
             <h1>{formatCurrency(childPrice)}</h1>
           </div>
           <div className="flex justify-between ">
@@ -126,7 +132,10 @@ function CheckoutDetail(props) {
       {/* Payment Button */}
 
       <form onSubmit={handleBayar}>
-        <button type="submit" className="w-full mt-5 bg-primary py-4 rounded-lg text-white font-medium">
+        <button
+          type="submit"
+          className="w-full mt-5 bg-primary py-4 rounded-lg text-white font-medium"
+        >
           Bayar
         </button>
       </form>

@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useLocation } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function EditAccount(props) {
   const { dataForm } = props;
@@ -34,9 +36,10 @@ function EditAccount(props) {
       .put(url, data)
       .then((response) => {
         console.log(response.data);
+        toast.success("Data updated successfully");
       })
       .catch((error) => {
-        console.error(error);
+        toast.error(error);
       });
   };
 
@@ -90,6 +93,7 @@ function EditAccount(props) {
           Simpan
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 }
