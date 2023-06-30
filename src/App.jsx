@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Dashboard from "./pages/Dashboard";
+import FlightDetailPage from "./pages/FlightDetailPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import OtpInput from "./pages/OtpInput";
@@ -36,6 +37,7 @@ function App() {
         <Route path="/flight-result" element={<FlightResult />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/success-payment" element={<SuccessPayment />} />
+        <Route path="/test11" element={<FlightDetailPage />} />
       </Routes>
     </BrowserRouter>
   );
