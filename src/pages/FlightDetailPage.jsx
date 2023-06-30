@@ -25,7 +25,9 @@ function FlightDetailPage() {
           <h1 className="text-lg font-bold">Total</h1>
           <h1 className="text-xl font-bold ">IDR 4.950.000/pax</h1>
         </div>
-        <button className="w-full bg-primary py-3 rounded-xl text-white">Pilih</button>
+        <button className="w-full bg-primary py-3 rounded-xl text-white">
+          Pilih
+        </button>
       </div>
       {/* Total Payment End */}
     </div>

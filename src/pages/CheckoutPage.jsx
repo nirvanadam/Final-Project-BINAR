@@ -8,6 +8,8 @@ import Payment from "../components/checkout/Payment";
 import SuccessPayment from "./SuccessPayment";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function CheckoutPage() {
   const location = useLocation();
@@ -41,6 +43,7 @@ function CheckoutPage() {
 
   const handleSubmit = () => {
     navigate("/payment", { state: order });
+    toast.success("Yeay, you almost ready to flight");
   };
 
   return (
@@ -70,7 +73,12 @@ function CheckoutPage() {
         {/* Left */}
         <div className="">
           {/* <BioDataPemesan /> */}
-          <BioDataPenumpang id={id} adults={adult} kids={child} setOrder={setOrder} />
+          <BioDataPenumpang
+            id={id}
+            adults={adult}
+            kids={child}
+            setOrder={setOrder}
+          />
           {/* <Payment /> */}
           {/* <SuccessPayment /> */}
         </div>
