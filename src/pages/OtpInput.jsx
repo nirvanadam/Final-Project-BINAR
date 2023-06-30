@@ -44,12 +44,90 @@ function OtpInput() {
         </p>
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
           <div className="flex gap-5 mb-5">
-            <input type="number" name="" id="" value={inputOtp1} onChange={(e) => setInputOtp1(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="number" name="" id="" value={inputOtp2} onChange={(e) => setInputOtp2(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="number" name="" id="" value={inputOtp3} onChange={(e) => setInputOtp3(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="number" name="" id="" value={inputOtp4} onChange={(e) => setInputOtp4(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="number" name="" id="" value={inputOtp5} onChange={(e) => setInputOtp5(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="number" name="" id="" value={inputOtp6} onChange={(e) => setInputOtp6(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
+            <input
+              type="number"
+              name=""
+              id=""
+              value={inputOtp1}
+              onChange={(e) => {
+                const { value } = e.target;
+                const numericValue = value.replace(/\D/g, "");
+                const singleDigitValue = numericValue.replace(/\D/g, "");
+                setInputOtp1(singleDigitValue.slice(0, 1));
+              }}
+              maxLength={1}
+              className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold"
+            />
+            <input
+              type="number"
+              name=""
+              id=""
+              value={inputOtp2}
+              onChange={(e) => {
+                const { value } = e.target;
+                const numericValue = value.replace(/\D/g, "");
+                const singleDigitValue = numericValue.replace(/\D/g, "");
+                setInputOtp2(singleDigitValue.slice(0, 1));
+              }}
+              maxLength={1}
+              className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold"
+            />
+            <input
+              type="number"
+              name=""
+              id=""
+              value={inputOtp3}
+              onChange={(e) => {
+                const { value } = e.target;
+                const numericValue = value.replace(/\D/g, "");
+                const singleDigitValue = numericValue.replace(/\D/g, "");
+                setInputOtp3(singleDigitValue.slice(0, 1));
+              }}
+              maxLength={1}
+              className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold"
+            />
+            <input
+              type="number"
+              name=""
+              id=""
+              value={inputOtp4}
+              onChange={(e) => {
+                const { value } = e.target;
+                const numericValue = value.replace(/\D/g, "");
+                const singleDigitValue = numericValue.replace(/\D/g, "");
+                setInputOtp4(singleDigitValue.slice(0, 1));
+              }}
+              maxLength={1}
+              className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold"
+            />
+            <input
+              type="number"
+              name=""
+              id=""
+              value={inputOtp5}
+              onChange={(e) => {
+                const { value } = e.target;
+                const numericValue = value.replace(/\D/g, "");
+                const singleDigitValue = numericValue.replace(/\D/g, "");
+                setInputOtp5(singleDigitValue.slice(0, 1));
+              }}
+              maxLength={1}
+              className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold"
+            />
+            <input
+              type="number"
+              name=""
+              id=""
+              value={inputOtp6}
+              onChange={(e) => {
+                const { value } = e.target;
+                const numericValue = value.replace(/\D/g, "");
+                const singleDigitValue = numericValue.replace(/\D/g, "");
+                setInputOtp6(singleDigitValue.slice(0, 1));
+              }}
+              maxLength={1}
+              className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold"
+            />
           </div>
           <p className="text-xs font-bold mb-16">Kirim ulang OTP dalam 60 detik</p>
 
