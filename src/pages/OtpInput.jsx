@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import Navbar from "../components/Navbar";
 
 function OtpInput() {
   const location = useLocation();
@@ -28,8 +29,8 @@ function OtpInput() {
   return (
     <div className="h-screen overflow-hidden font-quickSand">
       {/* Header */}
-      <div className="bg-primary px-10 py-4 shadow-lg">
-        <h1 className="text-xl text-white font-bold">QuickTix</h1>
+      <div className="hidden lg:block">
+        <Navbar />
       </div>
       {/* Header End */}
 
@@ -43,18 +44,96 @@ function OtpInput() {
           Ketik 6 digit kode yang dikirimkan ke <span className="font-bold">J*****@gmail.com</span>
         </p>
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
-          <div className="flex gap-5 mb-5">
-            <input type="number" name="" id="" value={inputOtp1} onChange={(e) => setInputOtp1(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="number" name="" id="" value={inputOtp2} onChange={(e) => setInputOtp2(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="number" name="" id="" value={inputOtp3} onChange={(e) => setInputOtp3(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="number" name="" id="" value={inputOtp4} onChange={(e) => setInputOtp4(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="number" name="" id="" value={inputOtp5} onChange={(e) => setInputOtp5(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
-            <input type="number" name="" id="" value={inputOtp6} onChange={(e) => setInputOtp6(e.target.value)} maxLength={1} className="max-w-[35px] h-[35px] border border-slate-500 outline-none rounded-md text-center font-bold" />
+          <div className="flex gap-5 mb-5 appearance-none">
+            <input
+              type="text"
+              name=""
+              id=""
+              value={inputOtp1}
+              onChange={(e) => {
+                const { value } = e.target;
+                const numericValue = value.replace(/\D/g, "");
+                const singleDigitValue = numericValue.replace(/\D/g, "");
+                setInputOtp1(singleDigitValue.slice(0, 1));
+              }}
+              maxLength={1}
+              className="max-w-[50px] h-[50px] border-2 border-slate-500 outline-none rounded-md text-center text-xl font-bold"
+            />
+            <input
+              type="text"
+              name=""
+              id=""
+              value={inputOtp2}
+              onChange={(e) => {
+                const { value } = e.target;
+                const numericValue = value.replace(/\D/g, "");
+                const singleDigitValue = numericValue.replace(/\D/g, "");
+                setInputOtp2(singleDigitValue.slice(0, 1));
+              }}
+              maxLength={1}
+              className="max-w-[50px] h-[50px] border-2 border-slate-500 outline-none rounded-md text-center text-xl font-bold"
+            />
+            <input
+              type="text"
+              name=""
+              id=""
+              value={inputOtp3}
+              onChange={(e) => {
+                const { value } = e.target;
+                const numericValue = value.replace(/\D/g, "");
+                const singleDigitValue = numericValue.replace(/\D/g, "");
+                setInputOtp3(singleDigitValue.slice(0, 1));
+              }}
+              maxLength={1}
+              className="max-w-[50px] h-[50px] border-2 border-slate-500 outline-none rounded-md text-center text-xl font-bold"
+            />
+            <input
+              type="text"
+              name=""
+              id=""
+              value={inputOtp4}
+              onChange={(e) => {
+                const { value } = e.target;
+                const numericValue = value.replace(/\D/g, "");
+                const singleDigitValue = numericValue.replace(/\D/g, "");
+                setInputOtp4(singleDigitValue.slice(0, 1));
+              }}
+              maxLength={1}
+              className="max-w-[50px] h-[50px] border-2 border-slate-500 outline-none rounded-md text-center text-xl font-bold"
+            />
+            <input
+              type="text"
+              name=""
+              id=""
+              value={inputOtp5}
+              onChange={(e) => {
+                const { value } = e.target;
+                const numericValue = value.replace(/\D/g, "");
+                const singleDigitValue = numericValue.replace(/\D/g, "");
+                setInputOtp5(singleDigitValue.slice(0, 1));
+              }}
+              maxLength={1}
+              className="max-w-[50px] h-[50px] border-2 border-slate-500 outline-none rounded-md text-center text-xl font-bold"
+            />
+            <input
+              type="text"
+              name=""
+              id=""
+              value={inputOtp6}
+              onChange={(e) => {
+                const { value } = e.target;
+                const numericValue = value.replace(/\D/g, "");
+                const singleDigitValue = numericValue.replace(/\D/g, "");
+                setInputOtp6(singleDigitValue.slice(0, 1));
+              }}
+              maxLength={1}
+              className="max-w-[50px] h-[50px] border-2 border-slate-500 outline-none rounded-md text-center text-xl font-bold"
+            />
           </div>
           <p className="text-xs font-bold mb-16">Kirim ulang OTP dalam 60 detik</p>
 
-          <button type="submit" className="bg-primary text-white text-xs font-semibold w-full rounded-xl py-2">
-            Simpan
+          <button type="submit" className="w-full py-3 bg-primary text-white font-medium rounded-xl">
+            Verify
           </button>
         </form>
       </div>

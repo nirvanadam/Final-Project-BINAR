@@ -91,27 +91,7 @@ function FormPenumpang({ totalPassenger, setData, adult }) {
       {passengers.map((passenger, index) => (
         <div className="mb-9" key={index}>
           {/* Kategori */}
-          {/* <div className="flex flex-col gap-2 mt-5">
-            <label htmlFor="kategori" className="font-bold">
-              Kategori
-            </label>
-            <select
-              name="kategori"
-              id="kategori"
-              value={passenger.person}
-              onChange={(e) => handleChangePerson(index, e.target.value)}
-              defaultValue={"Dewasa"}
-              required
-              className="px-3 py-2 border border-slate-400 rounded-lg font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary focus:rounded-b-none invalid:focus:border-red-600"
-            >
-              <option value="Dewasa" selected className="text-lg font-medium">
-                Dewasa
-              </option>
-              <option value="Anak-Anak " className="text-lg font-medium">
-                Anak-Anak
-              </option>
-            </select>
-          </div> */}
+
           <h1 className="w-full px-5 py-3 rounded-lg bg-primary text-white">{passenger.person === "Dewasa" ? `Penumpang Dewasa ${index + 1}` : `Penumpang Anak-Anak ${index - adult + 1}`}</h1>
 
           {/* Kategori End */}

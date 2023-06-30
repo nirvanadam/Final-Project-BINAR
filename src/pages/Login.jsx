@@ -44,7 +44,7 @@ function Login() {
       {/* Right */}
       <div className="bg-white flex flex-col justify-center px-14 lg:px-20 rounded-tl-[90px]">
         <h1 className="text-2xl font-bold mb-6">Masuk</h1>
-        <form onSubmit={handleSubmit} className="flex flex-col">
+        <form onSubmit={handleSubmit} className="flex flex-col border border-red-500">
           {/* Email Input */}
           <div className="relative w-full flex items-center mb-4">
             <img src="/icons/email_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
