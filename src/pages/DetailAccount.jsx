@@ -3,10 +3,21 @@ import NavbarMobile from "../components/NavbarMobile";
 import Navbar from "../components/Navbar";
 import EditAccount from "../components/account/EditAccount";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function DetailAccount() {
   const location = useLocation();
   const dataForm = location.state;
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      setIsLoggedIn(false);
+    }
+  }, []);
+
+  const navigate = useNavigate();
 
   return (
     <div className="font-quickSand">
@@ -17,9 +28,7 @@ function DetailAccount() {
       {/* navbar end  */}
 
       <div className="lg:py-12">
-        <h1 className="text-2xl font-bold mx-7 md:mx-12 lg:mx-36 mt-5 mb-7">
-          Akun
-        </h1>
+        <h1 className="text-2xl font-bold mx-7 md:mx-12 lg:mx-36 mt-5 mb-7">Akun</h1>
 
         <Link to={"/"}>
           <div className="hidden lg:flex items-center bg-primary px-6 py-3 mx-40 gap-5 rounded-lg">
@@ -49,9 +58,16 @@ function DetailAccount() {
           <span className="w-full h-[1px] my-3 bg-gray-400"></span>
 
           {/* logout */}
-          <button className="flex gap-5">
+          <button
+            onClick={() => {
+              Cookies.remove("token");
+              setIsLoggedIn(false);
+              return navigate("/");
+            }}
+            className="flex gap-5 transition-all hover:translate-x-2"
+          >
             <img src="/icons/logout-icon.svg" alt="" className="w-7" />
-            <h1 className="font-semibold text-lg">Keluar</h1>
+            <h1 className="font-semibold text-red-500 text-lg">Keluar</h1>
           </button>
           {/* logout End */}
           <span className="w-full h-[1px] my-3 bg-gray-400"></span>

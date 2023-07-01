@@ -11,6 +11,8 @@ function Navbar() {
 
     if (token) {
       setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
     }
   }, []);
 

@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 function DestinasiFavorit() {
   // Destinasi Favorit Logic
   const dataDestinasi = [
-    { id: 1, name: "Jakarta", to: "Sydney", region: "Asia", maskapai: "AirAsia", foto: "https://s.id/1LTHz", price: "3.650.000" },
-    { id: 2, name: "New York", to: "Paris", region: "Amerika", maskapai: "AirAsia", foto: "https://s.id/1LTIx", price: "2.650.000" },
-    { id: 3, name: "Sydney", to: "Jakarta", region: "Australia", maskapai: "AirAsia", foto: "https://s.id/1LTJZ", price: "3.650.000" },
-    { id: 4, name: "Paris", to: "New York", region: "Eropa", maskapai: "AirAsia", foto: "https://s.id/1LTJd", price: "2.650.000" },
-    { id: 5, name: "Cape Town", to: "Sydney", region: "Afrika", maskapai: "AirAsia", foto: "https://s.id/1LTHz", price: "3.450.000" },
+    { id: 1, name: "Jakarta", to: "Sydney", region: "Asia", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?borobur,petronas", price: "3.650.000" },
+    { id: 2, name: "New York", to: "Paris", region: "Amerika", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?landmark&america", price: "2.650.000" },
+    { id: 3, name: "Sydney", to: "Jakarta", region: "Australia", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?landmark&australia", price: "3.650.000" },
+    { id: 4, name: "Paris", to: "New York", region: "Eropa", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?landmark&europe", price: "2.650.000" },
+    { id: 5, name: "Cape Town", to: "Sydney", region: "Afrika", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?landmark&africa", price: "3.450.000" },
     // Tambahkan destinasi lainnya di sini
   ];
 
@@ -21,14 +21,16 @@ function DestinasiFavorit() {
   const DestinasiCard = () => {
     return dataDestinasi.map((destinasi) => {
       return (
-        <Link to={"#"} className="inline-flex flex-col min-w-[200px] max-w-[350px] mr-4 lg:mr-0 px-3 pt-2 pb-3 border border-slate-300 shadow-md rounded-xl">
-          <img src={destinasi.foto} alt="" className="mb-2 w-[150px]" />
-          <h1 className="text-sm font-bold">{`${destinasi.name} -> ${destinasi.to}`}</h1>
-          <h1 className="text-xs text-secondary font-bold ">{destinasi.maskapai}</h1>
+        <Link to={"#"} className="relative inline-flex flex-col overflow-hidden min-w-[250px] max-w-[350px] mr-4 lg:mr-0 px-3 pt-2 pb-3 border border-slate-300 shadow-md rounded-xl">
+          <img src={destinasi.foto} alt="" className="absolute top-0 bottom-0 left-0" />
+          <div className="flex flex-col mt-40">
+            <h1 className="text-sm font-bold">{`${destinasi.name} -> ${destinasi.to}`}</h1>
+            <h1 className="text-xs text-secondary font-bold ">{destinasi.maskapai}</h1>
 
-          <h1 className="text-sm font-semibold">
-            Mulai dari <span className="font-bold text-red-600">{`IDR ${destinasi.price}`}</span>
-          </h1>
+            <h1 className="text-sm font-semibold">
+              Mulai dari <span className="font-bold text-red-600">{`IDR ${destinasi.price}`}</span>
+            </h1>
+          </div>
         </Link>
       );
     });
@@ -54,7 +56,7 @@ function DestinasiFavorit() {
     <div className="mx-4 md:mx-8 lg:mx-28 -translate-y-16">
       <h1 className="text-lg font-bold mb-4">Destinasi Favorit</h1>
 
-      <div className="flex flex-wrap justify-between lg:justify-start gap-x-3 gap-y-4 lg:gap-5">
+      <div className="flex flex-wrap lg:justify-start gap-x-3 gap-y-4 lg:gap-5">
         {/* Semua Button */}
         <button
           onClick={() => changeRegionHandler("Semua")}

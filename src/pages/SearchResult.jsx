@@ -70,7 +70,9 @@ function SearchResult() {
       {isOpenSort ? <ModalSort action={handleCloseSort} /> : null}
       <div className="font-quickSand overflow-hidden">
         {/* Navbar */}
-        <Navbar />
+        <div className="hidden lg:block">
+          <Navbar />
+        </div>
         {/* Navbar End */}
 
         {/* Header */}
@@ -80,15 +82,19 @@ function SearchResult() {
           {/* Container Info Destination & Ubah Pencarian Button */}
           <div className="flex gap-3">
             {/* Info Destination */}
-            <div className="relative flex justify-center w-full bg-primary py-4 lg:rounded-xl">
-              <button className="absolute left-3 md:left-5">
-                <img src="/icons/arrow_left.svg" alt="" className="invert" />
-              </button>
+            <div className="relative flex flex-col w-full bg-primary py-4 px-2 lg:rounded-xl">
+              <div className="flex items-center gap-2">
+                <Link to="/" className="">
+                  <img src="/icons/arrow_left.svg" alt="" className="invert" />
+                </Link>
+                <div className="flex gap-2">
+                  <h1 className=" text-white font-bold">{formData.departure_airport}</h1>
+                  <img src="/icons/navigate_next_icon.svg" alt="" className="invert w-5" />
+                  <h1 className=" text-white font-bold">{formData.arrival_airport}</h1>
+                </div>
+              </div>
 
-              <div className="flex self-center items-center gap-1">
-                <h1 className=" text-white font-bold">{formData.departure_airport}</h1>
-                <img src="/icons/navigate_next_icon.svg" alt="" className="invert w-5" />
-                <h1 className=" text-white font-bold">{formData.arrival_airport}</h1>
+              <div className="flex items-center gap-1">
                 <h1 className=" text-white font-medium">- {formData.passenger} Penumpang</h1>
                 <h1 className=" text-white font-medium">- {formData.seat_type}</h1>
               </div>
