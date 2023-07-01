@@ -59,9 +59,7 @@ function RiwayatPesanan() {
         {/* Navbar End */}
 
         {/* Header */}
-        <h1 className="mx-6 lg:mx-36 mt-7 mb-4 text-2xl font-bold">
-          Riwayat Pesanan
-        </h1>
+        <h1 className="mx-6 lg:mx-36 mt-7 mb-4 text-2xl font-bold">Riwayat Pesanan</h1>
         {/* Header End */}
 
         {/* Bar, Filter, Search Button */}
@@ -74,10 +72,7 @@ function RiwayatPesanan() {
           </div>
 
           {/* Filter Button */}
-          <button
-            type="button"
-            className="flex justify-between items-center gap-3 pl-3 pr-4 py-2 border border-gray-400 rounded-full"
-          >
+          <button type="button" className="flex justify-between items-center gap-3 pl-3 pr-4 py-2 border border-gray-400 rounded-full">
             <img src="/icons/filter_icon.svg" alt="" className="invert" />
             <h1 className="text-sm font-semibold">Filter</h1>
           </button>
@@ -85,12 +80,7 @@ function RiwayatPesanan() {
 
           {/* Search Button */}
           <button type="button">
-            <img
-              src="/icons/search_icon.svg"
-              alt=""
-              onClick={handleOpenSearch}
-              className="invert"
-            />
+            <img src="/icons/search_icon.svg" alt="" onClick={handleOpenSearch} className="invert" />
           </button>
           {/* Search Button End */}
         </div>
@@ -112,19 +102,13 @@ function RiwayatPesanan() {
               {data &&
                 data.map((datas, index) => {
                   return (
-                    <div
-                      key={index}
-                      className="flex flex-col  p-4 border border-gray-400 rounded-lg"
-                    >
-                      <h1 className="mb-5 w-fit px-3 py-1 rounded-full bg-red-600 text-white text-sm font-semibold">
-                        {datas.booking_status}
-                      </h1>
+                    <div key={index} className="flex flex-col  p-4 border border-gray-400 rounded-lg">
+                      <h1 className={`${datas.booking_status === "UNPAID" ? `bg-red-600` : `bg-green-500`} mb-5 w-fit px-3 py-1 rounded-full text-white text-sm font-semibold`}>{datas.booking_status}</h1>
                       <div className="flex flex-col">
                         <h1 className="text-sm font-semibold mb-4">
                           Passengers:{" "}
                           <span className="font-bold">
-                            {datas.info_price.adult_total} Adult,{" "}
-                            {datas.info_price.child_total} Child
+                            {datas.info_price.adult_total} Adult, {datas.info_price.child_total} Child
                           </span>
                         </h1>
 
@@ -132,21 +116,11 @@ function RiwayatPesanan() {
                         <div className="flex justify-between items-center">
                           {/* From */}
                           <div className="flex gap-2 items-start">
-                            <img
-                              src="/icons/location-icon.svg"
-                              alt=""
-                              className="w-8"
-                            />
+                            <img src="/icons/location-icon.svg" alt="" className="w-8" />
                             <div className="flex flex-col border">
-                              <h1 className="text-sm font-bold max-w-[100px]">
-                                {datas.info_departure_airport.departure_airport}
-                              </h1>
-                              <h1 className="text-xs font-medium">
-                                {datas.info_departure_airport.date}
-                              </h1>
-                              <h1 className="text-xs font-medium">
-                                {datas.info_departure_airport.departure_time}
-                              </h1>
+                              <h1 className="text-sm font-bold max-w-[100px]">{datas.info_departure_airport.departure_airport}</h1>
+                              <h1 className="text-xs font-medium">{datas.info_departure_airport.date}</h1>
+                              <h1 className="text-xs font-medium">{datas.info_departure_airport.departure_time}</h1>
                             </div>
                           </div>
                           {/* From End */}
@@ -160,22 +134,11 @@ function RiwayatPesanan() {
 
                           {/* To */}
                           <div className="flex gap-2 items-start">
-                            <img
-                              src="/icons/location-icon.svg"
-                              alt=""
-                              className="w-8"
-                            />
+                            <img src="/icons/location-icon.svg" alt="" className="w-8" />
                             <div className="flex flex-col">
-                              <h1 className="text-sm font-bold">
-                                {datas.info_arrival_airport.arrival_airport}
-                              </h1>
-                              <h1 className="text-xs font-medium">
-                                {datas.info_arrival_airport.date}
-                              </h1>
-                              <h1 className="text-xs font-medium">
-                                {" "}
-                                {datas.info_arrival_airport.arrival_time}
-                              </h1>
+                              <h1 className="text-sm font-bold">{datas.info_arrival_airport.arrival_airport}</h1>
+                              <h1 className="text-xs font-medium">{datas.info_arrival_airport.date}</h1>
+                              <h1 className="text-xs font-medium"> {datas.info_arrival_airport.arrival_time}</h1>
                             </div>
                           </div>
                           {/* To End */}
@@ -189,23 +152,17 @@ function RiwayatPesanan() {
                           <div className="flex gap-4">
                             <div className="flex flex-col text-xs">
                               <h1 className="font-bold">Booking Code:</h1>
-                              <h1 className="font-medium">
-                                {datas.booking_code}
-                              </h1>
+                              <h1 className="font-medium">{datas.booking_code}</h1>
                             </div>
                             <div className="flex flex-col text-xs">
                               <h1 className="font-bold">Class:</h1>
-                              <h1 className="font-medium">
-                                {datas.info_flight.class}
-                              </h1>
+                              <h1 className="font-medium">{datas.info_flight.class}</h1>
                             </div>
                           </div>
 
                           <div className="flex flex-col items-end font-bold">
                             <h1 className="text-xs">TOTAL</h1>
-                            <span className="text-base">
-                              {formatCurrency(datas.info_price.total_price)}
-                            </span>
+                            <span className="text-base">{formatCurrency(datas.info_price.total_price)}</span>
                           </div>
                         </div>
                         {/* Booking Code, Class, Total End */}

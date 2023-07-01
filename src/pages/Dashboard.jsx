@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar";
 import NavbarMobile from "../components/NavbarMobile";
 import DestinasiFavorit from "../components/dashboard/DestinasiFavorit";
 import { useNavigate, useLocation } from "react-router-dom";
+import Footer from "../components/Footer";
 
 function Dashboard() {
   // {ModalFrom}
@@ -149,7 +150,7 @@ function Dashboard() {
 
         {/* Main Form */}
         <div className="-translate-y-24 lg:-translate-y-24 ">
-          <form onSubmit={handleSubmitForm} action="" className="flex flex-col bg-white mx-4 md:mx-8 lg:mx-56 px-3 lg:px-7  py-5 rounded-lg border shadow-md">
+          <form onSubmit={handleSubmitForm} action="" className="flex flex-col bg-white mx-4 md:mx-8 lg:mx-48 px-3 lg:px-7  py-5 rounded-lg border shadow-md">
             <h1 className="hidden lg:block text-lg font-bold mb-6">
               Pilih Jadwal Penerbangan Spesial di <span className="text-secondary">QuickTix!</span>
             </h1>
@@ -170,6 +171,7 @@ function Dashboard() {
                     name="from"
                     id="from"
                     placeholder="Kota atau Bandara"
+                    autoComplete="off"
                     className="self-end w-[85%] h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none font-semibold group-focus/input:opacity-100"
                   />
 
@@ -195,6 +197,7 @@ function Dashboard() {
                     type="text"
                     name="to"
                     id="to"
+                    autoComplete="off"
                     className="self-end w-full h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none font-semibold"
                   />
                 </div>
@@ -210,7 +213,7 @@ function Dashboard() {
                     <img src="/icons/date_icon.svg" alt="" className="w-[30px] opacity-50" />
                   </div>
 
-                  <input required type="date" name="date" id="date" className="self-end w-[60%] lg:w-full h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none font-semibold" />
+                  <input required type="date" name="date" id="date" className="self-end w-[70%] lg:w-full h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none font-semibold" />
                 </div>
                 {/* Departure End */}
 
@@ -222,7 +225,7 @@ function Dashboard() {
                       <img src="/icons/date_icon.svg" alt="" className="w-[30px] opacity-50" />
                     </div>
                     <div className="self-end">
-                      <input type="date" name="date" id="date" className="self-end w-[60%] lg:w-full h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none font-semibold" />
+                      <input type="date" name="date" id="date" autoComplete="off" className="self-end w-[70%] lg:w-full h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 outline-none font-semibold" />
                     </div>
                   </div>
                 )}
@@ -255,6 +258,7 @@ function Dashboard() {
                     name="passenger"
                     id="passenger"
                     value={submitedDataPassenger}
+                    autoComplete="off"
                     className="self-end w-full h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 font-semibold outline-none"
                   />
                 </div>
@@ -273,6 +277,7 @@ function Dashboard() {
                     value={submitedDataSeatClass}
                     name="seat"
                     id="seat"
+                    autoComplete="off"
                     className="self-end w-full h-10 bg-transparent border border-t-0 border-x-0 border-slate-400 font-semibold outline-none text-ellipsis"
                   />
                 </div>
@@ -291,8 +296,10 @@ function Dashboard() {
         {/* Destinasi Favorit End */}
 
         {/* Navbar 2.0 */}
-        <NavbarMobile />
+        {/* <NavbarMobile /> */}
         {/* Navbar 2.0 End */}
+
+        <Footer />
       </div>
     </>
   );

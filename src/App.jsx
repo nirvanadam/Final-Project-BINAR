@@ -16,6 +16,7 @@ import FlightDetail from "./components/search-result/FlightDetail";
 import FlightResult from "./components/search-result/FlightResult";
 import PaymentPage from "./pages/PaymentPage";
 import SuccessPayment from "./pages/SuccessPayment";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -37,7 +38,7 @@ function App() {
         <Route path="/flight-result" element={<FlightResult />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/success-payment" element={<SuccessPayment />} />
-        <Route path="/test11" element={<FlightDetailPage />} />
+        <Route path="/footer" element={<Footer />} />
       </Routes>
     </BrowserRouter>
   );
