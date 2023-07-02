@@ -29,6 +29,14 @@ function Login() {
     navigate(`/`);
   };
 
+  const handleSubmitGoogle = async (event) => {
+    event.preventDefault();
+    const response = await axios.get("https://finalproject-develop.up.railway.app/auth/login/google");
+    axios.defaults.headers.common["authorization"] = response.data.data;
+    Cookies.set("token", response.data.data, { expires: 30 });
+    navigate(`/`);
+  };
+
   return (
     <div className="grid grid-rows-[1fr,3fr] lg:grid-rows-1 lg:grid-cols-2 h-screen overflow-hidden bg-primary font-quickSand">
       {/* Left */}
@@ -80,7 +88,7 @@ function Login() {
           {/* Password Input End */}
 
           {/* Forgot Password */}
-          <Link to={"/forgot-password"} className="mt-2 underline font-bold text-primary text-xs self-end">
+          <Link to={"/email-reset-password"} className="mt-2 underline font-bold text-primary text-xs self-end">
             Lupa Kata Sandi
           </Link>
           {/* Forgot Password End */}
@@ -95,10 +103,12 @@ function Login() {
         <p className="self-center my-2 text-sm  font-bold">Or</p>
 
         {/* Google Login */}
-        <div className="mb-3 flex justify-center items-center gap-3 py-2 border border-slate-300 rounded-xl text-center">
-          <img src="/icons/google_logo.svg" alt="" className="w-4" />
-          <h1 className="text-sm font-semibold">Sign in with Google</h1>
-        </div>
+        <form onSubmit={handleSubmitGoogle}>
+          <button type="submit" className="mb-3 flex justify-center items-center gap-3 py-2 border border-slate-300 rounded-xl text-center">
+            <img src="/icons/google_logo.svg" alt="" className="w-4" />
+            <h1 className="text-sm font-semibold">Sign in with Google</h1>
+          </button>
+        </form>
         {/* Google Login End */}
 
         <p className="self-center text-sm font-medium">

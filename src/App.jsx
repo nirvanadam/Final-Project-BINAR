@@ -1,11 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Dashboard from "./pages/Dashboard";
-import FlightDetailPage from "./pages/FlightDetailPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import OtpInput from "./pages/OtpInput";
-import ForgotPassword from "./pages/ForgotPassword";
 import SearchResult from "./pages/SearchResult";
 import CheckoutPage from "./pages/CheckoutPage";
 import DetailAccount from "./pages/DetailAccount";
@@ -31,7 +29,6 @@ function App() {
         <Route path="/otpinput" element={<OtpInput />} />
         <Route path="/email-reset-password" element={<EmailResetPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/search-result" element={<SearchResult />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/detail-account" element={<DetailAccount />} />
