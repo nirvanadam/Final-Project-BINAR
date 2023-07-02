@@ -13,7 +13,7 @@ function FormPenumpang({ totalPassenger, setData, adult }) {
       fullname: "",
       gender: "Laki-Laki",
       birthday: "",
-      person: index < adult ? "Dewasa" : "Anak-anak",
+      person: index < adult ? "adult" : "child",
       nationality: "",
       no_ktp: "",
     }));
@@ -74,7 +74,7 @@ function FormPenumpang({ totalPassenger, setData, adult }) {
       {passengers.map((passenger, index) => (
         <div className="mb-9" key={index}>
           {/* Kategori */}
-          <h1 className="w-full px-5 py-3 rounded-lg bg-primary text-white">{passenger.person === "Dewasa" ? `Penumpang Dewasa ${index + 1}` : `Penumpang Anak-Anak ${index - adult + 1}`}</h1>
+          <h1 className="w-full px-5 py-3 rounded-lg bg-primary text-white">{passenger.person === "adult" ? `Penumpang Dewasa ${index + 1}` : `Penumpang Anak-Anak ${index - adult + 1}`}</h1>
 
           {/* Kategori End */}
 

@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 function DestinasiFavorit() {
   // Destinasi Favorit Logic
   const dataDestinasi = [
-    { id: 1, name: "Jakarta", to: "Sydney", region: "Asia", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?borobur,petronas", price: "3.650.000" },
-    { id: 2, name: "New York", to: "Paris", region: "Amerika", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?landmark&america", price: "2.650.000" },
-    { id: 3, name: "Sydney", to: "Jakarta", region: "Australia", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?landmark&australia", price: "3.650.000" },
-    { id: 4, name: "Paris", to: "New York", region: "Eropa", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?landmark&europe", price: "2.650.000" },
+    { id: 1, name: "Jakarta", region: "Asia", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?old&norway", price: "3.650.000" },
+    { id: 2, name: "New York", region: "Amerika", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?landmark&america", price: "2.650.000" },
+    { id: 3, name: "Sydney", region: "Australia", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?landmark&australia", price: "3.650.000" },
+    { id: 4, name: "Paris", region: "Eropa", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?landmark&europe", price: "2.650.000" },
     { id: 5, name: "Cape Town", to: "Sydney", region: "Afrika", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?landmark&africa", price: "3.450.000" },
+    { id: 6, name: "Cape Town", to: "Sydney", region: "Afrika", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?landmark&africa", price: "3.450.000" },
     // Tambahkan destinasi lainnya di sini
   ];
 
@@ -21,17 +22,42 @@ function DestinasiFavorit() {
   const DestinasiCard = () => {
     return dataDestinasi.map((destinasi) => {
       return (
-        <Link to={"#"} className="relative inline-flex flex-col overflow-hidden min-w-[250px] max-w-[350px] mr-4 lg:mr-0 px-3 pt-2 pb-3 border border-slate-300 shadow-md rounded-xl">
-          <img src={destinasi.foto} alt="" className="absolute top-0 bottom-0 left-0" />
-          <div className="flex flex-col mt-40">
-            <h1 className="text-sm font-bold">{`${destinasi.name} -> ${destinasi.to}`}</h1>
-            <h1 className="text-xs text-secondary font-bold ">{destinasi.maskapai}</h1>
+        // <Link to={"#"} className="relative inline-flex flex-col overflow-hidden min-w-[250px] max-w-[350px] mr-4 lg:mr-0 px-3 pt-2 pb-3 border border-slate-300 shadow-md rounded-xl">
+        //   <img src={destinasi.foto} alt="" className="absolute top-0 bottom-0 left-0" />
+        //   <div className="flex flex-col mt-40">
+        //     <h1 className="text-sm font-bold">{`${destinasi.name} -> ${destinasi.to}`}</h1>
+        //     <h1 className="text-xs text-secondary font-bold ">{destinasi.maskapai}</h1>
 
-            <h1 className="text-sm font-semibold">
-              Mulai dari <span className="font-bold text-red-600">{`IDR ${destinasi.price}`}</span>
-            </h1>
+        //     <h1 className="text-sm font-semibold">
+        //       Mulai dari <span className="font-bold text-red-600">{`IDR ${destinasi.price}`}</span>
+        //     </h1>
+        //   </div>
+        // </Link>
+        <div className="bg-zinc-100 relative inline-flex flex-col w-[31%] lg:mt-3 lg:mr-0 overflow-hidden group rounded-xl  shadow-md cursor-default transition-all hover:-translate-y-3">
+          <div className="overflow-hidden relative h-[200px] before:content-[''] before:absolute before:top-0 before:bottom-0 before:left-0 before:right-0 before:bg-gradient-to-t from-black from-5% before:z-10">
+            <img src={destinasi.foto} alt="" className="absolute transition-all duration-300 group-hover:scale-125" />
+            <div className="absolute bottom-3 left-3 z-20 flex flex-col gap-1">
+              <h1 className="text-white font-white">{destinasi.name}</h1>
+              <div className="flex gap-2">
+                <div className="flex gap-1 ">
+                  <img src="/icons/star-icon.svg" alt="" />
+                  <img src="/icons/star-icon.svg" alt="" />
+                  <img src="/icons/star-icon.svg" alt="" />
+                  <img src="/icons/star-icon.svg" alt="" />
+                  <img src="/icons/star-icon.svg" alt="" />
+                </div>
+                <h1 className="text-sm text-gray-400 font-medium">(5.0) Rating</h1>
+              </div>
+            </div>
           </div>
-        </Link>
+          <div className="flex flex-col items-center gap-4 p-6">
+            <h1 className="text-xl font-semibold">
+              Rp {destinasi.price} <span className="text-base text-gray-500 font-medium">/ Orang</span>
+            </h1>
+            <h1 className="text-center text-sm text-gray-500 font-medium">Our travels are different from all the others! We love our business and want to see happy customers, so we always do our best for your comfort!</h1>
+            <button className="bg-white border border-gray-300 rounded-full px-10 py-3 text-sm font-semibold tracking-[2px] duration-300 transition-all hover:bg-primary hover:text-white">ORDER</button>
+          </div>
+        </div>
       );
     });
   };
@@ -41,7 +67,7 @@ function DestinasiFavorit() {
       .filter((destinasi) => destinasi.region === region)
       .map((destinasi) => {
         return (
-          <Link to={"#"} className="inline-flex flex-col min-w-[200px] max-w-[350px] mr-4 lg:mr-0 px-3 pt-2 pb-3 border border-slate-300 shadow-md rounded-xl">
+          <Link to={"#"} className="inline-flex flex-col min-w-[200px] max-w-[350px] px-3 pt-2 pb-3 border border-slate-300 shadow-md rounded-xl">
             <img src={destinasi.foto} alt="" className="mb-2 w-[200px]" />
             <h1 className="text-sm font-bold">{`${destinasi.name} -> ${destinasi.to}`}</h1>
             <h1 className="text-xs text-secondary font-bold ">{destinasi.maskapai}</h1>
@@ -53,9 +79,10 @@ function DestinasiFavorit() {
       });
   // Destinasi Favorit Logic End
   return (
-    <div className="mx-4 md:mx-8 lg:mx-28 -translate-y-16">
+    <div className="mx-4 md:mx-8 lg:mx-28 -translate-y-2">
       <h1 className="text-lg font-bold mb-4">Destinasi Favorit</h1>
 
+      {/* Filter Button */}
       <div className="flex flex-wrap lg:justify-start gap-x-3 gap-y-4 lg:gap-5">
         {/* Semua Button */}
         <button
@@ -117,8 +144,9 @@ function DestinasiFavorit() {
         </button>
         {/* Afrika Button End */}
       </div>
+      {/* Filter Button End */}
 
-      <div className="mt-5 lg:mt-10 lg:flex lg:flex-wrap lg:gap-6 whitespace-nowrap overflow-auto lg:whitespace-normal touch-auto w-[110%] lg:w-full h-[300px] lg:h-full">{region === "Semua" ? DestinasiCard() : FilteredCard()}</div>
+      <div className="mt-5 lg:mt-10 lg:flex lg:flex-wrap justify-between lg:gap-5 overflow-auto lg:whitespace-normal touch-auto w-[110%] lg:w-full lg:h-full">{region === "Semua" ? DestinasiCard() : FilteredCard()}</div>
     </div>
   );
 }

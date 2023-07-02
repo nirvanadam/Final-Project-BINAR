@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="bg-zinc-800 flex flex-col p-3 lg:p-10 font-quickSand">
+    <div className="bg-zinc-800 flex flex-col mt-20 p-3 pb-36 lg:p-10 font-quickSand">
       {/* Level 1 */}
       <div className="flex flex-col lg:flex-row justify-start lg:justify-between items-start lg:items-center gap-5 ">
         {/* App Logo */}

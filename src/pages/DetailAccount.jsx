@@ -50,7 +50,7 @@ function DetailAccount() {
           </Link>
           {/* Edit Profile End */}
 
-          <div className="hidden lg:flex gap-5">
+          <div className="hidden lg:flex gap-5 transition-all hover:translate-x-3">
             <img src="/icons//edit-icon.svg" alt="" className="w-6" />
             <h1 className="font-semibold text-lg">Ubah Profile</h1>
           </div>
@@ -64,15 +64,15 @@ function DetailAccount() {
               setIsLoggedIn(false);
               return navigate("/");
             }}
-            className="flex gap-5 transition-all hover:translate-x-2"
+            className="flex gap-5 transition-all hover:translate-x-3"
           >
             <img src="/icons/logout-icon.svg" alt="" className="w-7" />
-            <h1 className="font-semibold text-red-500 text-lg">Keluar</h1>
+            <h1 className="font-bold text-red-500 text-lg">Keluar</h1>
           </button>
           {/* logout End */}
           <span className="w-full h-[1px] my-3 bg-gray-400"></span>
 
-          <h1 className="text-center font-medium">Version 1.1.0</h1>
+          <h1 className="text-center font-medium text-gray-400">Version 1.1.0</h1>
         </div>
         {/* option end  */}
         {/* form edit account */}

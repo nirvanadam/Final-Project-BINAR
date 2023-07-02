@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import Payment from "../components/checkout/Payment";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
@@ -55,6 +56,7 @@ function PaymentPage() {
         {/* Right End */}
       </div>
       {/* Content End */}
+      <Footer />
     </div>
   );
 }

@@ -1,26 +1,10 @@
 import React from "react";
 
 function FlightDetail(props) {
-  const {
-    display,
-    flightDate,
-    departureAirport,
-    arrivalAirport,
-    departureTime,
-    arrivalTime,
-    seatClass,
-    airlineCode,
-    airplaneID,
-    Informasi1,
-    Informasi2,
-    departureCity,
-    arrivalCity,
-    Duration,
-
-  } = props;
+  const { display, flightDate, departureAirport, arrivalAirport, departureTime, arrivalTime, seatClass, airlineCode, airplaneID, Informasi1, Informasi2, departureCity, arrivalCity, Duration } = props;
 
   return (
-    <div className={`${display} mx-4 mt-3`}>
+    <div className={`${display} mx-4 mt-3 transition-all`}>
       <h1 className="lg:hidden mb-3 font-bold">
         {departureCity} - {arrivalCity} <span>{Duration}</span>
       </h1>

@@ -17,8 +17,8 @@ function ModalSeatClass({ action, onDataSubmit }) {
     <div className="font-quickSand fixed w-full h-[80%] bottom-0 z-50 bg-white sm:bg-slate-500 sm:bg-opacity-80 sm:h-screen sm:w-screen">
       <div className="flex w-full h-full sm:justify-center sm:items-center">
         <div className="w-full sm:w-1/3 sm:bg-white sm:rounded-md flex flex-col px-5 gap-4 pt-2 items-end">
-          <button onClick={action} className="text-[20px] font-semibold text-red-500">
-            x
+          <button onClick={action} className="mt-3">
+            <img src="/icons/close-icon.svg" alt="" className="w-5" />
           </button>
           <form onSubmit={handleSubmit} className="w-full flex flex-col items-center">
             {/* Economy */}
@@ -55,7 +55,7 @@ function ModalSeatClass({ action, onDataSubmit }) {
             </div>
             {/* First Class End */}
 
-            <button type="submit" className="w-full mt-10 py-3 px-10 bg-primary mb-4 text-white rounded-md">
+            <button type="submit" className="w-full mt-10 py-3 px-10 bg-primary mb-4 text-white font-medium rounded-md">
               Simpan
             </button>
           </form>

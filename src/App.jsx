@@ -17,6 +17,8 @@ import FlightResult from "./components/search-result/FlightResult";
 import PaymentPage from "./pages/PaymentPage";
 import SuccessPayment from "./pages/SuccessPayment";
 import Footer from "./components/Footer";
+import ResetPassword from "./pages/ResetPassword";
+import EmailResetPassword from "./pages/EmailResetPassword";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/register" element={<Register />} />
         <Route path="/otpinput" element={<OtpInput />} />
+        <Route path="/email-reset-password" element={<EmailResetPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/search-result" element={<SearchResult />} />
         <Route path="/checkout" element={<CheckoutPage />} />

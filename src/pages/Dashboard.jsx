@@ -150,7 +150,7 @@ function Dashboard() {
 
         {/* Main Form */}
         <div className="-translate-y-24 lg:-translate-y-24 ">
-          <form onSubmit={handleSubmitForm} action="" className="flex flex-col bg-white mx-4 md:mx-8 lg:mx-48 px-3 lg:px-7  py-5 rounded-lg border shadow-md">
+          <form onSubmit={handleSubmitForm} action="" className="relative flex flex-col bg-white mx-4 md:mx-8 lg:mx-48 px-3 lg:px-7 py-5 rounded-lg border shadow-md">
             <h1 className="hidden lg:block text-lg font-bold mb-6">
               Pilih Jadwal Penerbangan Spesial di <span className="text-secondary">QuickTix!</span>
             </h1>
@@ -286,13 +286,15 @@ function Dashboard() {
               {/* Passenger & Seat Class End */}
             </div>
 
-            <button className="mt-5 lg:mt-9 w-full py-3 rounded-lg bg-primary text-white text-sm font-semibold">Cari Penerbangan</button>
+            <button className="mt-5 lg:mt-9 w-full py-3 rounded-lg bg-primary text-white text-sm font-medium">Cari Penerbangan</button>
           </form>
         </div>
         {/* Main Form End */}
 
         {/* Destinasi Favorit */}
-        <DestinasiFavorit />
+        <div className="">
+          <DestinasiFavorit />
+        </div>
         {/* Destinasi Favorit End */}
 
         {/* Navbar 2.0 */}
