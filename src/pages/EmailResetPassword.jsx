@@ -10,6 +10,7 @@ function EmailResetPassword() {
     const response = await axios.post("https://finalproject-develop.up.railway.app/forgotpassword", { email });
     setData(response.data.message);
   };
+
   return (
     <div className="grid grid-rows-[1fr,3fr] lg:grid-rows-1 lg:grid-cols-2 h-screen overflow-hidden bg-primary font-quickSand">
       {/* Left */}
