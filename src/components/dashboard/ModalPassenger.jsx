@@ -89,9 +89,9 @@ function ModalPassenger({ action, onDataSubmit, onDataCategory }) {
   return (
     <div className="fixed w-full h-[80%] bottom-0 z-50 bg-white sm:bg-slate-500 sm:bg-opacity-80 sm:h-screen sm:w-screen">
       <div className="flex w-full h-full sm:justify-center sm:items-center">
-        <div className="w-full sm:w-1/3 sm:bg-white sm:rounded-xl flex flex-col px-5 gap-4 pt-2 items-end ">
-          <button onClick={action} className="text-[20px] font-semibold text-red-500">
-            x
+        <div className="w-full sm:w-1/3 sm:bg-white sm:rounded-xl flex flex-col px-5 py-6  gap-4  items-end ">
+          <button onClick={action} className="">
+            <img src="/icons/close-icon.svg" alt="" className="w-5" />
           </button>
           <form onSubmit={handleSubmit} className="w-full flex flex-col gap-2">
             <div className="flex justify-between border-b-2 border-gray">
@@ -100,12 +100,12 @@ function ModalPassenger({ action, onDataSubmit, onDataCategory }) {
                 <h1 className="font-semibold ml-5">Dewasa</h1>
               </div>
               <div className="flex justify-between gap-3 items-center">
-                <button onClick={reduceAdult} type="button" className="border-2 border-secondary rounded-lg p-2">
-                  <img src="/icons/minus-icon.svg" alt="" className="w-6 opacity-60" />
+                <button onClick={reduceAdult} type="button" className="bg-primary rounded-lg p-2 transition-all active:scale-90">
+                  <img src="/icons/minus-icon.svg" alt="" className="w-6 invert " />
                 </button>
                 <input type="text" value={totalAdult} onChange={handleChangeAdult} className="p-2 w-[60px] border-2 border-gray-300 rounded-lg outline-none text-center font-medium" />
-                <button onClick={addAdult} type="button" className="border-2 border-secondary rounded-lg p-2">
-                  <img src="/icons/plus-icon.svg" alt="" className="w-6 opacity-60" />
+                <button onClick={addAdult} type="button" className="bg-primary rounded-lg p-2 transition-all active:scale-90">
+                  <img src="/icons/plus-icon.svg" alt="" className="w-6 invert" />
                 </button>
               </div>
             </div>
@@ -116,12 +116,12 @@ function ModalPassenger({ action, onDataSubmit, onDataCategory }) {
                 <h1 className="font-semibold ml-5">Anak</h1>
               </div>
               <div className="flex justify-between gap-3 items-center">
-                <button type="button" onClick={reduceKid} className="border-2 border-secondary rounded-lg p-2">
-                  <img src="/icons/minus-icon.svg" alt="" className="w-6 opacity-60" />
+                <button type="button" onClick={reduceKid} className="bg-primary rounded-lg p-2 transition-all active:scale-90">
+                  <img src="/icons/minus-icon.svg" alt="" className="w-6 invert" />
                 </button>
                 <input type="text" value={totalKid} onChange={handleChangeKid} className="p-2 w-[60px] border-2 border-gray-300 rounded-lg outline-none text-center font-medium" />
-                <button type="button" onClick={addKid} className="border-2 border-secondary rounded-lg p-2">
-                  <img src="/icons/plus-icon.svg" alt="" className="w-6 opacity-60" />
+                <button type="button" onClick={addKid} className="bg-primary rounded-lg p-2 transition-all active:scale-90">
+                  <img src="/icons/plus-icon.svg" alt="" className="w-6 invert" />
                 </button>
               </div>
             </div>
@@ -131,12 +131,12 @@ function ModalPassenger({ action, onDataSubmit, onDataCategory }) {
                 <h1 className="font-semibold ml-5">Bayi</h1>
               </div>
               <div className="flex justify-between gap-3 items-center">
-                <button type="button" onClick={reduceBaby} className="border-2 border-secondary rounded-lg p-2">
-                  <img src="/icons/minus-icon.svg" alt="" className="w-6 opacity-60" />
+                <button type="button" onClick={reduceBaby} className="bg-primary rounded-lg p-2 transition-all active:scale-90">
+                  <img src="/icons/minus-icon.svg" alt="" className="w-6 invert" />
                 </button>
                 <input value={totalBaby} onChange={handleChangeBaby} type="text" className="p-2 w-[60px] border-2 border-gray-300 rounded-lg outline-none text-center font-medium" />
-                <button type="button" onClick={addBaby} className="border-2 border-secondary rounded-lg p-2">
-                  <img src="/icons/plus-icon.svg" alt="" className="w-6 opacity-60" />
+                <button type="button" onClick={addBaby} className="bg-primary rounded-lg p-2 transition-all active:scale-90">
+                  <img src="/icons/plus-icon.svg" alt="" className="w-6 invert" />
                 </button>
               </div>
             </div>

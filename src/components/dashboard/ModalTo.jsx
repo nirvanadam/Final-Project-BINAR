@@ -47,30 +47,13 @@ function ModalTo({ action, onDataSubmit }) {
     <div className="fixed w-full h-[80%] bottom-0 z-50 bg-white sm:bg-slate-500 sm:bg-opacity-80 sm:h-screen sm:w-screen">
       <div className="flex w-full h-full sm:justify-center sm:items-center">
         <div className="relative w-full sm:w-1/3 sm:bg-white sm:rounded-md flex flex-col px-5 pt-8 gap-8">
-          <button
-            onClick={action}
-            className="absolute top-0 right-5 text-[28px] font-semibold"
-          >
-            x
+          <button onClick={action} className="absolute top-3 right-5 text-[28px] font-semibold">
+            <img src="/icons/close-icon.svg" alt="" className="w-5" />
           </button>
-          <form
-            onChange={handleChange}
-            onSubmit={handleSubmit}
-            className="w-full flex flex-col gap-2 my-5"
-          >
-            {data && (
-              <Select
-                options={data}
-                value={data.value}
-                onChange={handleChange}
-                placeholder="Masukan Kota"
-              />
-            )}
+          <form onChange={handleChange} onSubmit={handleSubmit} className="w-full flex flex-col gap-2 my-5">
+            {data && <Select options={data} value={data.value} onChange={handleChange} placeholder="Pilih Kota" />}
 
-            <button
-              type="submit"
-              className="w-full mt-10 py-3 px-10 bg-primary mb-4 text-white rounded-md"
-            >
+            <button type="submit" className="w-full mt-5 py-3 px-10 bg-primary mb-4 text-white rounded-md">
               Submit
             </button>
           </form>

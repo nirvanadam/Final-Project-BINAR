@@ -57,10 +57,7 @@ function Notifikasi() {
         </div>
 
         {/* Filter Button */}
-        <button
-          type="button"
-          className="flex justify-between items-center gap-3 pl-3 pr-4 py-2 border border-gray-400 rounded-full"
-        >
+        <button type="button" className="flex justify-between items-center gap-3 pl-3 pr-4 py-2 border border-gray-400 rounded-full">
           <img src="/icons/filter_icon.svg" alt="" className="invert" />
           <h1 className="text-sm font-semibold">Filter</h1>
         </button>
@@ -74,29 +71,25 @@ function Notifikasi() {
       </div>
       {/* Bar, Filter, Search Button End */}
 
-      {notif?.map((notifikasi, index) => (
-        <div key={index} className="flex flex-col mx-7 lg:mx-36 my-4">
-          <div className="flex gap-2 items-start">
-            <img
-              src="/icons/notification-icon-solid.svg"
-              alt=""
-              className="w-6 invert bg-black"
-            />
-            <div className="w-full flex flex-col">
-              <div className="flex justify-between text-sm font-medium text-gray-500">
-                <h1>QuickTix</h1>
-                <h1>{formatDate(notifikasi.time)}</h1>
+      <div className="mt-10">
+        {notif?.map((notifikasi, index) => (
+          <div key={index} className="flex flex-col mx-7 lg:mx-36 my-4">
+            <div className="flex gap-2 items-start">
+              <img src="/icons/notification-icon-solid.svg" alt="" className="w-6" />
+              <div className="w-full flex flex-col">
+                <div className="flex justify-between text-sm font-medium text-gray-500">
+                  <h1>QuickTix</h1>
+                  <h1>{formatDate(notifikasi.time)}</h1>
+                </div>
+                <h1 className="font-semibold">{notifikasi.title}</h1>
+                <h1 className="text-sm font-medium text-gray-600">{notifikasi.description}</h1>
               </div>
-              <h1 className="font-semibold">{notifikasi.title}</h1>
-              <h1 className="text-sm font-medium text-gray-600">
-                {notifikasi.description}
-              </h1>
             </div>
-          </div>
 
-          <span className="w-full h-[1px] bg-gray-400 my-4"></span>
-        </div>
-      ))}
+            <span className="w-full h-[1px] bg-gray-400 my-4"></span>
+          </div>
+        ))}
+      </div>
 
       {/* navbar */}
       <NavbarMobile />

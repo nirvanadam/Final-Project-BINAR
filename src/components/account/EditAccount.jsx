@@ -44,15 +44,10 @@ function EditAccount(props) {
   };
 
   return (
-    <div className="hidden lg:block border border-gray-200 shadow-md rounded-lg pt-10 pb-6 px-4">
+    <div className="hidden lg:block border border-gray-200 shadow-md rounded-lg py-5 px-4">
       <h1 className="text-xl font-bold mb-4">Ubah Data Profile</h1>
-      <form
-        onSubmit={handleFormSubmit}
-        className="relative overflow-hidden rounded-xl p-4"
-      >
-        <h1 className="absolute top-0 w-full left-0 right-0 px-4 py-2 bg-primary text-white">
-          Data Diri
-        </h1>
+      <form onSubmit={handleFormSubmit} className="relative overflow-hidden rounded-xl p-4">
+        <h1 className="absolute top-0 w-full left-0 right-0 px-4 py-2 bg-primary text-white">Data Diri</h1>
         <div className="flex flex-col gap-1 mt-10">
           <label className="font-bold" htmlFor="">
             Nama Lengkap
@@ -60,7 +55,7 @@ function EditAccount(props) {
           <input
             defaultValue={dataForm.dataFrom.name}
             onChange={handleNameChange}
-            className="border border-gray-300 rounded-lg py-2 px-4"
+            className="border border-gray-300 rounded-lg py-2 px-4 font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             type="text"
           />
         </div>
@@ -71,7 +66,7 @@ function EditAccount(props) {
           <input
             onChange={handlePhoneChange}
             defaultValue={dataForm.dataFrom.phone}
-            className="border border-gray-300 rounded-lg py-2 px-4"
+            className="border border-gray-300 rounded-lg py-2 px-4 font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             type="text"
           />
         </div>
@@ -82,14 +77,11 @@ function EditAccount(props) {
           <input
             onChange={handleEmailChange}
             defaultValue={dataForm.dataFrom.email}
-            className="border border-gray-300 rounded-lg py-2 px-4"
+            className="border border-gray-300 rounded-lg py-2 px-4 font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             type="text"
           />
         </div>
-        <button
-          type="submit"
-          className="py-3 px-11 rounded-xl bg-primary text-white font-medium mx-auto block mt-8"
-        >
+        <button type="submit" className="py-3 px-11 rounded-xl bg-primary text-white font-medium mx-auto block mt-8">
           Simpan
         </button>
       </form>

@@ -6,6 +6,7 @@ import ModalSort from "../components/ModalSort";
 import Loading from "../components/search-result/Loading";
 import Sorry from "../components/search-result/Sorry";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 function SearchResult() {
@@ -83,26 +84,31 @@ function SearchResult() {
           <div className="flex gap-3">
             {/* Info Destination */}
             <div className="relative flex flex-col w-full bg-primary py-4 px-2 lg:rounded-xl">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-5">
                 <Link to="/" className="">
                   <img src="/icons/arrow_left.svg" alt="" className="invert" />
                 </Link>
-                <div className="flex gap-2">
-                  <h1 className=" text-white font-bold">{formData.departure_airport}</h1>
-                  <img src="/icons/navigate_next_icon.svg" alt="" className="invert w-5" />
-                  <h1 className=" text-white font-bold">{formData.arrival_airport}</h1>
-                </div>
-              </div>
 
-              <div className="flex items-center gap-1">
-                <h1 className=" text-white font-medium">- {formData.passenger} Penumpang</h1>
-                <h1 className=" text-white font-medium">- {formData.seat_type}</h1>
+                <div className="flex flex-col md:flex-row md:gap-5">
+                  <div className="flex gap-2">
+                    <h1 className=" text-white font-bold">{formData.departure_airport}</h1>
+                    <img src="/icons/navigate_next_icon.svg" alt="" className="invert w-5" />
+                    <h1 className=" text-white font-bold">{formData.arrival_airport}</h1>
+                  </div>
+
+                  <div className="flex items-center gap-1">
+                    <h1 className=" text-white font-medium">{formData.passenger} Penumpang</h1>
+                    <h1 className=" text-white font-medium">- {formData.seat_type}</h1>
+                  </div>
+                </div>
               </div>
             </div>
             {/* Info Destination End */}
 
             {/* Ubah Pencarian Button */}
-            <button className="hidden lg:inline basis-1/4 bg-secondary rounded-xl font-bold">Ubah Pencarian</button>
+            <Link to={"/"} className="hidden lg:flex justify-center items-center basis-1/4  bg-secondary rounded-xl font-bold">
+              Ubah Pencarian
+            </Link>
             {/* Ubah Pencarian Button End */}
           </div>
           {/* Container Info Destination & Ubah Pencarian Button End */}
@@ -111,10 +117,10 @@ function SearchResult() {
           <div className="overflow-auto flex gap-3 divide-x divide-gray-300 lg:mt-3 py-3 px-2 border-b border-gray-300">
             <form className="flex gap-2">
               {dates.map((date) => (
-                <button type="submit" className="flex justify-center items-center px-3 bg-yellow-300" key={date.getTime()}>
+                <button type="submit" className="flex justify-center items-center px-4 py-1 bg-primary rounded-lg" key={date.getTime()}>
                   <div className="flex flex-col justify-center items-center px-3">
-                    <h1 className="font-bold">{getNamaHari(date)}</h1>
-                    <h1 className="text-sm font-medium text-gray-500">{getTanggalFormat(date)}</h1>
+                    <h1 className="text-white font-bold">{getNamaHari(date)}</h1>
+                    <h1 className="text-sm font-medium text-gray-400">{getTanggalFormat(date)}</h1>
                   </div>
                 </button>
               ))}
@@ -142,7 +148,7 @@ function SearchResult() {
         </div>
         {/* Filter & Sort Button [Mobile & Tablet]End */}
 
-        {/* Main Content Contain  er */}
+        {/* Main Content Contain  */}
         <div className="grid grid-cols-1 lg:grid-cols-[260px,1fr] gap-9 mt-4 lg:mt-5 md:mx-10 lg:mx-36">
           {/* Filter Container */}
           <div className="hidden lg:flex flex-col h-fit p-5 border border-gray-200 shadow-md rounded-xl">
@@ -187,6 +193,8 @@ function SearchResult() {
           {/* Content End */}
         </div>
         {/* Main Content Container End*/}
+
+        <Footer />
       </div>
     </>
   );

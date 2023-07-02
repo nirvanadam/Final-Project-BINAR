@@ -74,8 +74,8 @@ function FlightResult(props) {
           <div key={index} className="flex flex-col gap-2 p-4 border border-gray-300 rounded-lg shadow-md">
             <div className="flex flex-col ">
               {/* From, Duration, To, Price */}
-              <div className="lg:order-3 flex justify-between ">
-                <div className="flex gap-3">
+              <div className="lg:order-3 flex justify-center  md:justify-between items-center flex-wrap">
+                <div className="flex gap-3 ">
                   {/* From Information */}
                   <div className="flex flex-col items-center">
                     <h1 className="font-bold">{datas.departure_airport.departure_time}</h1>
@@ -100,7 +100,7 @@ function FlightResult(props) {
                 </div>
 
                 {/* Price */}
-                <div className="flex flex-col items-end gap-1">
+                <div className="flex md:flex-col items-center flex-wrap gap-2 mt-5 md:mt-0">
                   <h1 className="text-lg w-fit font-bold ">{formatCurrency(datas.price)}</h1>
                   <form onSubmit={handleSubmit}>
                     <button onClick={() => handleClick(datas.id)} type="submit" className="lg:inline w-fit bg-primary text-white font-medium px-9 py-1 rounded-lg">

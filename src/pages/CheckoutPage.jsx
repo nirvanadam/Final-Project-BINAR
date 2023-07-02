@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import BioDataPenumpang from "../components/checkout/BioDataPenumpang";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import FlightDetail from "../components/search-result/FlightDetail";
 import CheckoutDetail from "../components/checkout/CheckoutDetail";
 import Payment from "../components/checkout/Payment";
@@ -73,12 +74,7 @@ function CheckoutPage() {
         {/* Left */}
         <div className="">
           {/* <BioDataPemesan /> */}
-          <BioDataPenumpang
-            id={id}
-            adults={adult}
-            kids={child}
-            setOrder={setOrder}
-          />
+          <BioDataPenumpang id={id} adults={adult} kids={child} setOrder={setOrder} />
           {/* <Payment /> */}
           {/* <SuccessPayment /> */}
         </div>
@@ -113,6 +109,8 @@ function CheckoutPage() {
         {/* Right End */}
       </div>
       {/* Content End */}
+
+      <Footer />
     </div>
   );
 }
