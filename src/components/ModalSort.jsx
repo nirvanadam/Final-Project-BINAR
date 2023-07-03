@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
-function ModalSort({ action }) {
+function ModalSort({ action, onDataSubmit, namaSort }) {
+  const [isSort, setIsSort] = useState();
+  const handleChange = (event) => {
+    setIsSort(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const [value, type] = isSort.split(" ");
+    const [data, v] = isSort.split("oke ");
+    namaSort(v);
+    onDataSubmit({
+      sort_by: value,
+      sort_type: type,
+    });
+
+    // console.log([value, type]);
+    action();
+  };
+
   return (
     // <Modal Start />
     <div className="fixed w-full h-[80%] bottom-0 z-50 bg-white sm:bg-slate-500 sm:bg-opacity-80 sm:h-screen sm:w-screen">
@@ -12,102 +31,178 @@ function ModalSort({ action }) {
           >
             x
           </button>
-          <form className="w-full flex items-center gap-2">
+          <form
+            onSubmit={handleSubmit}
+            className="w-full flex flex-col items-end gap-2"
+          >
             <div className="flex flex-col w-full">
               {/* <HargaTermurah Start/> */}
-              <div className="flex justify-between text-left my-2 pb-3 border-b-2 border-gray">
-                <label for="radio1" className="ml-2 text-[16px] text-black">
-                  <h1>Harga-Termurah</h1>
-                </label>
+              <div
+                className={`bg-transparent relative flex items-center w-full px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-300`}
+              >
                 <input
-                  className=""
-                  id="radio"
                   type="radio"
-                  value=""
-                  name="radio"
+                  value="price asc oke Termurah"
+                  onChange={handleChange}
+                  name="termurah"
+                  id=""
+                  className="absolute top-1/2 -translate-y-1/2 left-4 w-full h-[60px] opacity-0 cursor-pointer"
+                />
+                <div className="flex flex-col">
+                  <h1 className="font-bold">Harga-Termurah</h1>
+                </div>
+                <img
+                  src="/icons/check-icon.svg"
+                  alt=""
+                  className={`${
+                    isSort == "price asc oke Termurah" ? `visible` : `invisible`
+                  } absolute top-1/2 -translate-y-1/2 right-3 w-8`}
                 />
               </div>
               {/* <HargaTermurah End/> */}
 
               {/* <Durasi Start/> */}
-              <div className="flex justify-between text-left my-2 pb-3 border-b-2 border-gray">
-                <label for="radio" className="ml-2 text-[16px] text-black">
-                  <h1>Durasi-Terpendek</h1>
-                </label>
+              <div
+                className={`bg-transparent relative flex items-center w-full px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-300`}
+              >
                 <input
-                  className=""
-                  id="radio"
                   type="radio"
-                  value=""
-                  name="radio"
+                  value="flight_duration asc oke Durasi Terpendek"
+                  onChange={handleChange}
+                  name="termurah"
+                  id=""
+                  className="absolute top-1/2 -translate-y-1/2 left-4 w-full h-[60px] opacity-0 cursor-pointer"
+                />
+                <div className="flex flex-col">
+                  <h1 className="font-bold">Durasi-Terpendek</h1>
+                </div>
+                <img
+                  src="/icons/check-icon.svg"
+                  alt=""
+                  className={`${
+                    isSort == "flight_duration asc oke Durasi Terpendek"
+                      ? `visible`
+                      : `invisible`
+                  } absolute top-1/2 -translate-y-1/2 right-3 w-8`}
                 />
               </div>
               {/* <Durasi End/> */}
 
               {/* <Keberangkatan Awal Start/> */}
-              <div className="flex justify-between text-left my-2 pb-3 border-b-2 border-gray">
-                <label for="radio" className="ml-2 text-[16px] text-black">
-                  <h1>Keberangkatan-Paling Awal</h1>
-                </label>
+              <div
+                className={`bg-transparent relative flex items-center w-full px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-300`}
+              >
                 <input
-                  className=""
-                  id="radio"
                   type="radio"
-                  value=""
-                  name="radio"
+                  value="departure_time asc oke Keberangkatan Awal"
+                  onChange={handleChange}
+                  name="termurah"
+                  id=""
+                  className="absolute top-1/2 -translate-y-1/2 left-4 w-full h-[60px] opacity-0 cursor-pointer"
+                />
+                <div className="flex flex-col">
+                  <h1 className="font-bold">Keberangkatan-Paling Awal</h1>
+                </div>
+                <img
+                  src="/icons/check-icon.svg"
+                  alt=""
+                  className={`${
+                    isSort == "departure_time asc oke Keberangkatan Awal"
+                      ? `visible`
+                      : `invisible`
+                  } absolute top-1/2 -translate-y-1/2 right-3 w-8`}
                 />
               </div>
               {/* <Keberangkatan Awal End/> */}
 
               {/* <Keberangkatan Akhir Start/> */}
-              <div className="flex justify-between text-left my-2 pb-3 border-b-2 border-gray">
-                <label for="radio" className="ml-2 text-[16px] text-black">
-                  <h1>Keberangkatan-Paling Akhir</h1>
-                </label>
+              <div
+                className={`bg-transparent relative flex items-center w-full px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-300`}
+              >
                 <input
-                  className=""
-                  id="radio"
                   type="radio"
-                  value=""
-                  name="radio"
+                  value="departure_time desc oke Keberangkatan Akhir"
+                  onChange={handleChange}
+                  name="termurah"
+                  id=""
+                  className="absolute top-1/2 -translate-y-1/2 left-4 w-full h-[60px] opacity-0 cursor-pointer"
+                />
+                <div className="flex flex-col">
+                  <h1 className="font-bold">Keberangkatan-Paling Akhir</h1>
+                </div>
+                <img
+                  src="/icons/check-icon.svg"
+                  alt=""
+                  className={`${
+                    isSort == "departure_time desc oke Keberangkatan Akhir"
+                      ? `visible`
+                      : `invisible`
+                  } absolute top-1/2 -translate-y-1/2 right-3 w-8`}
                 />
               </div>
               {/* <Keberangkatan Akhir End/> */}
 
               {/* <Kedatangan Awal Start/> */}
-              <div className="flex justify-between text-left my-2 pb-3 border-b-2 border-gray">
-                <label for="radio" className="ml-2 text-[16px] text-black">
-                  <h1>Kedatangan-Paling Awal</h1>
-                </label>
+              <div
+                className={`bg-transparent relative flex items-center w-full px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-300`}
+              >
                 <input
-                  className=""
-                  id="radio"
                   type="radio"
-                  value=""
-                  name="radio"
+                  value="arrival_time asc oke Kedatangan Awal"
+                  onChange={handleChange}
+                  name="termurah"
+                  id=""
+                  className="absolute top-1/2 -translate-y-1/2 left-4 w-full h-[60px] opacity-0 cursor-pointer"
+                />
+                <div className="flex flex-col">
+                  <h1 className="font-bold">Kedatangan-Paling Awal</h1>
+                </div>
+                <img
+                  src="/icons/check-icon.svg"
+                  alt=""
+                  className={`${
+                    isSort == "arrival_time asc oke Kedatangan Awal"
+                      ? `visible`
+                      : `invisible`
+                  } absolute top-1/2 -translate-y-1/2 right-3 w-8`}
                 />
               </div>
               {/* <Kedatangan Awal End/> */}
 
               {/* <Kedatangan Akhir Start/> */}
-              <div className="flex justify-between text-left my-2 pb-3 border-b-2 border-gray">
-                <label for="radio" className="ml-2 text-[16px] text-black">
-                  <h1>Kedatangan-Paling Akhir</h1>
-                </label>
+              <div
+                className={`bg-transparent relative flex items-center w-full px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-300`}
+              >
                 <input
-                  className=""
-                  id="radio"
                   type="radio"
-                  value=""
-                  name="radio"
+                  value="arrival_time desc oke Kedatangan Akhir"
+                  onChange={handleChange}
+                  name="termurah"
+                  id=""
+                  className="absolute top-1/2 -translate-y-1/2 left-4 w-full h-[60px] opacity-0 cursor-pointer"
+                />
+                <div className="flex flex-col">
+                  <h1 className="font-bold">Kedatangan-Paling Akhir</h1>
+                </div>
+                <img
+                  src="/icons/check-icon.svg"
+                  alt=""
+                  className={`${
+                    isSort == "arrival_time desc oke Kedatangan Akhir"
+                      ? `visible`
+                      : `invisible`
+                  } absolute top-1/2 -translate-y-1/2 right-3 w-8`}
                 />
               </div>
               {/* <Kedatangan Akhir End/> */}
             </div>
+            <button
+              type="submit"
+              className="py-3 px-10 bg-black mb-4 text-white rounded-md"
+            >
+              Pilih
+            </button>
           </form>
-          <button className="py-3 px-10 bg-black mb-4 text-white rounded-md">
-            Pilih
-          </button>
         </div>
       </div>
     </div>

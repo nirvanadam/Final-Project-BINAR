@@ -44,31 +44,27 @@ function SearchResult() {
   //Use location
   const location = useLocation();
   const formData = location.state;
-  console.log(formData);
 
   const [date, setDate] = useState(formData.date);
 
-  // const [data, setData] = useState();
-  // const url = `https://finalproject-develop.up.railway.app/api/flight`;
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.post(url, formData);
-  //     console.log(response);
-  //     setData(response.data.data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+  const [sorting, setSorting] = useState({
+    sort_by: "",
+    sort_type: "",
+  });
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, [url]);
-
-  // console.log(data);
+  const [namaSort, setNamaSort] = useState();
+  console.log(namaSort);
+  // const [setName, isSetName] = useState();
 
   return (
     <>
-      {isOpenSort ? <ModalSort action={handleCloseSort} /> : null}
+      {isOpenSort ? (
+        <ModalSort
+          action={handleCloseSort}
+          onDataSubmit={setSorting}
+          namaSort={setNamaSort}
+        />
+      ) : null}
       <div className="font-quickSand overflow-hidden">
         {/* Navbar */}
         <div className="hidden lg:block">
@@ -78,7 +74,9 @@ function SearchResult() {
 
         {/* Header */}
         <div className="lg:mt-12 lg:mx-36">
-          <h1 className="hidden lg:block text-xl font-bold mb-8">Pilih Penerbangan</h1>
+          <h1 className="hidden lg:block text-xl font-bold mb-8">
+            Pilih Penerbangan
+          </h1>
 
           {/* Container Info Destination & Ubah Pencarian Button */}
           <div className="flex gap-3">
@@ -91,14 +89,26 @@ function SearchResult() {
 
                 <div className="flex flex-col md:flex-row md:gap-5">
                   <div className="flex gap-2">
-                    <h1 className=" text-white font-bold">{formData.departure_airport}</h1>
-                    <img src="/icons/navigate_next_icon.svg" alt="" className="invert w-5" />
-                    <h1 className=" text-white font-bold">{formData.arrival_airport}</h1>
+                    <h1 className=" text-white font-bold">
+                      {formData.departure_airport}
+                    </h1>
+                    <img
+                      src="/icons/navigate_next_icon.svg"
+                      alt=""
+                      className="invert w-5"
+                    />
+                    <h1 className=" text-white font-bold">
+                      {formData.arrival_airport}
+                    </h1>
                   </div>
 
                   <div className="flex items-center gap-1">
-                    <h1 className=" text-white font-medium">{formData.passenger} Penumpang</h1>
-                    <h1 className=" text-white font-medium">- {formData.seat_type}</h1>
+                    <h1 className=" text-white font-medium">
+                      {formData.passenger} Penumpang
+                    </h1>
+                    <h1 className=" text-white font-medium">
+                      - {formData.seat_type}
+                    </h1>
                   </div>
                 </div>
               </div>
@@ -106,7 +116,10 @@ function SearchResult() {
             {/* Info Destination End */}
 
             {/* Ubah Pencarian Button */}
-            <Link to={"/"} className="hidden lg:flex justify-center items-center basis-1/4  bg-secondary rounded-xl font-bold">
+            <Link
+              to={"/"}
+              className="hidden lg:flex justify-center items-center basis-1/4  bg-secondary rounded-xl font-bold"
+            >
               Ubah Pencarian
             </Link>
             {/* Ubah Pencarian Button End */}
@@ -117,10 +130,18 @@ function SearchResult() {
           <div className="overflow-auto flex gap-3 divide-x divide-gray-300 lg:mt-3 py-3 px-2 border-b border-gray-300">
             <form className="flex gap-2">
               {dates.map((date) => (
-                <button type="submit" className="flex justify-center items-center px-4 py-1 bg-primary rounded-lg" key={date.getTime()}>
+                <button
+                  type="submit"
+                  className="flex justify-center items-center px-4 py-1 bg-primary rounded-lg"
+                  key={date.getTime()}
+                >
                   <div className="flex flex-col justify-center items-center px-3">
-                    <h1 className="text-white font-bold">{getNamaHari(date)}</h1>
-                    <h1 className="text-sm font-medium text-gray-400">{getTanggalFormat(date)}</h1>
+                    <h1 className="text-white font-bold">
+                      {getNamaHari(date)}
+                    </h1>
+                    <h1 className="text-sm font-medium text-gray-400">
+                      {getTanggalFormat(date)}
+                    </h1>
                   </div>
                 </button>
               ))}
@@ -140,9 +161,14 @@ function SearchResult() {
           {/* Filter Button End */}
 
           {/* Sort Button [Mobile]*/}
-          <button onClick={handleSort} className="flex lg:ml-auto items-center gap-2 py-1 lg:py-2 px-2 lg:px-3 border border-gray-300 rounded-full">
+          <button
+            onClick={handleSort}
+            className="flex lg:ml-auto items-center gap-2 py-1 lg:py-2 px-2 lg:px-3 border border-gray-300 rounded-full"
+          >
             <img src="/icons/sort_icon.svg" alt="" className="w-5" />
-            <h1 className="text-sm font-semibold">Termurah</h1>
+            <h1 className="text-sm font-semibold">
+              {namaSort ? namaSort : "Sort By"}
+            </h1>
           </button>
           {/* Sort Button End [Mobile]*/}
         </div>
@@ -157,30 +183,54 @@ function SearchResult() {
               {/* Transit Filter Button */}
               <button className="flex justify-between py-4 px-1">
                 <div className="flex gap-2 items-center">
-                  <img src="/icons/map_icon.svg" alt="" className="w-6 opacity-60" />
+                  <img
+                    src="/icons/map_icon.svg"
+                    alt=""
+                    className="w-6 opacity-60"
+                  />
                   <h1 className="font-semibold">Transit</h1>
                 </div>
-                <img src="/icons/navigate_next_icon.svg" alt="" className="w-6 opacity-50" />
+                <img
+                  src="/icons/navigate_next_icon.svg"
+                  alt=""
+                  className="w-6 opacity-50"
+                />
               </button>
               {/* Transit Filter Button End */}
 
               {/* Fasilitas Filter Button */}
               <button className="flex justify-between py-4 px-1">
                 <div className="flex gap-2 items-center">
-                  <img src="/icons/building_icon.svg" alt="" className="w-6 opacity-60" />
+                  <img
+                    src="/icons/building_icon.svg"
+                    alt=""
+                    className="w-6 opacity-60"
+                  />
                   <h1 className="font-semibold">Fasilitas</h1>
                 </div>
-                <img src="/icons/navigate_next_icon.svg" alt="" className="w-6 opacity-60" />
+                <img
+                  src="/icons/navigate_next_icon.svg"
+                  alt=""
+                  className="w-6 opacity-60"
+                />
               </button>
               {/* Fasilitas Filter Button End */}
 
               {/* Harga Filter Button */}
               <button className="flex justify-between py-4 px-1">
                 <div className="flex gap-2 items-center">
-                  <img src="/icons/price_icon.svg" alt="" className="w-6 opacity-60" />
+                  <img
+                    src="/icons/price_icon.svg"
+                    alt=""
+                    className="w-6 opacity-60"
+                  />
                   <h1 className="font-semibold">Harga</h1>
                 </div>
-                <img src="/icons/navigate_next_icon.svg" alt="" className="w-6 opacity-60" />
+                <img
+                  src="/icons/navigate_next_icon.svg"
+                  alt=""
+                  className="w-6 opacity-60"
+                />
               </button>
               {/* Harga Filter Button End */}
             </div>
@@ -188,7 +238,7 @@ function SearchResult() {
           {/* Filter Container End */}
 
           {/* Content */}
-          <FlightResult formData={formData} />
+          <FlightResult formData={formData} sorting={sorting} />
           {/* <ResultNotFound /> */}
           {/* Content End */}
         </div>
