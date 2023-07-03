@@ -39,6 +39,7 @@ function DetailAccount() {
           </div>
         </Link>
       </div>
+
       {/* content  */}
       <div className="flex lg:grid grid-cols-[1fr,4fr] lg:mb-10 flex-col mx-7 md:mx-12 lg:mx-40 gap-12">
         {/* option */}
@@ -75,6 +76,7 @@ function DetailAccount() {
           <h1 className="text-center font-medium text-gray-400">Version 1.1.0</h1>
         </div>
         {/* option end  */}
+
         {/* form edit account */}
         <div className="">
           <EditAccount dataForm={dataForm} />
