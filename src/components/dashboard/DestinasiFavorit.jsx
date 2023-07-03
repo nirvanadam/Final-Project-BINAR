@@ -146,7 +146,7 @@ function DestinasiFavorit() {
       </div>
       {/* Filter Button End */}
 
-      <div className="mt-5 lg:mt-10 lg:flex lg:flex-wrap justify-between lg:gap-5 overflow-auto lg:whitespace-normal touch-auto w-[110%] lg:w-full lg:h-full">{region === "Semua" ? DestinasiCard() : FilteredCard()}</div>
+      <div className="mt-5 lg:mt-10 flex flex-wrap justify-between lg:gap-5 overflow-auto lg:whitespace-normal touch-auto w-full lg:h-full">{region === "Semua" ? DestinasiCard() : FilteredCard()}</div>
     </div>
   );
 }

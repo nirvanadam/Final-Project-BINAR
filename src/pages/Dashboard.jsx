@@ -131,7 +131,7 @@ function Dashboard() {
 
       {/* {isOpenFrom && <ModalFrom onDataSubmit={handleDataSubmit} />} */}
 
-      <div className="font-quickSand overflow-hidden">
+      <div className="font-quickSand overflow-hidden bg-zinc-100">
         {/* Navbar */}
         <Navbar />
         {/* Navbar End */}

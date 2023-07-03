@@ -44,7 +44,7 @@ function EditAccount(props) {
   };
 
   return (
-    <div className="hidden lg:block border border-gray-200 shadow-md rounded-lg py-5 px-4">
+    <div className="lg:block border border-gray-200 shadow-md rounded-lg py-5 px-4">
       <h1 className="text-xl font-bold mb-4">Ubah Data Profile</h1>
       <form onSubmit={handleFormSubmit} className="relative overflow-hidden rounded-xl p-4">
         <h1 className="absolute top-0 w-full left-0 right-0 px-4 py-2 bg-primary text-white">Data Diri</h1>
