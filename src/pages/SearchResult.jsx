@@ -37,15 +37,25 @@ function SearchResult() {
 
   function getTanggalFormat(date) {
     const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-    return new Intl.DateTimeFormat("id-ID", options).format(date);
+    const formattedDate = new Intl.DateTimeFormat("id-ID", options).format(
+      date
+    );
+
+    // Memisahkan hari, bulan, dan tahun
+    const [day, month, year] = formattedDate.split("/");
+
+    // Menggabungkan kembali dengan tanda strip
+    return `${day}-${month}-${year}`;
   }
   // Hari , Tanggal , Bulan , Tahun
 
   //Use location
   const location = useLocation();
-  const formData = location.state;
+  let formData = location.state;
 
   const [date, setDate] = useState(formData.date);
+  formData.date = date;
+  console.log(date);
 
   const [sorting, setSorting] = useState({
     sort_by: "",
@@ -53,7 +63,7 @@ function SearchResult() {
   });
 
   const [namaSort, setNamaSort] = useState();
-  console.log(namaSort);
+
   // const [setName, isSetName] = useState();
 
   return (
@@ -131,9 +141,10 @@ function SearchResult() {
             <form className="flex gap-2">
               {dates.map((date) => (
                 <button
-                  type="submit"
                   className="flex justify-center items-center px-4 py-1 bg-primary rounded-lg"
                   key={date.getTime()}
+                  value={getTanggalFormat(date)}
+                  onClick={() => setDate(getTanggalFormat(date))}
                 >
                   <div className="flex flex-col justify-center items-center px-3">
                     <h1 className="text-white font-bold">
@@ -238,7 +249,11 @@ function SearchResult() {
           {/* Filter Container End */}
 
           {/* Content */}
-          <FlightResult formData={formData} sorting={sorting} />
+          <FlightResult
+            formData={formData}
+            sorting={sorting}
+            date={formData.date}
+          />
           {/* <ResultNotFound /> */}
           {/* Content End */}
         </div>

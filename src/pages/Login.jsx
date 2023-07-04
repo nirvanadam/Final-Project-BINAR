@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import GoogleLoginButton from "../components/GoogleLoginButton";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
   const [showStatus, setShowStatus] = useState(false);
@@ -18,19 +20,23 @@ function Login() {
 
   const navigate = useNavigate();
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    const dataForm = {
-      email,
-      password,
-    };
+    try {
+      event.preventDefault();
+      const dataForm = {
+        email,
+        password,
+      };
 
-    const response = await axios.post(
-      "https://finalproject-develop.up.railway.app/auth/login",
-      dataForm
-    );
-    axios.defaults.headers.common["authorization"] = response.data.data;
-    Cookies.set("token", response.data.data, { expires: 30 });
-    navigate(`/`);
+      const response = await axios.post(
+        "https://finalproject-develop.up.railway.app/auth/login",
+        dataForm
+      );
+      axios.defaults.headers.common["authorization"] = response.data.data;
+      Cookies.set("token", response.data.data, { expires: 30 });
+      navigate(`/`);
+    } catch (error) {
+      toast.error("Email or Password is not valid");
+    }
   };
 
   // const handleSubmitGoogle = async (event) => {
@@ -157,6 +163,7 @@ function Login() {
         </p>
       </div>
       {/* Right End */}
+      <ToastContainer />
     </div>
   );
 }
