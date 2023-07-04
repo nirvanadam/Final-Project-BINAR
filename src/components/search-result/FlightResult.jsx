@@ -7,7 +7,7 @@ import Loading from "./Loading";
 import Cookies from "js-cookie";
 
 function FlightResult(props) {
-  const { formData, sorting } = props;
+  const { formData, sorting, date } = props;
   const [detailBtnSts, setDetailBtnSts] = useState(false);
 
   const detailButton = (index) => {
@@ -16,6 +16,13 @@ function FlightResult(props) {
       [index]: !prevState[index],
     }));
   };
+
+  // const [currentFormData, setCurrentFormData] = useState(formData);
+
+  // useEffect(() => {
+  //   setCurrentFormData(formData);
+  // }, [formData]);
+  // console.log(currentFormData);
 
   let url = `https://finalproject-develop.up.railway.app/flight/search`;
   const [data, setData] = useState();
@@ -34,7 +41,7 @@ function FlightResult(props) {
 
   useEffect(() => {
     fetchData();
-  }, [sorting]);
+  }, [sorting, formData]);
 
   function formatCurrency(amount) {
     const formatter = new Intl.NumberFormat("id-ID", {

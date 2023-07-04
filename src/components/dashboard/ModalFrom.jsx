@@ -17,7 +17,7 @@ function ModalFrom({ close, onDataSubmit }) {
   // Fetch API Logic
   const [data, setData] = useState(null);
 
-  const url = "https://finalproject-develop.up.railway.app/airport";
+  const url = `https://finalproject-develop.up.railway.app/airport`;
 
   const fetchData = async () => {
     try {
@@ -44,10 +44,23 @@ function ModalFrom({ close, onDataSubmit }) {
           <button onClick={close} className="absolute top-3 right-5 ">
             <img src="/icons/close-icon.svg" alt="" className="w-5" />
           </button>
-          <form onSubmit={handleSubmit} className="w-full flex flex-col gap-2 my-5">
-            {data && <Select options={data} value={data.value} onChange={handleChange} placeholder="Pilih Kota" />}
+          <form
+            onSubmit={handleSubmit}
+            className="w-full flex flex-col gap-2 my-5"
+          >
+            {data && (
+              <Select
+                options={data}
+                value={data.value}
+                onChange={handleChange}
+                placeholder="Pilih Kota"
+              />
+            )}
 
-            <button type="submit" className="w-full mt-5 py-3 px-10 bg-primary mb-4 text-white rounded-md">
+            <button
+              type="submit"
+              className="w-full mt-5 py-3 px-10 bg-primary mb-4 text-white rounded-md"
+            >
               Submit
             </button>
           </form>
