@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import axios from "axios";
+import "animate.css";
 
 function ModalTo({ action, onDataSubmit }) {
   const [inputValue, SetInputValueTo] = useState();
@@ -44,9 +45,9 @@ function ModalTo({ action, onDataSubmit }) {
 
   return (
     // ToModal
-    <div className="fixed w-full h-[80%] bottom-0 z-50 bg-white sm:bg-slate-500 sm:bg-opacity-80 sm:h-screen sm:w-screen">
+    <div className="fixed w-full h-[80%] bottom-0 z-50 bg-black sm:bg-opacity-60 sm:h-screen sm:w-screen">
       <div className="flex w-full h-full sm:justify-center sm:items-center">
-        <div className="relative w-full sm:w-1/3 sm:bg-white sm:rounded-md flex flex-col px-5 pt-8 gap-8">
+        <div className="relative w-full sm:w-1/3 sm:bg-white sm:rounded-md flex flex-col px-5 pt-8 gap-8 animate__animated animate__fadeInUp">
           <button onClick={action} className="absolute top-3 right-5 text-[28px] font-semibold">
             <img src="/icons/close-icon.svg" alt="" className="w-5" />
           </button>

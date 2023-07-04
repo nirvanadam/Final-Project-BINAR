@@ -5,12 +5,10 @@ function DestinasiFavorit() {
   // Destinasi Favorit Logic
   const dataDestinasi = [
     { id: 1, name: "Jakarta", region: "Asia", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?old&norway", price: "3.650.000" },
-    { id: 2, name: "New York", region: "Amerika", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?landmark&america", price: "2.650.000" },
-    { id: 3, name: "Sydney", region: "Australia", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?landmark&australia", price: "3.650.000" },
-    { id: 4, name: "Paris", region: "Eropa", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?landmark&europe", price: "2.650.000" },
-    { id: 5, name: "Cape Town", to: "Sydney", region: "Afrika", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?landmark&africa", price: "3.450.000" },
-    { id: 6, name: "Cape Town", to: "Sydney", region: "Afrika", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?landmark&africa", price: "3.450.000" },
-    // Tambahkan destinasi lainnya di sini
+    { id: 2, name: "Jakarta", region: "Asia", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?old&norway", price: "3.650.000" },
+    { id: 3, name: "Jakarta", region: "Asia", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?old&norway", price: "3.650.000" },
+    { id: 4, name: "Jakarta", region: "Asia", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?old&norway", price: "3.650.000" },
+    { id: 5, name: "Jakarta", region: "Asia", maskapai: "AirAsia", foto: "https://source.unsplash.com/1600x900/?old&norway", price: "3.650.000" },
   ];
 
   const [region, setRegion] = useState("Semua");
@@ -33,7 +31,7 @@ function DestinasiFavorit() {
         //     </h1>
         //   </div>
         // </Link>
-        <div className="bg-zinc-100 relative inline-flex flex-col w-[31%] lg:mt-3 lg:mr-0 overflow-hidden group rounded-xl  shadow-md cursor-default transition-all hover:-translate-y-3">
+        <div className="bg-zinc-100 relative inline-flex flex-col lg:mt-3 mr-5 lg:mr-0 overflow-hidden group rounded-xl  shadow-md cursor-default transition-all hover:-translate-y-3 whitespace-normal	">
           <div className="overflow-hidden relative h-[200px] before:content-[''] before:absolute before:top-0 before:bottom-0 before:left-0 before:right-0 before:bg-gradient-to-t from-black from-5% before:z-10">
             <img src={destinasi.foto} alt="" className="absolute transition-all duration-300 group-hover:scale-125" />
             <div className="absolute bottom-3 left-3 z-20 flex flex-col gap-1">
@@ -146,7 +144,9 @@ function DestinasiFavorit() {
       </div>
       {/* Filter Button End */}
 
-      <div className="mt-5 lg:mt-10 flex flex-wrap justify-between lg:gap-5 overflow-auto lg:whitespace-normal touch-auto w-full lg:h-full">{region === "Semua" ? DestinasiCard() : FilteredCard()}</div>
+      {/* <div className="mt-5 lg:mt-10 flex lg:flex-wrap justify-between lg:gap-5 overflow-auto whitespace-nowrap lg:whitespace-normal touch-auto w-[110%] lg:w-full lg:h-full">{region === "Semua" ? DestinasiCard() : FilteredCard()}</div> */}
+
+      <div className="whitespace-nowrap lg:whitespace-normal lg:grid grid-cols-3 gap-5 overflow-scroll mt-5 py-5">{region === "Semua" ? DestinasiCard() : FilteredCard()}</div>
     </div>
   );
 }

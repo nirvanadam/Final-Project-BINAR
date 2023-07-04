@@ -8,6 +8,7 @@ import NavbarMobile from "../components/NavbarMobile";
 import DestinasiFavorit from "../components/dashboard/DestinasiFavorit";
 import { useNavigate, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
+import "animate.css";
 
 function Dashboard() {
   // {ModalFrom}
@@ -150,7 +151,7 @@ function Dashboard() {
 
         {/* Main Form */}
         <div className="-translate-y-24 lg:-translate-y-24 ">
-          <form onSubmit={handleSubmitForm} action="" className="relative flex flex-col bg-white mx-4 md:mx-8 lg:mx-48 px-3 lg:px-7 py-5 rounded-lg border shadow-md">
+          <form onSubmit={handleSubmitForm} action="" className="relative flex flex-col bg-white mx-4 md:mx-8 lg:mx-48 px-3 lg:px-7 py-5 rounded-lg shadow-md animate__animated animate__fadeInUp">
             <h1 className="hidden lg:block text-lg font-bold mb-6">
               Pilih Jadwal Penerbangan Spesial di <span className="text-secondary">QuickTix!</span>
             </h1>
@@ -219,7 +220,7 @@ function Dashboard() {
 
                 {/* Return */}
                 {displayReturnDate && (
-                  <div className="lg:relative grid grid-cols-[35px,1fr] gap-5 ">
+                  <div className="lg:relative grid grid-cols-[35px,1fr] gap-5 animate__animated animate__fadeInDown">
                     <div className="flex flex-col lg:flex-row gap-1 items-start lg:items-center">
                       <h1 className="lg:absolute -top-4 left-14 text-slate-400 text-sm font-bold lg:order-last">Return</h1>
                       <img src="/icons/date_icon.svg" alt="" className="w-[30px] opacity-50" />

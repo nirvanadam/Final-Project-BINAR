@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "animate.css";
 
 function ModalPassenger({ action, onDataSubmit, onDataCategory }) {
   const [totalPassanger, setTotalPassanger] = useState({
@@ -91,9 +92,9 @@ function ModalPassenger({ action, onDataSubmit, onDataCategory }) {
 
   // Submit Logic End
   return (
-    <div className="fixed w-full h-[80%] bottom-0 z-50 bg-white sm:bg-slate-500 sm:bg-opacity-80 sm:h-screen sm:w-screen">
+    <div className="fixed w-full h-[80%] bottom-0 z-50 bg-black sm:bg-opacity-60 sm:h-screen sm:w-screen">
       <div className="flex w-full h-full sm:justify-center sm:items-center">
-        <div className="w-full sm:w-1/3 sm:bg-white sm:rounded-xl flex flex-col px-5 py-6  gap-4  items-end ">
+        <div className="w-full sm:w-1/3 sm:bg-white sm:rounded-xl flex flex-col px-5 py-6  gap-4 items-end animate__animated animate__fadeInUp">
           <button onClick={action} className="">
             <img src="/icons/close-icon.svg" alt="" className="w-5" />
           </button>
@@ -104,33 +105,12 @@ function ModalPassenger({ action, onDataSubmit, onDataCategory }) {
                 <h1 className="font-semibold ml-5">Dewasa</h1>
               </div>
               <div className="flex justify-between gap-3 items-center">
-                <button
-                  onClick={reduceAdult}
-                  type="button"
-                  className="bg-primary rounded-lg p-2 transition-all active:scale-90"
-                >
-                  <img
-                    src="/icons/minus-icon.svg"
-                    alt=""
-                    className="w-6 invert "
-                  />
+                <button onClick={reduceAdult} type="button" className="bg-primary rounded-lg p-2 transition-all active:scale-90">
+                  <img src="/icons/minus-icon.svg" alt="" className="w-6 invert " />
                 </button>
-                <input
-                  type="text"
-                  value={totalAdult}
-                  onChange={handleChangeAdult}
-                  className="p-2 w-[60px] border-2 border-gray-300 rounded-lg outline-none text-center font-medium"
-                />
-                <button
-                  onClick={addAdult}
-                  type="button"
-                  className="bg-primary rounded-lg p-2 transition-all active:scale-90"
-                >
-                  <img
-                    src="/icons/plus-icon.svg"
-                    alt=""
-                    className="w-6 invert"
-                  />
+                <input type="text" value={totalAdult} onChange={handleChangeAdult} className="p-2 w-[60px] border-2 border-gray-300 rounded-lg outline-none text-center font-medium" />
+                <button onClick={addAdult} type="button" className="bg-primary rounded-lg p-2 transition-all active:scale-90">
+                  <img src="/icons/plus-icon.svg" alt="" className="w-6 invert" />
                 </button>
               </div>
             </div>
@@ -141,33 +121,12 @@ function ModalPassenger({ action, onDataSubmit, onDataCategory }) {
                 <h1 className="font-semibold ml-5">Anak</h1>
               </div>
               <div className="flex justify-between gap-3 items-center">
-                <button
-                  type="button"
-                  onClick={reduceKid}
-                  className="bg-primary rounded-lg p-2 transition-all active:scale-90"
-                >
-                  <img
-                    src="/icons/minus-icon.svg"
-                    alt=""
-                    className="w-6 invert"
-                  />
+                <button type="button" onClick={reduceKid} className="bg-primary rounded-lg p-2 transition-all active:scale-90">
+                  <img src="/icons/minus-icon.svg" alt="" className="w-6 invert" />
                 </button>
-                <input
-                  type="text"
-                  value={totalKid}
-                  onChange={handleChangeKid}
-                  className="p-2 w-[60px] border-2 border-gray-300 rounded-lg outline-none text-center font-medium"
-                />
-                <button
-                  type="button"
-                  onClick={addKid}
-                  className="bg-primary rounded-lg p-2 transition-all active:scale-90"
-                >
-                  <img
-                    src="/icons/plus-icon.svg"
-                    alt=""
-                    className="w-6 invert"
-                  />
+                <input type="text" value={totalKid} onChange={handleChangeKid} className="p-2 w-[60px] border-2 border-gray-300 rounded-lg outline-none text-center font-medium" />
+                <button type="button" onClick={addKid} className="bg-primary rounded-lg p-2 transition-all active:scale-90">
+                  <img src="/icons/plus-icon.svg" alt="" className="w-6 invert" />
                 </button>
               </div>
             </div>
@@ -177,40 +136,16 @@ function ModalPassenger({ action, onDataSubmit, onDataCategory }) {
                 <h1 className="font-semibold ml-5">Bayi</h1>
               </div>
               <div className="flex justify-between gap-3 items-center">
-                <button
-                  type="button"
-                  onClick={reduceBaby}
-                  className="bg-primary rounded-lg p-2 transition-all active:scale-90"
-                >
-                  <img
-                    src="/icons/minus-icon.svg"
-                    alt=""
-                    className="w-6 invert"
-                  />
+                <button type="button" onClick={reduceBaby} className="bg-primary rounded-lg p-2 transition-all active:scale-90">
+                  <img src="/icons/minus-icon.svg" alt="" className="w-6 invert" />
                 </button>
-                <input
-                  value={totalBaby}
-                  onChange={handleChangeBaby}
-                  type="text"
-                  className="p-2 w-[60px] border-2 border-gray-300 rounded-lg outline-none text-center font-medium"
-                />
-                <button
-                  type="button"
-                  onClick={addBaby}
-                  className="bg-primary rounded-lg p-2 transition-all active:scale-90"
-                >
-                  <img
-                    src="/icons/plus-icon.svg"
-                    alt=""
-                    className="w-6 invert"
-                  />
+                <input value={totalBaby} onChange={handleChangeBaby} type="text" className="p-2 w-[60px] border-2 border-gray-300 rounded-lg outline-none text-center font-medium" />
+                <button type="button" onClick={addBaby} className="bg-primary rounded-lg p-2 transition-all active:scale-90">
+                  <img src="/icons/plus-icon.svg" alt="" className="w-6 invert" />
                 </button>
               </div>
             </div>
-            <button
-              type="submit"
-              className="py-3 bg-primary my-4 text-white rounded-lg"
-            >
+            <button type="submit" className="py-3 bg-primary my-4 text-white rounded-lg">
               Simpan
             </button>
           </form>
