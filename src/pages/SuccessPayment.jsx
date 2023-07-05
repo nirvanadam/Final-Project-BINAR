@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import { Link, useLocation } from "react-router-dom";
+import Footer from "../components/Footer";
 
 function SuccessPayment() {
   const location = useLocation();
