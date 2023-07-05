@@ -23,7 +23,7 @@ function RiwayatPesanan() {
   };
 
   const [data, setData] = useState();
-  const url = "https://finalproject-develop.up.railway.app/order";
+  const url = `${import.meta.env.VITE_REACT_APP_API}/order`;
   const fetchData = async () => {
     try {
       axios.defaults.headers.common["authorization"] = Cookies.get("token");

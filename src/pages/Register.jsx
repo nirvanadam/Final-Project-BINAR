@@ -41,7 +41,7 @@ function Register() {
         confirmpassword,
       };
       const response = await axios.post(
-        "https://finalproject-develop.up.railway.app/auth/register",
+        `${import.meta.env.VITE_REACT_APP_API}/auth/register`,
         dataForm
       );
       navigate(`/otpinput`, { state: response.data.data });

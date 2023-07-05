@@ -23,8 +23,8 @@ function ModalTo({ action, onDataSubmit }) {
   // Fetch API Logic
   const [data, setData] = useState(null);
 
-  const url = "https://0207-143-198-212-220.ngrok-free.app/airport";
 
+  const url = `${import.meta.env.VITE_REACT_APP_API}/airport`;
   const fetchData = async () => {
     try {
       const response = await axios.get(url);

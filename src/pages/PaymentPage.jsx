@@ -12,7 +12,7 @@ function PaymentPage() {
   const order_id = +location.state;
 
   const [data, setData] = useState();
-  const url = `https://finalproject-develop.up.railway.app/order/one/${order_id}`;
+  const url = `${import.meta.env.VITE_REACT_APP_API}/order/one/${order_id}`;
   let response;
   const fetchData = async () => {
     try {

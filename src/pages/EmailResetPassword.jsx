@@ -7,7 +7,10 @@ function EmailResetPassword() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await axios.post("https://finalproject-develop.up.railway.app/forgotpassword", { email });
+    const response = await axios.post(
+      `${import.meta.env.VITE_REACT_APP_API}/forgotpassword`,
+      { email }
+    );
     setData(response.data.message);
   };
 
@@ -29,7 +32,11 @@ function EmailResetPassword() {
         <form onSubmit={handleSubmit} className="flex flex-col">
           {/* Email Input */}
           <div className="relative w-full flex items-center mb-4">
-            <img src="/icons/email_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
+            <img
+              src="/icons/email_icon.svg"
+              alt=""
+              className="absolute left-3 w-[20px] opacity-50"
+            />
             <input
               type="email"
               name=""
@@ -43,7 +50,10 @@ function EmailResetPassword() {
           {/* Email Input End*/}
 
           {/* Button Submit */}
-          <button type="submit" className="mt-6 bg-primary py-3 rounded-xl text-white text-sm font-medium">
+          <button
+            type="submit"
+            className="mt-6 bg-primary py-3 rounded-xl text-white text-sm font-medium"
+          >
             Verify
           </button>
           {/* Button Submit End */}

@@ -21,7 +21,10 @@ function CheckoutPage() {
 
   const [data, setData] = useState();
 
-  const url = `https://0207-143-198-212-220.ngrok-free.app/flight/price/${id}?adult=${adult}&child=${child}`;
+
+  const url = `${
+    import.meta.env.VITE_REACT_APP_API
+  }/flight/price/${id}?adult=${adult}&child=${child}`;
   let response;
   const fetchData = async () => {
     try {
@@ -74,7 +77,12 @@ function CheckoutPage() {
         {/* Left */}
         <div className="">
           {/* <BioDataPemesan /> */}
-          <BioDataPenumpang id={id} adults={adult} kids={child} setOrder={setOrder} />
+          <BioDataPenumpang
+            id={id}
+            adults={adult}
+            kids={child}
+            setOrder={setOrder}
+          />
           {/* <Payment /> */}
           {/* <SuccessPayment /> */}
         </div>

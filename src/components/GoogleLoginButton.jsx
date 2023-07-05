@@ -6,36 +6,35 @@ import Cookies from "js-cookie";
 
 function GoogleLoginButton() {
   const registerLoginWithGoogleAction = async (accessToken) => {
-    // try {
-    let data = JSON.stringify({
-      access_token: accessToken,
-    });
 
-    console.log(data);
+    try {
+      let data = JSON.stringify({
+        access_token: accessToken,
+      });
 
-    let config = {
-      method: "post",
-      maxBodyLength: Infinity,
-      url: `https://0207-143-198-212-220.ngrok-free.app/auth/login/google`,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
+      let config = {
+        method: "get",
+        maxBodyLength: Infinity,
+        url: `${import.meta.env.VITE_REACT_APP_API}/auth/login/google`,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: data,
+      };
 
-    // const response = await axios.request(config);
-    // const { token } = response.data.data;
+      const response = await axios.request(config);
+      const { token } = response.data.data;
 
-    //   Cookies.set("token", token);
+      Cookies.set("token", token);
 
-    //   window.location.href = "/";
-    // } catch (error) {
-    //   if (axios.isAxiosError(error)) {
-    //     toast.error(error);
-    //     return;
-    //   }
-    //   toast.error(error.message);
-    // }
+      window.location.href = "/";
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error);
+        return;
+      }
+      toast.error(error.message);
+    }
   };
 
   const loginWithGoogle = useGoogleLogin({

@@ -23,7 +23,7 @@ function EditAccount(props) {
     setEmail(event.target.value);
   };
 
-  const url = `https://finalproject-develop.up.railway.app/user/update`;
+  const url = `${import.meta.env.VITE_REACT_APP_API}/user/update`;
   const handleFormSubmit = (event) => {
     event.preventDefault();
     axios.defaults.headers.common["authorization"] = Cookies.get("token");
@@ -46,8 +46,13 @@ function EditAccount(props) {
   return (
     <div className="lg:block border border-gray-200 shadow-md rounded-lg py-5 px-4">
       <h1 className="text-xl font-bold mb-4">Ubah Data Profile</h1>
-      <form onSubmit={handleFormSubmit} className="relative overflow-hidden rounded-xl p-4">
-        <h1 className="absolute top-0 w-full left-0 right-0 px-4 py-2 bg-primary text-white">Data Diri</h1>
+      <form
+        onSubmit={handleFormSubmit}
+        className="relative overflow-hidden rounded-xl p-4"
+      >
+        <h1 className="absolute top-0 w-full left-0 right-0 px-4 py-2 bg-primary text-white">
+          Data Diri
+        </h1>
         <div className="flex flex-col gap-1 mt-10">
           <label className="font-bold" htmlFor="">
             Nama Lengkap
@@ -81,7 +86,10 @@ function EditAccount(props) {
             type="text"
           />
         </div>
-        <button type="submit" className="py-3 px-11 rounded-xl bg-primary text-white font-medium mx-auto block mt-8">
+        <button
+          type="submit"
+          className="py-3 px-11 rounded-xl bg-primary text-white font-medium mx-auto block mt-8"
+        >
           Simpan
         </button>
       </form>

@@ -28,7 +28,10 @@ function ResetPassword() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await axios.post(`https://finalproject-develop.up.railway.app/resetpassword?token=${token}`, { new_password: password, confirm_new_password: newPassword });
+    const response = await axios.post(
+      `${import.meta.env.VITE_REACT_APP_API}/resetpassword?token=${token}`,
+      { new_password: password, confirm_new_password: newPassword }
+    );
     setData(response.data.message);
     window.location.href = "/login";
   };
@@ -51,7 +54,11 @@ function ResetPassword() {
         <form onSubmit={handleSubmit} className="flex flex-col">
           {/* Password Input*/}
           <div className="relative flex items-center mb-4">
-            <img src="/icons/password_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
+            <img
+              src="/icons/password_icon.svg"
+              alt=""
+              className="absolute left-3 w-[20px] opacity-50"
+            />
             <input
               type={showStatus ? "text" : "password"}
               name=""
@@ -62,15 +69,31 @@ function ResetPassword() {
               className="px-10 py-2 w-full border border-slate-400 rounded-xl font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             />
 
-            <button type="button" onClick={togglePassword} className="absolute right-3">
-              <img src={showStatus ? "/icons/show_password_off_icon.svg" : "/icons/show_password_icon.svg"} alt="" className="w-[20px] opacity-50" />
+            <button
+              type="button"
+              onClick={togglePassword}
+              className="absolute right-3"
+            >
+              <img
+                src={
+                  showStatus
+                    ? "/icons/show_password_off_icon.svg"
+                    : "/icons/show_password_icon.svg"
+                }
+                alt=""
+                className="w-[20px] opacity-50"
+              />
             </button>
           </div>
           {/* Password Input End */}
 
           {/* New Password Input*/}
           <div className="relative flex items-center">
-            <img src="/icons/password_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
+            <img
+              src="/icons/password_icon.svg"
+              alt=""
+              className="absolute left-3 w-[20px] opacity-50"
+            />
             <input
               type={showStatusNew ? "text" : "password"}
               name=""
@@ -81,14 +104,29 @@ function ResetPassword() {
               className="px-10 py-2 w-full border border-slate-400 rounded-xl font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             />
 
-            <button type="button" onClick={toggleNewPassword} className="absolute right-3">
-              <img src={showStatusNew ? "/icons/show_password_off_icon.svg" : "/icons/show_password_icon.svg"} alt="" className="w-[20px] opacity-50" />
+            <button
+              type="button"
+              onClick={toggleNewPassword}
+              className="absolute right-3"
+            >
+              <img
+                src={
+                  showStatusNew
+                    ? "/icons/show_password_off_icon.svg"
+                    : "/icons/show_password_icon.svg"
+                }
+                alt=""
+                className="w-[20px] opacity-50"
+              />
             </button>
           </div>
           {/* New Password Input End */}
 
           {/* Button Submit */}
-          <button type="submit" className="mt-6 bg-primary py-3 rounded-xl text-white text-sm font-medium">
+          <button
+            type="submit"
+            className="mt-6 bg-primary py-3 rounded-xl text-white text-sm font-medium"
+          >
             Ubah Password
           </button>
           {/* Button Submit End */}

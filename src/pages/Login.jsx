@@ -27,7 +27,11 @@ function Login() {
         password,
       };
 
-      const response = await axios.post("https://0207-143-198-212-220.ngrok-free.app/auth/login", dataForm);
+      const response = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_API}/auth/login`,
+        dataForm
+      );
+
       axios.defaults.headers.common["authorization"] = response.data.data;
       Cookies.set("token", response.data.data, { expires: 30 });
       navigate(`/`);
