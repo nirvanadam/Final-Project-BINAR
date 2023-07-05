@@ -18,6 +18,7 @@ function ModalFrom({ close, onDataSubmit }) {
   // Fetch API Logic
   const [data, setData] = useState(null);
 
+
   const url = `${import.meta.env.VITE_REACT_APP_API}/airport`;
 
   const fetchData = async () => {
@@ -40,9 +41,9 @@ function ModalFrom({ close, onDataSubmit }) {
   return (
     // {FromModal}
 
-    <div className="fixed w-full h-[80%] bottom-0 z-50 bg-black bg-opacity-60 sm:h-screen  sm:w-screen">
-      <div className="flex w-full h-full sm:justify-center sm:items-center">
-        <div className="relative w-full sm:w-1/3 bg-white sm:rounded-md flex flex-col px-5 pt-8 gap-8 animate__animated animate__fadeInUp">
+    <div className="fixed w-full h-full z-50 bg-black bg-opacity-60 sm:h-screen sm:w-screen font-quickSand">
+      <div className="flex w-full h-full sm:justify-center">
+        <div className="relative top-1/3 flex flex-col w-full mx-5 h-fit md:w-[50%] lg:w-1/3 bg-white rounded-lg px-5 pt-8 gap-8 animate__animated animate__fadeInUp">
           <button onClick={close} className="absolute top-3 right-5 ">
             <img src="/icons/close-icon.svg" alt="" className="w-5" />
           </button>

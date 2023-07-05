@@ -21,6 +21,7 @@ function CheckoutPage() {
 
   const [data, setData] = useState();
 
+
   const url = `${
     import.meta.env.VITE_REACT_APP_API
   }/flight/price/${id}?adult=${adult}&child=${child}`;

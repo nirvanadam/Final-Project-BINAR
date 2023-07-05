@@ -23,8 +23,8 @@ function ModalTo({ action, onDataSubmit }) {
   // Fetch API Logic
   const [data, setData] = useState(null);
 
-  const url = `${import.meta.env.VITE_REACT_APP_API}/airport`;
 
+  const url = `${import.meta.env.VITE_REACT_APP_API}/airport`;
   const fetchData = async () => {
     try {
       const response = await axios.get(url);
@@ -44,33 +44,16 @@ function ModalTo({ action, onDataSubmit }) {
 
   return (
     // ToModal
-    <div className="fixed w-full h-[80%] bottom-0 z-50 bg-white sm:bg-slate-500 sm:bg-opacity-80 sm:h-screen sm:w-screen">
-      <div className="flex w-full h-full sm:justify-center sm:items-center">
-        <div className="relative w-full sm:w-1/3 sm:bg-white sm:rounded-md flex flex-col px-5 pt-8 gap-8">
-          <button
-            onClick={action}
-            className="absolute top-3 right-5 text-[28px] font-semibold"
-          >
+    <div className="fixed w-full h-full z-50 bg-black bg-opacity-60 sm:h-screen sm:w-screen">
+      <div className="flex w-full h-full sm:justify-center">
+        <div className="relative top-1/3 flex flex-col w-full mx-5 h-fit md:w-[50%] lg:w-1/3 bg-white rounded-lg px-5 pt-8 gap-8 animate__animated animate__fadeInUp">
+          <button onClick={action} className="absolute top-3 right-5 text-[28px] font-semibold">
             <img src="/icons/close-icon.svg" alt="" className="w-5" />
           </button>
-          <form
-            onChange={handleChange}
-            onSubmit={handleSubmit}
-            className="w-full flex flex-col gap-2 my-5"
-          >
-            {data && (
-              <Select
-                options={data}
-                value={data.value}
-                onChange={handleChange}
-                placeholder="Pilih Kota"
-              />
-            )}
+          <form onChange={handleChange} onSubmit={handleSubmit} className="w-full flex flex-col gap-2 my-5">
+            {data && <Select options={data} value={data.value} onChange={handleChange} placeholder="Pilih Kota" />}
 
-            <button
-              type="submit"
-              className="w-full mt-5 py-3 px-10 bg-primary mb-4 text-white rounded-md"
-            >
+            <button type="submit" className="w-full mt-5 py-3 px-10 bg-primary mb-4 text-white rounded-md">
               Submit
             </button>
           </form>
