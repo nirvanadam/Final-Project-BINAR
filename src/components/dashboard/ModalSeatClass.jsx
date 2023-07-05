@@ -14,15 +14,15 @@ function ModalSeatClass({ action, onDataSubmit }) {
   };
 
   return (
-    <div className="font-quickSand fixed w-full h-[80%] bottom-0 z-50 bg-white sm:bg-slate-500 sm:bg-opacity-80 sm:h-screen sm:w-screen">
-      <div className="flex w-full h-full sm:justify-center sm:items-center">
-        <div className="w-full sm:w-1/3 sm:bg-white sm:rounded-md flex flex-col px-5 gap-4 pt-2 items-end">
+    <div className="fixed w-full h-full z-50 bg-black bg-opacity-60 sm:h-screen sm:w-screen font-quickSand">
+      <div className="flex w-full h-full sm:justify-center">
+        <div className="relative top-1/4 flex flex-col w-full mx-5 h-fit md:w-[50%] lg:w-1/3 bg-white rounded-lg px-5 pt-4 gap-8 animate__animated animate__fadeInUp">
           <button onClick={action} className="mt-3">
             <img src="/icons/close-icon.svg" alt="" className="w-5" />
           </button>
-          <form onSubmit={handleSubmit} className="w-full flex flex-col items-center">
+          <form onSubmit={handleSubmit} className="w-full flex flex-col">
             {/* Economy */}
-            <div className={`${inputValue === "Economy" ? `bg-zinc-400` : `bg-transparent`} relative flex items-center w-full h-[50px] px-4 rounded-lg hover:bg-zinc-400 transition-all duration-200`}>
+            <div className={`${inputValue === "Economy" ? `bg-zinc-300` : `bg-transparent`} relative flex items-center w-full h-[50px] px-4 rounded-lg hover:bg-zinc-300 transition-all duration-200`}>
               <input type="radio" value="Economy" onChange={handleOnChange} name="seat-class" id="" className="absolute top-1/2 -translate-y-1/2 left-4 w-full h-[50px] opacity-0 cursor-pointer" />
               <div className="flex flex-col">
                 <h1 className="font-bold">Economy</h1>
@@ -34,7 +34,7 @@ function ModalSeatClass({ action, onDataSubmit }) {
             <span className="bg-gray-300 w-full h-[1px] my-2"></span>
 
             {/* Business */}
-            <div className={`${inputValue === "Business" ? `bg-zinc-400` : `bg-transparent`} relative flex items-center w-full h-[50px] px-4 rounded-lg hover:bg-zinc-400 transition-all duration-200`}>
+            <div className={`${inputValue === "Business" ? `bg-zinc-300` : `bg-transparent`} relative flex items-center w-full h-[50px] px-4 rounded-lg hover:bg-zinc-300 transition-all duration-200`}>
               <input type="radio" value="Business" onChange={handleOnChange} name="seat-class" id="" className="absolute top-1/2 -translate-y-1/2 left-4 w-full h-[50px] opacity-0 cursor-pointer" />
               <div className="flex flex-col">
                 <h1 className="font-bold">Business</h1>
@@ -46,7 +46,7 @@ function ModalSeatClass({ action, onDataSubmit }) {
             <span className="bg-gray-300 w-full h-[1px] my-2"></span>
 
             {/* First Class */}
-            <div className={`${inputValue === "First Class" ? `bg-zinc-400` : `bg-transparent`} relative flex items-center w-full h-[50px] px-4 rounded-lg hover:bg-zinc-400 hover transition-all duration-200`}>
+            <div className={`${inputValue === "First Class" ? `bg-zinc-300` : `bg-transparent`} relative flex items-center w-full h-[50px] px-4 rounded-lg hover:bg-zinc-300 hover transition-all duration-200`}>
               <input type="radio" value="First Class" onChange={handleOnChange} name="seat-class" id="" className="absolute top-1/2 -translate-y-1/2 left-4 w-full h-[50px] opacity-0 cursor-pointer" />
               <div className="flex flex-col">
                 <h1 className="font-bold">First Class</h1>

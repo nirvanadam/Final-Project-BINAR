@@ -21,7 +21,7 @@ function CheckoutPage() {
 
   const [data, setData] = useState();
 
-  const url = `https://finalproject-develop.up.railway.app/flight/price/${id}?adult=${adult}&child=${child}`;
+  const url = `https://0207-143-198-212-220.ngrok-free.app/flight/price/${id}?adult=${adult}&child=${child}`;
   let response;
   const fetchData = async () => {
     try {
