@@ -45,7 +45,7 @@ function SearchResult() {
     const [day, month, year] = formattedDate.split("/");
 
     // Menggabungkan kembali dengan tanda strip
-    return `${day}-${month}-${year}`;
+    return `${year}-${month}-${day}`;
   }
   // Hari , Tanggal , Bulan , Tahun
 
@@ -55,7 +55,7 @@ function SearchResult() {
 
   const [date, setDate] = useState(formData.date);
   formData.date = date;
-  console.log(date);
+  // console.log(date);
 
   const [sorting, setSorting] = useState({
     sort_by: "",
