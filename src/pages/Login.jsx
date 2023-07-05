@@ -28,7 +28,7 @@ function Login() {
       };
 
       const response = await axios.post(
-        "https://finalproject-develop.up.railway.app/auth/login",
+        `${import.meta.env.VITE_REACT_APP_API}/auth/login`,
         dataForm
       );
       axios.defaults.headers.common["authorization"] = response.data.data;

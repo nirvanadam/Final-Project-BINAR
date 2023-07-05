@@ -23,7 +23,7 @@ function ModalTo({ action, onDataSubmit }) {
   // Fetch API Logic
   const [data, setData] = useState(null);
 
-  const url = "https://finalproject-develop.up.railway.app/airport";
+  const url = `${import.meta.env.VITE_REACT_APP_API}/airport`;
 
   const fetchData = async () => {
     try {

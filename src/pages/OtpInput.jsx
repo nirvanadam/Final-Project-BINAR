@@ -19,7 +19,10 @@ function OtpInput() {
   const otp = `${inputOtp1}${inputOtp2}${inputOtp3}${inputOtp4}${inputOtp5}${inputOtp6}`;
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await axios.post("https://finalproject-develop.up.railway.app/validasi", { user_id, otp: +otp });
+    await axios.post(`${import.meta.env.VITE_REACT_APP_API}/validasi`, {
+      user_id,
+      otp: +otp,
+    });
     navigate(`/login`);
   };
 
@@ -34,7 +37,8 @@ function OtpInput() {
 
         <h1 className="text-2xl font-bold mb-5">Masukkan Kode OTP</h1>
         <p className="text-xs font-medium mb-5">
-          Ketik 6 digit kode yang dikirimkan ke <span className="font-bold">J*****@gmail.com</span>
+          Ketik 6 digit kode yang dikirimkan ke{" "}
+          <span className="font-bold">J*****@gmail.com</span>
         </p>
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
           <div className="flex gap-2 md:gap-5 mb-5">
@@ -123,9 +127,14 @@ function OtpInput() {
               className="w-[38px] h-[38px] lg:w-[50px] lg:h-[50px]  border-2 border-zinc-300 outline-none rounded-md text-center font-bold"
             />
           </div>
-          <p className="text-xs font-bold mb-16">Kirim ulang OTP dalam 60 detik</p>
+          <p className="text-xs font-bold mb-16">
+            Kirim ulang OTP dalam 60 detik
+          </p>
 
-          <button type="submit" className="bg-primary text-white font-medium w-full rounded-xl py-4">
+          <button
+            type="submit"
+            className="bg-primary text-white font-medium w-full rounded-xl py-4"
+          >
             Verify
           </button>
         </form>

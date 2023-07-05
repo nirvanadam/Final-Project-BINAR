@@ -24,10 +24,12 @@ function FlightResult(props) {
   // }, [formData]);
   // console.log(currentFormData);
 
-  let url = `https://finalproject-develop.up.railway.app/flight/search`;
+  let url = `${import.meta.env.VITE_REACT_APP_API}/flight/search`;
   const [data, setData] = useState();
   if (sorting.sort_by) {
-    url = `https://finalproject-develop.up.railway.app/flight/search?sort_by=${sorting.sort_by}&sort_type=${sorting.sort_type}`;
+    url = `${import.meta.env.VITE_REACT_APP_API}/flight/search?sort_by=${
+      sorting.sort_by
+    }&sort_type=${sorting.sort_type}`;
   }
   const fetchData = async () => {
     try {

@@ -16,7 +16,7 @@ function NavbarMobile() {
     }
   }, []);
 
-  const url = `https://finalproject-develop.up.railway.app/user/get`;
+  const url = `${import.meta.env.VITE_REACT_APP_API}/user/get`;
   const [dataFrom, setDataForm] = useState();
   const fetchData = async () => {
     try {

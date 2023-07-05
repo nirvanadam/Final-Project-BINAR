@@ -47,7 +47,7 @@ function Payment({ order_id }) {
     try {
       axios.defaults.headers.common["authorization"] = Cookies.get("token");
       const response = await axios.post(
-        "https://finalproject-develop.up.railway.app/payment/checkout",
+        `${import.meta.env.VITE_REACT_APP_API}/payment/checkout`,
         dataForm
       );
       navigate("/success-payment", { state: order_id });

@@ -26,7 +26,10 @@ function BioDataPenumpang(props) {
     };
     try {
       axios.defaults.headers.common["authorization"] = Cookies.get("token");
-      const response = await axios.post("https://finalproject-develop.up.railway.app/order/create", dataForm);
+      const response = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_API}/order/create`,
+        dataForm
+      );
       setOrder(response.data.data.order_id);
       toast.success("Yeay, Your Data Has been Submited");
     } catch (error) {
@@ -37,17 +40,29 @@ function BioDataPenumpang(props) {
   const renderForm = () => {
     const formElements = [];
     for (let i = 0; i < totalPassenger; i++) {
-      formElements.push(<FormPenumpang key={i} totalPassenger={totalPassenger} setData={setData} adult={intAdult} />);
+      formElements.push(
+        <FormPenumpang
+          key={i}
+          totalPassenger={totalPassenger}
+          setData={setData}
+          adult={intAdult}
+        />
+      );
       return formElements;
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="relative overflow-hidden p-4 border border-gray-400 rounded-xl shadow-md">
+    <form
+      onSubmit={handleSubmit}
+      className="relative overflow-hidden p-4 border border-gray-400 rounded-xl shadow-md"
+    >
       {renderForm()}
 
       {/* Simpan Button */}
-      <button className="w-full py-3 rounded-xl bg-primary text-white font-medium">Simpan</button>
+      <button className="w-full py-3 rounded-xl bg-primary text-white font-medium">
+        Simpan
+      </button>
       {/* Simpan Button End */}
       <ToastContainer />
     </form>

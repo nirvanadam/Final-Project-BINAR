@@ -14,7 +14,7 @@ function GoogleLoginButton() {
       let config = {
         method: "get",
         maxBodyLength: Infinity,
-        url: `https://finalproject-develop.up.railway.app/auth/login/google`,
+        url: `${import.meta.env.VITE_REACT_APP_API}/auth/login/google`,
         headers: {
           "Content-Type": "application/json",
         },
