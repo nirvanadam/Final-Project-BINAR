@@ -27,10 +27,7 @@ function Login() {
         password,
       };
 
-      const response = await axios.post(
-        "https://finalproject-develop.up.railway.app/auth/login",
-        dataForm
-      );
+      const response = await axios.post("https://0207-143-198-212-220.ngrok-free.app/auth/login", dataForm);
       axios.defaults.headers.common["authorization"] = response.data.data;
       Cookies.set("token", response.data.data, { expires: 30 });
       navigate(`/`);
@@ -41,9 +38,12 @@ function Login() {
 
   // const handleSubmitGoogle = async (event) => {
   //   event.preventDefault();
-  //   const response = await axios.post(
-  //     "https://finalproject-develop.up.railway.app/auth/login/google"
-  //   );
+  //   const response = await axios.get("https://0207-143-198-212-220.ngrok-free.app/auth/login/google");
+  //   if (!response.data) {
+  //     navigate(response.data.redirect);
+  //   } else {
+  //     console.error("Invalid response from server");
+  //   }
   //   axios.defaults.headers.common["authorization"] = response.data.data;
   //   Cookies.set("token", response.data.data, { expires: 30 });
   //   navigate(`/`);
@@ -67,11 +67,7 @@ function Login() {
         <form onSubmit={handleSubmit} className="flex flex-col">
           {/* Email Input */}
           <div className="relative w-full flex items-center mb-4">
-            <img
-              src="/icons/email_icon.svg"
-              alt=""
-              className="absolute left-3 w-[20px] opacity-50"
-            />
+            <img src="/icons/email_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
             <input
               type="email"
               name=""
@@ -86,11 +82,7 @@ function Login() {
 
           {/* Password Input*/}
           <div className="relative flex items-center">
-            <img
-              src="/icons/password_icon.svg"
-              alt=""
-              className="absolute left-3 w-[20px] opacity-50"
-            />
+            <img src="/icons/password_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
             <input
               type={showStatus ? "text" : "password"}
               name=""
@@ -101,38 +93,20 @@ function Login() {
               className="px-10 py-2 w-full border border-slate-400 rounded-xl outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             />
 
-            <button
-              type="button"
-              onClick={togglePassword}
-              className="absolute right-3"
-            >
-              <img
-                src={
-                  showStatus
-                    ? "/icons/show_password_off_icon.svg"
-                    : "/icons/show_password_icon.svg"
-                }
-                alt=""
-                className="w-[20px] opacity-50"
-              />
+            <button type="button" onClick={togglePassword} className="absolute right-3">
+              <img src={showStatus ? "/icons/show_password_off_icon.svg" : "/icons/show_password_icon.svg"} alt="" className="w-[20px] opacity-50" />
             </button>
           </div>
           {/* Password Input End */}
 
           {/* Forgot Password */}
-          <Link
-            to={"/email-reset-password"}
-            className="mt-2 underline font-bold text-primary text-xs self-end"
-          >
+          <Link to={"/email-reset-password"} className="mt-2 underline font-bold text-primary text-xs self-end">
             Lupa Kata Sandi
           </Link>
           {/* Forgot Password End */}
 
           {/* Button Submit */}
-          <button
-            type="submit"
-            className="mt-5 bg-primary py-3 rounded-xl text-white text-sm font-medium"
-          >
+          <button type="submit" className="mt-5 bg-primary py-3 rounded-xl text-white text-sm font-medium">
             Masuk
           </button>
           {/* Button Submit End */}
@@ -142,14 +116,12 @@ function Login() {
 
         {/* Google Login */}
         {/* <form>
-          <button
-            onClick={handleSubmitGoogle}
-            className="mb-3 flex justify-center items-center gap-3 py-2 border border-slate-300 rounded-xl text-center"
-          >
+          <button onClick={handleSubmitGoogle} className="mb-3 flex justify-center items-center gap-3 py-2 border border-slate-300 rounded-xl text-center">
             <img src="/icons/google_logo.svg" alt="" className="w-4" />
             <h1 className="text-sm font-semibold">Sign in with Google</h1>
           </button>
         </form> */}
+
         <div className="flex flex-col w-full mb-2">
           <GoogleLoginButton />
         </div>

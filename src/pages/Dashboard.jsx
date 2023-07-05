@@ -8,6 +8,7 @@ import NavbarMobile from "../components/NavbarMobile";
 import DestinasiFavorit from "../components/dashboard/DestinasiFavorit";
 import { useNavigate, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
+import "animate.css";
 
 function Dashboard() {
   // {ModalFrom}
@@ -296,10 +297,6 @@ function Dashboard() {
           <DestinasiFavorit />
         </div>
         {/* Destinasi Favorit End */}
-
-        {/* Navbar 2.0 */}
-        {/* <NavbarMobile /> */}
-        {/* Navbar 2.0 End */}
 
         <Footer />
       </div>
