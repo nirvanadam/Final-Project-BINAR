@@ -1,23 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { Link, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 function SuccessPayment() {
   const location = useLocation();
-  const id = location.state;
+  const dataForm = location.state;
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  // console.log(dataForm);
 
+  const [data, setData] = useState();
+  const fetchData = async () => {
     try {
       axios.defaults.headers.common["authorization"] = Cookies.get("token");
-      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_API}/ticket?order_id=${order_id}`);
-      navigate("/success-payment", { state: order_id });
+      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API}/payment/invoice`, dataForm, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setData(response.data.data);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
+  console.log(data);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div className=" h-screen bg-primary lg:bg-white flex flex-col items-center font-quickSand">

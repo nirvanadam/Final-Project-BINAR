@@ -32,17 +32,22 @@ function Register() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (confirmpassword !== password) {
-      toast.error("Password tidak sama");
+      toast.error("Password is not the same");
     } else {
-      const dataForm = {
-        name,
-        email,
-        phone,
-        password,
-        confirmpassword,
-      };
-      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API}/auth/register`, dataForm);
-      navigate(`/otpinput`, { state: response.data.data });
+      try {
+        const dataForm = {
+          name,
+          email,
+          phone,
+          password,
+          confirmpassword,
+        };
+        const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API}/auth/register`, dataForm);
+        navigate(`/otpinput`, { state: response.data.data });
+      } catch (error) {
+        // console.log(error);
+        toast.error(error.response.data.message);
+      }
     }
   };
   return (
