@@ -12,9 +12,7 @@ function SuccessPayment() {
 
     try {
       axios.defaults.headers.common["authorization"] = Cookies.get("token");
-      const response = await axios.get(
-        `${import.meta.env.VITE_REACT_APP_API}/ticket?order_id=${order_id}`
-      );
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_API}/ticket?order_id=${order_id}`);
       navigate("/success-payment", { state: order_id });
     } catch (error) {
       console.error(error);
@@ -24,22 +22,14 @@ function SuccessPayment() {
   return (
     <div className=" h-screen bg-primary lg:bg-white flex flex-col items-center font-quickSand">
       <div className="mt-10 flex flex-col justify-center items-center gap-4">
-        <h1 className="lg:hidden text-white font-semibold text-2xl">
-          Transaksi Berhasil!
-        </h1>
+        <h1 className="lg:hidden text-white font-semibold text-2xl">Transaksi Berhasil!</h1>
         <div className="flex lg:hidden justify-center items-center mb-3 px-5 py-5 w-fit rounded-full bg-white lg:bg-primary ">
-          <img
-            src="/icons/check-icon2.svg"
-            alt=""
-            className=" w-5 h-5 lg:invert"
-          />
+          <img src="/icons/check-icon2.svg" alt="" className=" w-5 h-5 lg:invert" />
         </div>
       </div>
 
       <div className="fixed flex flex-col justify-center items-center gap-3 bottom-0 lg:top-[15%] bg-white lg:bg-zinc-200 w-full lg:w-1/3 h-[65%] lg:h-fit px-5 lg:px-10 lg:py-5 rounded-t-[60px] lg:rounded-xl">
-        <h1 className="hidden lg:block font-semibold mb-3 lg:text-black">
-          Transaksi Berhasil!
-        </h1>
+        <h1 className="hidden lg:block font-semibold mb-3 lg:text-black">Transaksi Berhasil!</h1>
         <div className="hidden lg:flex justify-center items-center mb-3 px-5 py-5 w-fit rounded-full bg-white lg:bg-transparent lg:border-2 lg:border-primary ">
           <img src="/icons/check-icon2.svg" alt="" className=" w-5 h-5" />
         </div>
@@ -69,9 +59,7 @@ function SuccessPayment() {
           {/* Email */}
           <div className="flex w-full justify-between items-center">
             <h1 className="text-gray-500 text-sm font-medium">Email</h1>
-            <h1 className="text-gray-700 text-sm font-semibold">
-              nirvan@gmail.com
-            </h1>
+            <h1 className="text-gray-700 text-sm font-semibold">nirvan@gmail.com</h1>
           </div>
           {/* Email End */}
 
@@ -93,14 +81,15 @@ function SuccessPayment() {
 
           <span className="w-full h-[1px] bg-zinc-400 my-5"></span>
 
-          <div className="flex justify-center gap-3">
-            <Link className="bg-primary px-8 py-3 rounded-lg text-white text-xs font-medium">
+          <div className="flex justify-center gap-1">
+            <button className="flex gap-2 justify-center items-center bg-primary px-8 py-3 rounded-lg text-white text-xs font-medium">
+              <img src="/icons/print-icon.svg" alt="" className="w-5 invert" />
               PRINT
-            </Link>
-            <Link
-              to="/"
-              className="bg-primary px-8 py-3 rounded-lg text-white text-xs font-medium"
-            >
+            </button>
+            <button className="flex items-center bg-primary px-8 py-3 rounded-lg">
+              <img src="/icons/qr-icon.svg" alt="" className="w-5 invert" />
+            </button>
+            <Link to="/" className="flex items-center bg-primary px-8 py-3 rounded-lg text-white text-xs font-medium">
               CLOSE
             </Link>
           </div>

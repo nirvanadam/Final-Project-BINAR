@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 import GoogleLoginButton from "../components/GoogleLoginButton";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "animate.css";
 
 function Login() {
   const [showStatus, setShowStatus] = useState(false);
@@ -27,10 +28,7 @@ function Login() {
         password,
       };
 
-      const response = await axios.post(
-        `${import.meta.env.VITE_REACT_APP_API}/auth/login`,
-        dataForm
-      );
+      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API}/auth/login`, dataForm);
 
       axios.defaults.headers.common["authorization"] = response.data.data;
       Cookies.set("token", response.data.data, { expires: 30 });
@@ -57,9 +55,14 @@ function Login() {
     <div className="grid grid-rows-[1fr,3fr] lg:grid-rows-1 lg:grid-cols-2 h-screen overflow-hidden bg-primary font-quickSand">
       {/* Left */}
       <div className="lg:relative flex justify-center items-center lg:rounded-br-[90px]">
-        <h1 className="text-5xl font-bold text-white">
-          Quick<span className="text-secondary">Tix</span>
-        </h1>
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-3">
+          <div className="hidden lg:flex lg:order-1 lg:flex-row justify-center items-center bg-white p-2 rounded-full animate__animated animate__bounceInDown">
+            <img src="/images/quicktix-logo.png" alt="" className="w-11" />
+          </div>
+          <h1 className="lg:order-2 text-5xl font-bold text-white">
+            Quick<span className="text-secondary">Tix</span>
+          </h1>
+        </div>
         <div className="hidden lg:block lg:absolute bottom-0 right-0 h-[100px] w-[100px] bg-white"></div>
         <div className="hidden lg:block lg:absolute bottom-0 right-0 h-[100px] w-[100px] bg-primary rounded-br-[90px] "></div>
       </div>
@@ -94,7 +97,7 @@ function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              className="px-10 py-2 w-full border border-slate-400 rounded-xl outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
+              className="px-10 py-2 w-full border border-slate-400 rounded-xl font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             />
 
             <button type="button" onClick={togglePassword} className="absolute right-3">

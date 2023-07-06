@@ -37,8 +37,7 @@ function OtpInput() {
 
         <h1 className="text-2xl font-bold mb-5">Masukkan Kode OTP</h1>
         <p className="text-xs font-medium mb-5">
-          Ketik 6 digit kode yang dikirimkan ke{" "}
-          <span className="font-bold">J*****@gmail.com</span>
+          Ketik 6 digit kode yang dikirimkan ke <span className="font-bold">J*****@gmail.com</span>
         </p>
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
           <div className="flex gap-2 md:gap-5 mb-5">
@@ -54,7 +53,7 @@ function OtpInput() {
                 setInputOtp1(singleDigitValue.slice(0, 1));
               }}
               maxLength={1}
-              className="w-[38px] h-[38px] lg:w-[50px] lg:h-[50px]  border-2 border-zinc-300 outline-none rounded-md text-center font-bold"
+              className="w-[38px] h-[38px] lg:w-[50px] lg:h-[50px]  border-2 border-zinc-300 outline-none rounded-md text-center lg:text-2xl  font-bold"
             />
             <input
               type="text"
@@ -68,7 +67,7 @@ function OtpInput() {
                 setInputOtp2(singleDigitValue.slice(0, 1));
               }}
               maxLength={1}
-              className="w-[38px] h-[38px] lg:w-[50px] lg:h-[50px]  border-2 border-zinc-300 outline-none rounded-md text-center font-bold"
+              className="w-[38px] h-[38px] lg:w-[50px] lg:h-[50px]  border-2 border-zinc-300 outline-none rounded-md text-center lg:text-2xl font-bold"
             />
             <input
               type="text"
@@ -82,7 +81,7 @@ function OtpInput() {
                 setInputOtp3(singleDigitValue.slice(0, 1));
               }}
               maxLength={1}
-              className="w-[38px] h-[38px] lg:w-[50px] lg:h-[50px]  border-2 border-zinc-300 outline-none rounded-md text-center font-bold"
+              className="w-[38px] h-[38px] lg:w-[50px] lg:h-[50px]  border-2 border-zinc-300 outline-none rounded-md text-center lg:text-2xl font-bold"
             />
             <input
               type="text"
@@ -96,7 +95,7 @@ function OtpInput() {
                 setInputOtp4(singleDigitValue.slice(0, 1));
               }}
               maxLength={1}
-              className="w-[38px] h-[38px] lg:w-[50px] lg:h-[50px]  border-2 border-zinc-300 outline-none rounded-md text-center font-bold"
+              className="w-[38px] h-[38px] lg:w-[50px] lg:h-[50px]  border-2 border-zinc-300 outline-none rounded-md text-center lg:text-2xl font-bold"
             />
             <input
               type="text"
@@ -110,7 +109,7 @@ function OtpInput() {
                 setInputOtp5(singleDigitValue.slice(0, 1));
               }}
               maxLength={1}
-              className="w-[38px] h-[38px] lg:w-[50px] lg:h-[50px]  border-2 border-zinc-300 outline-none rounded-md text-center font-bold"
+              className="w-[38px] h-[38px] lg:w-[50px] lg:h-[50px]  border-2 border-zinc-300 outline-none rounded-md text-center lg:text-2xl font-bold"
             />
             <input
               type="text"
@@ -124,17 +123,12 @@ function OtpInput() {
                 setInputOtp6(singleDigitValue.slice(0, 1));
               }}
               maxLength={1}
-              className="w-[38px] h-[38px] lg:w-[50px] lg:h-[50px]  border-2 border-zinc-300 outline-none rounded-md text-center font-bold"
+              className="w-[38px] h-[38px] lg:w-[50px] lg:h-[50px]  border-2 border-zinc-300 outline-none rounded-md text-center lg:text-2xl font-bold"
             />
           </div>
-          <p className="text-xs font-bold mb-16">
-            Kirim ulang OTP dalam 60 detik
-          </p>
+          <p className="text-xs font-bold mb-16">Kirim ulang OTP dalam 60 detik</p>
 
-          <button
-            type="submit"
-            className="bg-primary text-white font-medium w-full rounded-xl py-4"
-          >
+          <button type="submit" className="bg-primary text-white font-medium w-full rounded-xl py-4">
             Verify
           </button>
         </form>
