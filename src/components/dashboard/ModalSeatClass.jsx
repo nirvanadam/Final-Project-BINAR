@@ -31,7 +31,7 @@ function ModalSeatClass({ action, onDataSubmit }) {
             </div>
             {/* Economy End */}
 
-            <span className="bg-gray-300 w-full h-[1px] my-2"></span>
+            <span className="bg-gray-400 w-full h-[1px] my-2"></span>
 
             {/* Business */}
             <div className={`${inputValue === "Business" ? `bg-zinc-300` : `bg-transparent`} relative flex items-center w-full h-[50px] px-4 rounded-lg hover:bg-zinc-300 transition-all duration-200`}>
@@ -43,7 +43,7 @@ function ModalSeatClass({ action, onDataSubmit }) {
             </div>
             {/* Business End */}
 
-            <span className="bg-gray-300 w-full h-[1px] my-2"></span>
+            <span className="bg-gray-400 w-full h-[1px] my-2"></span>
 
             {/* First Class */}
             <div className={`${inputValue === "First Class" ? `bg-zinc-300` : `bg-transparent`} relative flex items-center w-full h-[50px] px-4 rounded-lg hover:bg-zinc-300 hover transition-all duration-200`}>

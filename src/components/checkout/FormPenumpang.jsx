@@ -72,9 +72,9 @@ function FormPenumpang({ totalPassenger, setData, adult }) {
   return (
     <div>
       {passengers.map((passenger, index) => (
-        <div className="mb-9" key={index}>
+        <div className="relative overflow-hidden mb-9 border border-gray-300 px-4 pt-10 pb-4 rounded-xl shadow-md" key={index}>
           {/* Kategori */}
-          <h1 className="w-full px-5 py-3 rounded-lg bg-primary text-white">{passenger.person === "adult" ? `Penumpang Dewasa ${index + 1}` : `Penumpang Anak-Anak ${index - adult + 1}`}</h1>
+          <h1 className="absolute top-0 left-0 w-full px-5 py-3 bg-primary text-white">{passenger.person === "adult" ? `Penumpang Dewasa ${index + 1}` : `Penumpang Anak-Anak ${index - adult + 1}`}</h1>
 
           {/* Kategori End */}
 
@@ -97,7 +97,7 @@ function FormPenumpang({ totalPassenger, setData, adult }) {
           {/* Nama Lengkap End */}
 
           {/* Gender */}
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 mt-5">
             <label htmlFor="jenis-kelamin" className="font-bold">
               Jenis Kelamin
             </label>

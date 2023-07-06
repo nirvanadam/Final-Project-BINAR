@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import BioDataPenumpang from "../components/checkout/BioDataPenumpang";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -21,10 +21,7 @@ function CheckoutPage() {
 
   const [data, setData] = useState();
 
-
-  const url = `${
-    import.meta.env.VITE_REACT_APP_API
-  }/flight/price/${id}?adult=${adult}&child=${child}`;
+  const url = `${import.meta.env.VITE_REACT_APP_API}/flight/price/${id}?adult=${adult}&child=${child}`;
   let response;
   const fetchData = async () => {
     try {
@@ -51,42 +48,42 @@ function CheckoutPage() {
   };
 
   return (
-    <div className="flex flex-col font-quickSand">
+    <div className="flex flex-col font-quickSand pb-20 lg:pb-0">
       {/* Navbar */}
-      <div className="flex lg:hidden gap-5 bg-primary px-4 py-3">
-        <button>
-          <img src="/icons/arrow_left.svg" alt="" className="invert" />
-        </button>
-        <h1 className="text-white font-medium">Biodata Pemesanan</h1>
+      <div className="hidden lg:block">
+        <Navbar />
       </div>
-      <Navbar />
       {/* Navbar End */}
 
       {/* Header */}
-      <div className="hidden lg:flex items-center gap-2 py-10 px-36 border-b border-gray-200 shadow-sm">
-        <h1 className="text-xl font-bold">Isi Data Diri</h1>
-        <img src="/icons/chevron-right.svg" alt="" className="w-4" />
-        <h1 className="text-xl text-gray-400 font-bold">Bayar</h1>
-        <img src="/icons/chevron-right.svg" alt="" className="w-4" />
-        <h1 className="text-xl text-gray-400 font-bold">Selesai</h1>
+      <div className="flex items-center gap-2 px-3 py-4 lg:py-10 lg:px-36 border-b border-gray-200 bg-primary lg:bg-transparent shadow-sm">
+        <div className="flex items-center gap-3">
+          <Link to="/search-result" className="">
+            <img src="/icons/arrow_left.svg" alt="" className="invert" />
+          </Link>
+          <h1 className="lg:hidden text-white font-medium">Checkout</h1>
+        </div>
+
+        <h1 className="hidden lg:flex text-xl font-bold">Isi Data Diri</h1>
+        <img src="/icons/chevron-right.svg" alt="" className="hidden lg:flex w-4" />
+        <h1 className="hidden lg:flex text-xl text-gray-400 font-bold">Bayar</h1>
+        <img src="/icons/chevron-right.svg" alt="" className="hidden lg:flex w-4" />
+        <h1 className="hidden lg:flex text-xl text-gray-400 font-bold">Selesai</h1>
       </div>
       {/* Header End */}
 
       {/* Content */}
-      <div className="lg:grid grid-cols-2 gap-5 mx-4 lg:mx-36 mt-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mx-4 lg:mx-36 mt-5">
         {/* Left */}
         <div className="">
           {/* <BioDataPemesan /> */}
-          <BioDataPenumpang
-            id={id}
-            adults={adult}
-            kids={child}
-            setOrder={setOrder}
-          />
+          <BioDataPenumpang id={id} adults={adult} kids={child} setOrder={setOrder} />
           {/* <Payment /> */}
           {/* <SuccessPayment /> */}
         </div>
         {/* Left End */}
+
+        <span className="lg:hidden h-[1px] w-full bg-gray-500 my-5"></span>
 
         {/* Right */}
         <div className="">
@@ -118,7 +115,9 @@ function CheckoutPage() {
       </div>
       {/* Content End */}
 
-      <Footer />
+      <div className="hidden lg:block">
+        <Footer />
+      </div>
     </div>
   );
 }

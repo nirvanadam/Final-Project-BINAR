@@ -22,9 +22,9 @@ function DestinasiFavorit() {
   const DestinasiCard = () => {
     return dataDestinasi.map((destinasi) => {
       return (
-        <div className="bg-zinc-100 relative inline-flex flex-col lg:mt-3 mr-5 lg:mr-0 overflow-hidden group rounded-xl shadow-md cursor-default transition-all hover:-translate-y-3 whitespace-normal	">
+        <div className="bg-zinc-100 relative inline-flex flex-col lg:mt-3 mr-5 lg:mr-0 overflow-hidden group rounded-xl shadow-md cursor-default transition-all duration-[0.4s] hover:-translate-y-3 whitespace-normal	">
           <div className="overflow-hidden relative h-[200px] before:content-[''] before:absolute before:top-0 before:bottom-0 before:left-0 before:right-0 before:bg-gradient-to-t from-black from-5% before:z-10">
-            <img src={destinasi.foto} alt="" className="absolute transition-all duration-300 group-hover:scale-125" />
+            <img src={destinasi.foto} alt="" className="absolute transition-all duration-[0.4s] group-hover:scale-125" />
             <div className="absolute bottom-3 left-3 z-20 flex flex-col gap-1">
               <h1 className="text-white font-white">{destinasi.name}</h1>
               <div className="flex gap-2">
@@ -88,7 +88,7 @@ function DestinasiFavorit() {
     <div className=" -translate-y-2">
       {/* Tour Section */}
       <section>
-        <div className="relative overflow-hidden bg-[url('/images/edinburgh-poster.jpg')] bg-cover bg-fixed bg-center flex justify-center items-center h-[300px] lg:h-[500px] border border-red-50 before:content-[''] before:absolute before:bg-black before:top-0 before:bottom-0 before:left-0 before:right-0 before:opacity-40">
+        <div className="relative overflow-hidden bg-[url('/images/edinburgh-poster.jpg')] bg-cover bg-fixed bg-center flex justify-center items-center h-[300px] lg:h-[600px] border border-red-50 before:content-[''] before:absolute before:bg-black before:top-0 before:bottom-0 before:left-0 before:right-0 before:opacity-40">
           <div className="flex flex-col items-center z-10">
             <h1 className="text-lg lg:text-2xl text-white font-bold italic">All Tours For You</h1>
             <h1 className="text-5xl lg:text-9xl text-white font-bold">Our Tours</h1>
@@ -96,7 +96,8 @@ function DestinasiFavorit() {
         </div>
 
         {/* Filter Button */}
-        <div className="hidden lg:flex flex-wrap gap-x-3 gap-y-4 lg:gap-5 mx-28 bg-zinc-300 bg-opacity-25 px-5 py-5 rounded-lg -translate-y-10 shadow-md">
+        <div className="hidden relative lg:flex flex-wrap items-center gap-x-3 overflow-hidden gap-y-4 lg:gap-5 mx-28 bg-white pl-44 pr-5 py-5 rounded-lg -translate-y-10 shadow-md">
+          <h1 className="absolute left-0 flex items-center h-full bg-primary text-white font-medium px-10">Region</h1>
           {/* Semua Button */}
           <button
             onClick={() => changeRegionHandler("Semua")}
@@ -159,23 +160,23 @@ function DestinasiFavorit() {
         </div>
         {/* Filter Button End */}
 
-        <div className="whitespace-nowrap lg:whitespace-normal lg:grid grid-cols-3 gap-5 overflow-scroll mt-5 mx-4 md:mx-8 lg:mx-28 py-5">{region === "Semua" ? DestinasiCard() : FilteredCard()}</div>
+        <div className="whitespace-nowrap lg:whitespace-normal lg:grid grid-cols-3 gap-5 overflow-auto mt-5 mx-4 md:mx-8 lg:mx-28 py-5">{region === "Semua" ? DestinasiCard() : FilteredCard()}</div>
       </section>
       {/* Tour Section End */}
 
       {/* Discount Section */}
       <section className="mt-20">
-        <div className="relative overflow-hidden bg-[url('/images/edinburgh-poster.jpg')] bg-cover bg-fixed bg-no-repeat bg-center flex justify-center items-center h-[300px] lg:h-[500px] mb-10 border border-red-50 before:content-[''] before:absolute before:bg-black before:top-0 before:bottom-0 before:left-0 before:right-0 before:opacity-40">
+        <div className="relative overflow-hidden bg-[url('/images/edinburgh-poster.jpg')] bg-cover bg-fixed bg-no-repeat bg-center flex justify-center items-center h-[300px] lg:h-[600px] mb-10 border border-red-50 before:content-[''] before:absolute before:bg-black before:top-0 before:bottom-0 before:left-0 before:right-0 before:opacity-40">
           <div className="flex flex-col items-center z-10">
             <h1 className="text-lg lg:text-2xl text-white font-bold italic">Discount Offer</h1>
             <h1 className="text-5xl lg:text-9xl text-white font-bold">Discount</h1>
           </div>
         </div>
 
-        <div className=" grid grid-cols-1 lg:grid-cols-4 lg:grid-rows-4 gap-7 lg:h-[1000px] lg:mx-9">
+        <div className=" lg:grid lg:grid-cols-4 lg:grid-rows-4 gap-7 lg:h-[1000px] lg:mx-9">
           {/* Item 1  */}
           <div className="relative overflow-hidden group lg:col-span-2 lg:row-span-2 rounded-xl before:content-[''] before:absolute before:bg-gradient-to-t from-black from-1% before:top-0 before:bottom-0 before:left-0 before:right-0 cursor-pointer">
-            <img src="/images/edinburgh-poster.jpg" alt="" className="absolute -z-10 top-10 scale-150 transition-all duration-500 group-hover:scale-[1.7]" />
+            <img src="https://source.unsplash.com/1600x900/?edinburgh" alt="" className="absolute -z-10 top-10 scale-150 transition-all duration-500 group-hover:scale-[1.7]" />
 
             <div className="absolute bottom-4 left-4 text-white">
               <h1 className="text-2xl text-white font-bold">$ 950.00 USD</h1>
@@ -189,7 +190,7 @@ function DestinasiFavorit() {
 
           {/* Item 2 */}
           <div className="relative overflow-hidden group rounded-xl before:content-[''] before:absolute before:bg-gradient-to-t from-black from-1% before:top-0 before:bottom-0 before:left-0 before:right-0 cursor-pointer">
-            <img src="/images/edinburgh-poster.jpg" alt="" className="absolute -z-10 top-10 scale-150 transition-all duration-500 group-hover:scale-[1.7]" />
+            <img src="https://source.unsplash.com/1600x901/?edinburgh" alt="" className="absolute -z-10 top-10 scale-150 transition-all duration-500 group-hover:scale-[1.7]" />
 
             <div className="absolute bottom-4 left-4 text-white">
               <h1 className="text-xl text-white font-bold">$ 950.00 USD</h1>
@@ -203,7 +204,7 @@ function DestinasiFavorit() {
 
           {/* Item 3 */}
           <div className="relative overflow-hidden group rounded-xl before:content-[''] before:absolute before:bg-gradient-to-t from-black from-1% before:top-0 before:bottom-0 before:left-0 before:right-0 cursor-pointer">
-            <img src="/images/edinburgh-poster.jpg" alt="" className="absolute -z-10 top-10 scale-150 transition-all duration-500 group-hover:scale-[1.7]" />
+            <img src="https://source.unsplash.com/1600x902/?edinburgh" alt="" className="absolute -z-10 top-10 scale-150 transition-all duration-500 group-hover:scale-[1.7]" />
 
             <div className="absolute bottom-4 left-4 text-white">
               <h1 className="text-xl text-white font-bold">$ 950.00 USD</h1>
@@ -217,7 +218,7 @@ function DestinasiFavorit() {
 
           {/* Item 4 */}
           <div className="lg:col-span-2 relative overflow-hidden group rounded-xl before:content-[''] before:absolute before:bg-gradient-to-t from-black from-1% before:top-0 before:bottom-0 before:left-0 before:right-0 cursor-pointer">
-            <img src="/images/edinburgh-poster.jpg" alt="" className="absolute -z-10 top-10 scale-150 transition-all duration-500 group-hover:scale-[1.7]" />
+            <img src="https://source.unsplash.com/1600x903/?edinburgh" alt="" className="absolute -z-10 top-10 scale-150 transition-all duration-500 group-hover:scale-[1.7]" />
 
             <div className="absolute bottom-4 left-4 text-white">
               <h1 className="text-xl text-white font-bold">$ 950.00 USD</h1>
@@ -231,7 +232,7 @@ function DestinasiFavorit() {
 
           {/* Item 5 */}
           <div className="relative overflow-hidden group rounded-xl before:content-[''] before:absolute before:bg-gradient-to-t from-black from-1% before:top-0 before:bottom-0 before:left-0 before:right-0 cursor-pointer">
-            <img src="/images/edinburgh-poster.jpg" alt="" className="absolute -z-10 top-10 scale-150 transition-all duration-500 group-hover:scale-[1.7]" />
+            <img src="https://source.unsplash.com/1600x904/?edinburgh" alt="" className="absolute -z-10 top-10 scale-150 transition-all duration-500 group-hover:scale-[1.7]" />
 
             <div className="absolute bottom-4 left-4 text-white">
               <h1 className="text-xl text-white font-bold">$ 950.00 USD</h1>
@@ -245,7 +246,7 @@ function DestinasiFavorit() {
 
           {/* Item 6 */}
           <div className="relative overflow-hidden group rounded-xl before:content-[''] before:absolute before:bg-gradient-to-t from-black from-1% before:top-0 before:bottom-0 before:left-0 before:right-0 cursor-pointer">
-            <img src="/images/edinburgh-poster.jpg" alt="" className="absolute -z-10 top-10 scale-150 transition-all duration-500 group-hover:scale-[1.7]" />
+            <img src="https://source.unsplash.com/1600x905/?edinburgh" alt="" className="absolute -z-10 top-10 scale-150 transition-all duration-500 group-hover:scale-[1.7]" />
 
             <div className="absolute bottom-4 left-4 text-white">
               <h1 className="text-xl text-white font-bold">$ 950.00 USD</h1>
@@ -259,7 +260,7 @@ function DestinasiFavorit() {
 
           {/* Item 7 */}
           <div className="relative overflow-hidden group lg:col-span-2 lg:row-span-2 rounded-xl before:content-[''] before:absolute before:bg-gradient-to-t from-black from-1% before:top-0 before:bottom-0 before:left-0 before:right-0 cursor-pointer">
-            <img src="/images/edinburgh-poster.jpg" alt="" className="absolute -z-10 top-10 scale-150 transition-all duration-500 group-hover:scale-[1.7]" />
+            <img src="https://source.unsplash.com/1600x906/?edinburgh" alt="" className="absolute -z-10 top-10 scale-150 transition-all duration-500 group-hover:scale-[1.7]" />
 
             <div className="absolute bottom-4 left-4 text-white">
               <h1 className="text-2xl text-white font-bold">$ 950.00 USD</h1>
@@ -274,7 +275,7 @@ function DestinasiFavorit() {
           {/* Item 8 */}
 
           <div className="relative overflow-hidden group lg:col-span-2 rounded-xl before:content-[''] before:absolute before:bg-gradient-to-t from-black from-1% before:top-0 before:bottom-0 before:left-0 before:right-0 cursor-pointer">
-            <img src="/images/edinburgh-poster.jpg" alt="" className="absolute -z-10 top-10 scale-150 transition-all duration-500 group-hover:scale-[1.7]" />
+            <img src="https://source.unsplash.com/1600x907/?edinburgh" alt="" className="absolute -z-10 top-10 scale-150 transition-all duration-500 group-hover:scale-[1.7]" />
 
             <div className="absolute bottom-4 left-4 text-white">
               <h1 className="text-2xl text-white font-bold">$ 950.00 USD</h1>

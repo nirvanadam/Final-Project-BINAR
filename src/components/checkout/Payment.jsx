@@ -28,6 +28,8 @@ function Payment({ order_id }) {
     }
   };
 
+  console.log(data);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -46,10 +48,7 @@ function Payment({ order_id }) {
     };
     try {
       axios.defaults.headers.common["authorization"] = Cookies.get("token");
-      const response = await axios.post(
-        `${import.meta.env.VITE_REACT_APP_API}/payment/checkout`,
-        dataForm
-      );
+      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API}/payment/checkout`, dataForm);
       navigate("/success-payment", { state: order_id });
       toast.success("Yeay , Ready to Flight now");
     } catch (error) {
@@ -74,9 +73,7 @@ function Payment({ order_id }) {
           <button
             type="button"
             onClick={() => setDisplayWallet(!displayWallet)}
-            className={`${
-              displayWallet ? `rounded-b-0` : `rounded-b-lg`
-            } flex justify-between items-center w-full py-3 px-4 bg-primary rounded-x-lg rounded-t-lg transition-all`}
+            className={`${displayWallet ? `rounded-b-0` : `rounded-b-lg`} flex justify-between items-center w-full py-3 px-4 bg-primary rounded-x-lg rounded-t-lg transition-all`}
           >
             <h1 className="text-white font-medium">E-Wallet</h1>
             <img src="/icons/chevron_down.svg" alt="" className="invert w-5" />
@@ -87,28 +84,15 @@ function Payment({ order_id }) {
               {data &&
                 data.slice(0, 4).map((payment) => {
                   return (
-                    <div
-                      key={payment.id}
-                      className={`bg-transparent relative flex items-center w-full px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-300`}
-                    >
-                      <input
-                        type="radio"
-                        value={payment.id}
-                        onChange={(event) => setInputValue(event.target.value)}
-                        name="seat-class"
-                        id=""
-                        className="absolute top-1/2 -translate-y-1/2 left-4 w-full h-[60px] opacity-0 cursor-pointer"
-                      />
+                    <div key={payment.id} className={`bg-transparent relative flex items-center w-full px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-300`}>
+                      <input type="radio" value={payment.id} onChange={(event) => setInputValue(event.target.value)} name="seat-class" id="" className="absolute top-1/2 -translate-y-1/2 left-4 w-full h-[60px] opacity-0 cursor-pointer" />
                       <div className="flex flex-col">
-                        <h1 className="font-bold">{payment.name}</h1>
+                        <div className="flex items-center gap-3">
+                          <img src={payment.logo} alt="" className="w-8" />
+                          <h1 className="font-bold">{payment.name}</h1>
+                        </div>
                       </div>
-                      <img
-                        src="/icons/check-icon.svg"
-                        alt=""
-                        className={`${
-                          inputValue == payment.id ? `visible` : `invisible`
-                        } absolute top-1/2 -translate-y-1/2 right-3 w-8`}
-                      />
+                      <img src="/icons/check-icon.svg" alt="" className={`${inputValue == payment.id ? `visible` : `invisible`} absolute top-1/2 -translate-y-1/2 right-3 w-8`} />
                     </div>
                   );
                 })}
@@ -122,9 +106,7 @@ function Payment({ order_id }) {
           <button
             type="button"
             onClick={() => setDisplayVirtualAcc(!displayVirtualAcc)}
-            className={`${
-              displayVirtualAcc ? `rounded-b-0` : `rounded-b-lg`
-            } flex justify-between items-center w-full py-3 px-4 bg-primary rounded-x-lg rounded-t-lg transition-all`}
+            className={`${displayVirtualAcc ? `rounded-b-0` : `rounded-b-lg`} flex justify-between items-center w-full py-3 px-4 bg-primary rounded-x-lg rounded-t-lg transition-all`}
           >
             <h1 className="text-white font-medium">Virtual Account</h1>
             <img src="/icons/chevron_down.svg" alt="" className="invert w-5" />
@@ -134,28 +116,15 @@ function Payment({ order_id }) {
               {data &&
                 data.slice(4, 8).map((payment) => {
                   return (
-                    <div
-                      key={payment.id}
-                      className={`bg-transparent relative flex items-center w-full h-[60px] px-4 rounded-lg transition-all duration-200 hover:bg-gray-300`}
-                    >
-                      <input
-                        type="radio"
-                        value={payment.id}
-                        onChange={(event) => setInputValue(event.target.value)}
-                        name="seat-class"
-                        id=""
-                        className="absolute top-1/2 -translate-y-1/2 left-4 w-full h-[60px] opacity-0 cursor-pointer"
-                      />
+                    <div key={payment.id} className={`bg-transparent relative flex items-center w-full h-[60px] px-4 rounded-lg transition-all duration-200 hover:bg-gray-300`}>
+                      <input type="radio" value={payment.id} onChange={(event) => setInputValue(event.target.value)} name="seat-class" id="" className="absolute top-1/2 -translate-y-1/2 left-4 w-full h-[60px] opacity-0 cursor-pointer" />
                       <div className="flex flex-col">
-                        <h1 className="font-bold">{payment.name}</h1>
+                        <div className="flex items-center gap-3">
+                          <img src={payment.logo} alt="" className="w-8" />
+                          <h1 className="font-bold">{payment.name}</h1>
+                        </div>
                       </div>
-                      <img
-                        src="/icons/check-icon.svg"
-                        alt=""
-                        className={`${
-                          inputValue == payment.id ? `visible` : `invisible`
-                        } absolute top-1/2 -translate-y-1/2 right-3 w-8`}
-                      />
+                      <img src="/icons/check-icon.svg" alt="" className={`${inputValue == payment.id ? `visible` : `invisible`} absolute top-1/2 -translate-y-1/2 right-3 w-8`} />
                     </div>
                   );
                 })}
@@ -163,10 +132,7 @@ function Payment({ order_id }) {
           )}
         </div>
         {/* Virtual Account Payment End */}
-        <button
-          type="submit"
-          className="bg-primary mt-5 py-3 px-4 text-white font-medium rounded-lg"
-        >
+        <button type="submit" className="bg-primary mt-5 py-3 px-4 text-white font-medium rounded-lg">
           Bayar
         </button>
       </form>
