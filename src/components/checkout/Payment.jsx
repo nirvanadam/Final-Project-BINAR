@@ -49,10 +49,9 @@ function Payment({ order_id }) {
     try {
       axios.defaults.headers.common["authorization"] = Cookies.get("token");
       const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API}/payment/checkout`, dataForm);
-      navigate("/success-payment", { state: order_id });
-      toast.success("Yeay , Ready to Flight now");
+      navigate("/success-payment", { state: dataForm });
     } catch (error) {
-      toast.error("Please choose your payment methode");
+      toast.error(error.response.data.message);
     }
   };
 

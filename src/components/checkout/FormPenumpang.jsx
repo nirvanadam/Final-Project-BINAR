@@ -11,7 +11,7 @@ function FormPenumpang({ totalPassenger, setData, adult }) {
     // Inisialisasi data penumpang dengan nilai awal
     const initialPassengers = Array.from({ length: totalPassenger }, (_, index) => ({
       fullname: "",
-      gender: "Laki-Laki",
+      gender: "laki-laki",
       birthday: "",
       person: index < adult ? "adult" : "child",
       nationality: "",
@@ -109,10 +109,10 @@ function FormPenumpang({ totalPassenger, setData, adult }) {
               required
               className="px-3 py-2 border border-slate-400 rounded-lg font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary focus:rounded-b-none invalid:focus:border-red-600"
             >
-              <option value="Laki-Laki" selected className="text-lg font-medium">
+              <option value="laki-laki" selected className="text-lg font-medium">
                 Laki-Laki
               </option>
-              <option value="Perempuan" className="text-lg font-medium">
+              <option value="perempuan" className="text-lg font-medium">
                 Perempuan
               </option>
             </select>
