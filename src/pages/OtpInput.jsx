@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function OtpInput() {
   const location = useLocation();
-  const user_id = location.state;
-  console.log(user_id);
+  const user_id = location.state.id;
+  // console.log(user_id);
+  const email = location.state.email;
 
   const navigate = useNavigate();
 
@@ -26,7 +29,36 @@ function OtpInput() {
     navigate(`/login`);
   };
 
-  console.log(otp);
+  const handleSubmitOtp = async (event) => {
+    try {
+      event.preventDefault();
+      const response = await axios.get(
+        `${import.meta.env.VITE_REACT_APP_API}/sendotp?user_id=${user_id}`
+      );
+      toast.success(response.data.message);
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
+
+  const [countdown, setCountdown] = useState(20);
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    let interval = null;
+
+    // Mengurangi waktu setiap detik
+    if (countdown > 0) {
+      interval = setInterval(() => {
+        setCountdown((prevCountdown) => prevCountdown - 1);
+      }, 1000);
+    } else {
+      clearInterval(interval);
+      setShowButton(true);
+    }
+
+    return () => clearInterval(interval);
+  }, [countdown]);
 
   return (
     <div className="relative h-screen flex flex-col justify-center items-center overflow-hidden font-quickSand">
@@ -37,7 +69,8 @@ function OtpInput() {
 
         <h1 className="text-2xl font-bold mb-5">Masukkan Kode OTP</h1>
         <p className="text-xs font-medium mb-5">
-          Ketik 6 digit kode yang dikirimkan ke <span className="font-bold">J*****@gmail.com</span>
+          Ketik 6 digit kode yang dikirimkan ke{" "}
+          <span className="font-bold">{email}</span>
         </p>
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
           <div className="flex gap-2 md:gap-5 mb-5">
@@ -126,13 +159,22 @@ function OtpInput() {
               className="w-[38px] h-[38px] lg:w-[50px] lg:h-[50px]  border-2 border-zinc-300 outline-none rounded-md text-center lg:text-2xl font-bold"
             />
           </div>
-          <p className="text-xs font-bold mb-16">Kirim ulang OTP dalam 60 detik</p>
+          <p className="text-xs font-bold mb-16">
+            {countdown > 0 ? <p>Resend OTP in {countdown} seconds</p> : <p></p>}
+            {showButton && (
+              <button onClick={handleSubmitOtp}>Resend OTP</button>
+            )}
+          </p>
 
-          <button type="submit" className="bg-primary text-white font-medium w-full rounded-xl py-4">
+          <button
+            type="submit"
+            className="bg-primary text-white font-medium w-full rounded-xl py-4"
+          >
             Verify
           </button>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 }

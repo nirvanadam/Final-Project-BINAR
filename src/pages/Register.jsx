@@ -42,8 +42,15 @@ function Register() {
           password,
           confirmpassword,
         };
-        const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API}/auth/register`, dataForm);
-        navigate(`/otpinput`, { state: response.data.data });
+        const response = await axios.post(
+          `${import.meta.env.VITE_REACT_APP_API}/auth/register`,
+          dataForm
+        );
+        const data = {
+          id: response.data.data,
+          email,
+        };
+        navigate(`/otpinput`, { state: data });
       } catch (error) {
         // console.log(error);
         toast.error(error.response.data.message);
@@ -73,7 +80,11 @@ function Register() {
         <form onSubmit={handleSubmit} action="" className="flex flex-col gap-4">
           {/* Nama Input */}
           <div className="relative w-full flex items-center">
-            <img src="/icons/person_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
+            <img
+              src="/icons/person_icon.svg"
+              alt=""
+              className="absolute left-3 w-[20px] opacity-50"
+            />
             <input
               type="text"
               name=""
@@ -88,7 +99,11 @@ function Register() {
 
           {/* Email Input */}
           <div className="relative w-full flex items-center">
-            <img src="/icons/email_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
+            <img
+              src="/icons/email_icon.svg"
+              alt=""
+              className="absolute left-3 w-[20px] opacity-50"
+            />
             <input
               type="email"
               name=""
@@ -103,7 +118,11 @@ function Register() {
 
           {/* Nomor Telepon Input */}
           <div className="relative w-full flex items-center">
-            <img src="/icons/telephone_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
+            <img
+              src="/icons/telephone_icon.svg"
+              alt=""
+              className="absolute left-3 w-[20px] opacity-50"
+            />
             <input
               type="text"
               name=""
@@ -118,7 +137,11 @@ function Register() {
 
           {/* Buat Password Input*/}
           <div className="relative flex items-center">
-            <img src="/icons/password_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
+            <img
+              src="/icons/password_icon.svg"
+              alt=""
+              className="absolute left-3 w-[20px] opacity-50"
+            />
             <input
               type={showStatusPswrd ? "text" : "password"}
               name=""
@@ -128,15 +151,31 @@ function Register() {
               placeholder="Password"
               className="px-10 py-2 w-full border border-slate-400 rounded-xl font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             />
-            <button type="button" onClick={togglePassword} className="absolute right-3">
-              <img src={showStatusPswrd ? "/icons/show_password_off_icon.svg" : "/icons/show_password_icon.svg"} alt="" className="w-[20px] opacity-50" />
+            <button
+              type="button"
+              onClick={togglePassword}
+              className="absolute right-3"
+            >
+              <img
+                src={
+                  showStatusPswrd
+                    ? "/icons/show_password_off_icon.svg"
+                    : "/icons/show_password_icon.svg"
+                }
+                alt=""
+                className="w-[20px] opacity-50"
+              />
             </button>
           </div>
           {/* Buat Password End */}
 
           {/* Confirm Password Input*/}
           <div className="relative flex items-center">
-            <img src="/icons/password_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
+            <img
+              src="/icons/password_icon.svg"
+              alt=""
+              className="absolute left-3 w-[20px] opacity-50"
+            />
             <input
               type={showStatusCnfrmPswrd ? "text" : "password"}
               name=""
@@ -146,14 +185,29 @@ function Register() {
               placeholder="Password"
               className="px-10 py-2 w-full border border-slate-400 rounded-xl font-medium outline-none transition placeholder:text-sm placeholder:transition placeholder:duration-500 focus:placeholder:-translate-y-48 focus:border-secondary invalid:focus:border-red-600"
             />
-            <button type="button" onClick={toggleConfirmPassword} className="absolute right-3">
-              <img src={showStatusCnfrmPswrd ? "/icons/show_password_off_icon.svg" : "/icons/show_password_icon.svg"} alt="" className="w-[20px] opacity-50" />
+            <button
+              type="button"
+              onClick={toggleConfirmPassword}
+              className="absolute right-3"
+            >
+              <img
+                src={
+                  showStatusCnfrmPswrd
+                    ? "/icons/show_password_off_icon.svg"
+                    : "/icons/show_password_icon.svg"
+                }
+                alt=""
+                className="w-[20px] opacity-50"
+              />
             </button>
           </div>
           {/* Confirm Password End */}
 
           {/* Button Submit */}
-          <button type="submit" className="bg-primary py-3 rounded-xl text-white text-sm font-medium">
+          <button
+            type="submit"
+            className="bg-primary py-3 rounded-xl text-white text-sm font-medium"
+          >
             Daftar
           </button>
           {/* Button Submit End */}
