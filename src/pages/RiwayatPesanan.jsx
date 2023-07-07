@@ -111,13 +111,6 @@ function RiwayatPesanan() {
             <h1>Beranda</h1>
           </div>
 
-          {/* id Button */}
-          <button type="button" className="flex justify-between items-center gap-3 pl-3 pr-4 py-2 border border-gray-400 rounded-full">
-            <img src="/icons/id_icon.svg" alt="" className="invert" />
-            <h1 className="text-sm font-semibold"></h1>
-          </button>
-          {/* id Button End */}
-
           {/* Search Button */}
           <button type="button">
             <img src="/icons/search_icon.svg" alt="" onClick={handleOpenSearch} className="invert" />

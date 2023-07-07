@@ -7,10 +7,7 @@ function EmailResetPassword() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await axios.post(
-      `${import.meta.env.VITE_REACT_APP_API}/forgotpassword`,
-      { email }
-    );
+    const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API}/forgotpassword`, { email });
     setData(response.data.message);
   };
 
@@ -18,9 +15,14 @@ function EmailResetPassword() {
     <div className="grid grid-rows-[1fr,3fr] lg:grid-rows-1 lg:grid-cols-2 h-screen overflow-hidden bg-primary font-quickSand">
       {/* Left */}
       <div className="lg:relative flex justify-center items-center lg:rounded-br-[90px]">
-        <h1 className="text-5xl font-bold text-white">
-          Quick<span className="text-secondary">Tix</span>
-        </h1>
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-3">
+          <div className="hidden lg:flex lg:order-1 lg:flex-row justify-center items-center bg-white p-2 rounded-full animate__animated animate__bounceInDown">
+            <img src="/images/quicktix-logo.png" alt="" className="w-11" />
+          </div>
+          <h1 className="lg:order-2 text-5xl font-bold text-white">
+            Quick<span className="text-secondary">Tix</span>
+          </h1>
+        </div>
         <div className="hidden lg:block lg:absolute bottom-0 right-0 h-[100px] w-[100px] bg-white"></div>
         <div className="hidden lg:block lg:absolute bottom-0 right-0 h-[100px] w-[100px] bg-primary rounded-br-[90px] "></div>
       </div>
@@ -28,15 +30,11 @@ function EmailResetPassword() {
 
       {/* Right */}
       <div className="bg-white flex flex-col justify-center px-14 lg:px-20 rounded-tl-[90px]">
-        <h1 className="text-2xl font-bold mb-6">Reset Password</h1>
+        <h1 className="text-2xl font-bold mb-6">Email Verification</h1>
         <form onSubmit={handleSubmit} className="flex flex-col">
           {/* Email Input */}
           <div className="relative w-full flex items-center mb-4">
-            <img
-              src="/icons/email_icon.svg"
-              alt=""
-              className="absolute left-3 w-[20px] opacity-50"
-            />
+            <img src="/icons/email_icon.svg" alt="" className="absolute left-3 w-[20px] opacity-50" />
             <input
               type="email"
               name=""
@@ -50,10 +48,7 @@ function EmailResetPassword() {
           {/* Email Input End*/}
 
           {/* Button Submit */}
-          <button
-            type="submit"
-            className="mt-6 bg-primary py-3 rounded-xl text-white text-sm font-medium"
-          >
+          <button type="submit" className="mt-6 bg-primary py-3 rounded-xl text-white text-sm font-medium">
             Verify
           </button>
           {/* Button Submit End */}
