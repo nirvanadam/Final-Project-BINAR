@@ -50,6 +50,8 @@ function RiwayatPesanan() {
   // Detail Order
   const [displayDetailOrder, setDisplayDetailOrder] = useState(false);
   const [id, setId] = useState();
+  console.log(data);
+  console.log(search);
 
   const [ticket, setTicket] = useState();
 
@@ -82,6 +84,7 @@ function RiwayatPesanan() {
     console.log(order_id);
     navigate("/payment", { state: order_id });
   };
+
 
   const [displayTicket, setDisplayTicket] = useState(false);
 
@@ -144,6 +147,7 @@ function RiwayatPesanan() {
                         className="flex flex-col p-4 border border-gray-200 rounded-lg shadow-md "
                       >
                         <h1 className={`${datas.booking_status === "UNPAID" ? `bg-red-600` : `bg-green-500`} mb-5 w-fit px-3 py-1 rounded-full text-white text-sm font-semibold`}>{datas.booking_status}</h1>
+
                         <div className="flex flex-col w-full">
                           <h1 className="text-sm font-semibold mb-4">
                             Passengers:{" "}
@@ -156,11 +160,13 @@ function RiwayatPesanan() {
                           <div className="flex flex-col lg:flex-row justify-between items-center gap-3">
                             {/* From */}
                             <div className="flex gap-2 ustify-center justify-center w-full">
+
                               <img src="/icons/location-icon.svg" alt="" className="w-8" />
                               <div className="flex flex-col">
                                 <h1 className="text-sm font-bold max-w-[100px]">{datas.info_departure_airport.departure_airport}</h1>
                                 <h1 className="text-xs font-medium">{datas.info_departure_airport.date}</h1>
                                 <h1 className="text-xs font-medium">{datas.info_departure_airport.departure_time}</h1>
+
                               </div>
                             </div>
                             {/* From End */}
@@ -168,18 +174,22 @@ function RiwayatPesanan() {
                             {/* Duration */}
                             <div className="flex flex-row lg:flex-col justify-center items-center w-full">
                               <p className="lg:hidden">Duration</p>
+
                               <h1 className="font-medium">{datas.flight_duration}</h1>
+
                               <span className="hidden lg:block bg-black w-full h-[1px]"></span>
                             </div>
                             {/* Duration End */}
 
                             {/* To */}
                             <div className="flex gap-2 justify-center w-full">
+
                               <img src="/icons/location-icon.svg" alt="" className="w-8" />
                               <div className="flex flex-col">
                                 <h1 className="text-sm font-bold">{datas.info_arrival_airport.arrival_airport}</h1>
                                 <h1 className="text-xs font-medium">{datas.info_arrival_airport.date}</h1>
                                 <h1 className="text-xs font-medium"> {datas.info_arrival_airport.arrival_time}</h1>
+
                               </div>
                             </div>
                             {/* To End */}
@@ -194,11 +204,13 @@ function RiwayatPesanan() {
                               <div className="flex flex-col text-xs">
                                 <h1 className="font-bold">Booking Code:</h1>
                                 <h1 className="font-medium">{datas.booking_code}</h1>
+
                               </div>
 
                               <div className="flex flex-col text-xs">
                                 <h1 className="font-bold">Class:</h1>
                                 <h1 className="font-medium">{datas.info_flight.class}</h1>
+
                               </div>
                             </div>
 
@@ -206,7 +218,9 @@ function RiwayatPesanan() {
 
                             <div className="flex items-center justify-center gap-5 font-bold">
                               <h1 className="text-xs">TOTAL</h1>
+
                               <h1 className="text-xl">{formatCurrency(datas.info_price.total_price)}</h1>
+
                             </div>
                           </div>
                           {/* Booking Code, Class, Total End */}
@@ -222,12 +236,16 @@ function RiwayatPesanan() {
                       }}
                       className="flex flex-col p-4 border border-gray-200 rounded-lg shadow-md "
                     >
+
                       <h1 className={`${search.booking_status === "UNPAID" ? `bg-red-600` : `bg-green-500`} mb-5 w-fit px-3 py-1 rounded-full text-white text-sm font-semibold`}>{search.booking_status}</h1>
+
                       <div className="flex flex-col w-full">
                         <h1 className="text-sm font-semibold mb-4">
                           Passengers:{" "}
                           <span className="font-bold">
+
                             {search.info_price.adult_total} Adult, {search.info_price.child_total} Child
+
                           </span>
                         </h1>
 
@@ -237,9 +255,11 @@ function RiwayatPesanan() {
                           <div className="flex gap-2 ustify-center justify-center w-full">
                             <img src="/icons/location-icon.svg" alt="" className="w-8" />
                             <div className="flex flex-col">
+
                               <h1 className="text-sm font-bold max-w-[100px]">{search.info_departure_airport.departure_airport}</h1>
                               <h1 className="text-xs font-medium">{search.info_departure_airport.date}</h1>
                               <h1 className="text-xs font-medium">{search.info_departure_airport.departure_time}</h1>
+
                             </div>
                           </div>
                           {/* From End */}
@@ -247,6 +267,7 @@ function RiwayatPesanan() {
                           {/* Duration */}
                           <div className="flex flex-row lg:flex-col justify-center items-center w-full">
                             <p className="lg:hidden">Duration</p>
+
                             <h1 className="font-medium">{search.flight_duration}</h1>
                             <span className="hidden lg:block bg-black w-full h-[1px]"></span>
                           </div>
@@ -256,9 +277,11 @@ function RiwayatPesanan() {
                           <div className="flex gap-2 justify-center w-full">
                             <img src="/icons/location-icon.svg" alt="" className="w-8" />
                             <div className="flex flex-col">
+
                               <h1 className="text-sm font-bold">{search.info_arrival_airport.arrival_airport}</h1>
                               <h1 className="text-xs font-medium">{search.info_arrival_airport.date}</h1>
                               <h1 className="text-xs font-medium"> {search.info_arrival_airport.arrival_time}</h1>
+
                             </div>
                           </div>
                           {/* To End */}
@@ -272,12 +295,16 @@ function RiwayatPesanan() {
                           <div className="flex justify-between gap-4">
                             <div className="flex flex-col text-xs">
                               <h1 className="font-bold">Booking Code:</h1>
+
                               <h1 className="font-medium">{search.booking_code}</h1>
+
                             </div>
 
                             <div className="flex flex-col text-xs">
                               <h1 className="font-bold">Class:</h1>
+
                               <h1 className="font-medium">{search.info_flight.class}</h1>
+
                             </div>
                           </div>
 
@@ -285,7 +312,9 @@ function RiwayatPesanan() {
 
                           <div className="flex items-center justify-center gap-5 font-bold">
                             <h1 className="text-xs">TOTAL</h1>
+
                             <h1 className="text-xl">{formatCurrency(search.info_price.total_price)}</h1>
+
                           </div>
                         </div>
                         {/* Booking Code, Class, Total End */}
@@ -310,8 +339,10 @@ function RiwayatPesanan() {
                   )}
                 </div>
                 <div className="flex justify-between">
+
                   <h1 className="hidden lg:block mb-3 font-bold">{id.booking_status === "UNPAID" ? "Booking Code" : "Ticket Code"}</h1>
                   <h1 className="hidden lg:block mb-3 font-semibold">{id.booking_status === "UNPAID" ? id.booking_code : id.booking_code}</h1>
+
                 </div>
                 {/* Flight Information */}
                 <div className="flex flex-col ">
@@ -420,12 +451,16 @@ function RiwayatPesanan() {
                 {/* Payment Button */}
                 {id.booking_status === "UNPAID" ? (
                   <form>
+
                     <button type="submit" onClick={handleOnClickBayar} className="w-full mt-5 bg-red-500 py-4 rounded-lg text-white font-medium">
+
                       Bayar
                     </button>
                   </form>
                 ) : (
+
                   <button onClick={() => setDisplayTicket(!displayTicket)} k type="button" className="w-full mt-5 bg-green-500 py-4 rounded-lg text-white font-medium">
+
                     Cetak Tiket
                   </button>
                 )}
