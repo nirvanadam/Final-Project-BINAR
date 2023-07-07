@@ -144,7 +144,7 @@ function SuccessPayment() {
       {displayTicket && (
         <div className="absolute flex justify-center items-center w-full h-screen bg-primary">
           <img src={ticket?.image} alt="" className="w-3/4 z-20 animate__animated animate__fadeIn" />
-          <buttonon onClick={() => setDisplayTicket(!displayTicket)} className="absolute w-full z-10 h-screen"></buttonon>
+          <button onClick={() => setDisplayTicket(!displayTicket)} className="absolute w-full z-10 h-screen"></button>
         </div>
       )}
     </div>
