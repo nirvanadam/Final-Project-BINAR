@@ -50,8 +50,8 @@ function RiwayatPesanan() {
   // Detail Order
   const [displayDetailOrder, setDisplayDetailOrder] = useState(false);
   const [id, setId] = useState();
-  console.log(data);
-  console.log(search);
+  // console.log(data);
+  // console.log(search);
 
   const handleClick = (id) => {
     const person = data.find((person) => person.id == id);
