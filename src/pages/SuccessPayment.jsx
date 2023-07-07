@@ -115,7 +115,7 @@ function SuccessPayment() {
           {/* <span className="w-full h-[1px] bg-zinc-400 my-5"></span> */}
 
           <div className="flex gap-1">
-            <img src={ticket.qr} alt="" className="w-1/2" />
+            <img src={ticket?.qr} alt="" className="w-1/2" />
             <div className="flex flex-col gap-2 bg-gray-200 p-4 w-full rounded-lg">
               <div className="flex flex-row h-full justify-center items-center gap-3">
                 <img src="/images/quicktix-logo.png" alt="" className="w-8" />
@@ -143,15 +143,8 @@ function SuccessPayment() {
 
       {displayTicket && (
         <div className="absolute flex justify-center items-center w-full h-screen bg-primary">
-          <img src={ticket.image} alt="" className="w-3/4 z-20 animate__animated animate__fadeIn" />
+          <img src={ticket?.image} alt="" className="w-3/4 z-20 animate__animated animate__fadeIn" />
           <buttonon onClick={() => setDisplayTicket(!displayTicket)} className="absolute w-full z-10 h-screen"></buttonon>
-        </div>
-      )}
-
-      {displayQr && (
-        <div className="absolute flex justify-center items-center w-full h-screen bg-primary">
-          <img src={ticket.qr} alt="" className=" z-20 animate__animated animate__fadeIn" />
-          <buttonon onClick={() => setDisplayQr(!displayQr)} className="absolute w-full z-10 h-screen"></buttonon>
         </div>
       )}
     </div>
