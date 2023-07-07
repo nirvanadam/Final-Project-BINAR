@@ -1,22 +1,30 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function EmailResetPassword() {
   const [email, setEmail] = useState();
   const [data, setData] = useState();
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API}/forgotpassword`, { email });
-    setData(response.data.message);
+    try {
+      event.preventDefault();
+      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API}/forgotpassword`, { email });
+      setData(response.data.message);
+      toast.success(data);
+    } catch (error) {
+      toast.error(error.respone.data.message);
+    }
   };
+  console.log(data);
 
   return (
     <div className="grid grid-rows-[1fr,3fr] lg:grid-rows-1 lg:grid-cols-2 h-screen overflow-hidden bg-primary font-quickSand">
       {/* Left */}
       <div className="lg:relative flex justify-center items-center lg:rounded-br-[90px]">
         <div className="flex flex-col lg:flex-row justify-center items-center gap-3">
-          <div className="hidden lg:flex lg:order-1 lg:flex-row justify-center items-center bg-white p-2 rounded-full animate__animated animate__bounceInDown">
+          <div className="hidden lg:flex lg:order-1 lg:flex-row justify-center items-center bg-white p-2 rounded-full animate_animated animate_bounceInDown">
             <img src="/images/quicktix-logo.png" alt="" className="w-11" />
           </div>
           <h1 className="lg:order-2 text-5xl font-bold text-white">
@@ -54,6 +62,7 @@ function EmailResetPassword() {
           {/* Button Submit End */}
         </form>
       </div>
+      <ToastContainer />
       {/* Right End */}
     </div>
   );
