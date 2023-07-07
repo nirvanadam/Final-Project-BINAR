@@ -21,9 +21,7 @@ function CheckoutPage() {
 
   const [data, setData] = useState();
 
-  const url = `${
-    import.meta.env.VITE_REACT_APP_API
-  }/flight/price/${id}?adult=${adult}&child=${child}`;
+  const url = `${import.meta.env.VITE_REACT_APP_API}/flight/price/${id}?adult=${adult}&child=${child}`;
   let response;
   const fetchData = async () => {
     try {
@@ -44,9 +42,14 @@ function CheckoutPage() {
   const [order, setOrder] = useState();
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!order) {
+      toast.error("You have to save passanger data!");
+      return; // Menghentikan eksekusi lebih lanjut jika order tidak ada nilai
+    }
     navigate("/payment", { state: order });
-    toast.success("Yeay, you almost ready to flight");
+    toast.success("Yeay, you're almost ready to fly!");
   };
 
   return (
@@ -67,22 +70,10 @@ function CheckoutPage() {
         </div>
 
         <h1 className="hidden lg:flex text-xl font-bold">Isi Data Diri</h1>
-        <img
-          src="/icons/chevron-right.svg"
-          alt=""
-          className="hidden lg:flex w-4"
-        />
-        <h1 className="hidden lg:flex text-xl text-gray-400 font-bold">
-          Bayar
-        </h1>
-        <img
-          src="/icons/chevron-right.svg"
-          alt=""
-          className="hidden lg:flex w-4"
-        />
-        <h1 className="hidden lg:flex text-xl text-gray-400 font-bold">
-          Selesai
-        </h1>
+        <img src="/icons/chevron-right.svg" alt="" className="hidden lg:flex w-4" />
+        <h1 className="hidden lg:flex text-xl text-gray-400 font-bold">Bayar</h1>
+        <img src="/icons/chevron-right.svg" alt="" className="hidden lg:flex w-4" />
+        <h1 className="hidden lg:flex text-xl text-gray-400 font-bold">Selesai</h1>
       </div>
       {/* Header End */}
 
@@ -91,12 +82,7 @@ function CheckoutPage() {
         {/* Left */}
         <div className="">
           {/* <BioDataPemesan /> */}
-          <BioDataPenumpang
-            id={id}
-            adults={adult}
-            kids={child}
-            setOrder={setOrder}
-          />
+          <BioDataPenumpang id={id} adults={adult} kids={child} setOrder={setOrder} />
           {/* <Payment /> */}
           {/* <SuccessPayment /> */}
         </div>
