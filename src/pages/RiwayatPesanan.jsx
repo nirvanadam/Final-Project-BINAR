@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import NavbarMobile from "../components/NavbarMobile";
 import Navbar from "../components/Navbar";
 import CheckoutDetail from "../components/checkout/CheckoutDetail";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ModalBookingCode from "../components/ModalBookingCode";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -49,13 +49,12 @@ function RiwayatPesanan() {
   // Detail Order
   const [displayDetailOrder, setDisplayDetailOrder] = useState(false);
   const [id, setId] = useState();
+  console.log(id);
 
   const handleClick = (id) => {
     const person = data.find((person) => person.id == id);
     setId(person);
   };
-  console.log(data);
-  console.log(id);
 
   function formatCurrency(amount) {
     const formatter = new Intl.NumberFormat("id-ID", {
@@ -65,6 +64,14 @@ function RiwayatPesanan() {
 
     return formatter.format(amount);
   }
+
+  const navigate = useNavigate();
+  const handleOnClickBayar = (async) => {
+    const order_id = id.id;
+    console.log(order_id);
+    navigate("/payment", { state: order_id });
+  };
+
   // Detail Order End
   return (
     <>
@@ -97,7 +104,7 @@ function RiwayatPesanan() {
             className="flex justify-between items-center gap-3 pl-3 pr-4 py-2 border border-gray-400 rounded-full"
           >
             <img src="/icons/id_icon.svg" alt="" className="invert" />
-            <h1 className="text-sm font-semibold">id</h1>
+            <h1 className="text-sm font-semibold"></h1>
           </button>
           {/* id Button End */}
 
@@ -253,10 +260,14 @@ function RiwayatPesanan() {
                 </h1>
                 <div className="flex justify-between">
                   <h1 className="hidden lg:block mb-3 font-bold">
-                    Booking Code
+                    {id.booking_status === "UNPAID"
+                      ? "Booking Code"
+                      : "Ticket Code"}
                   </h1>
                   <h1 className="hidden lg:block mb-3 font-semibold">
-                    {id.booking_code}
+                    {id.booking_status === "UNPAID"
+                      ? id.booking_code
+                      : id.ticket_code}
                   </h1>
                 </div>
                 {/* Flight Information */}
@@ -384,14 +395,24 @@ function RiwayatPesanan() {
                 {/* Rincian Harga End */}
 
                 {/* Payment Button */}
-                <form>
+                {id.booking_status === "UNPAID" ? (
+                  <form>
+                    <button
+                      type="submit"
+                      onClick={handleOnClickBayar}
+                      className="w-full mt-5 bg-red-500 py-4 rounded-lg text-white font-medium"
+                    >
+                      Bayar
+                    </button>
+                  </form>
+                ) : (
                   <button
-                    type="submit"
-                    className="w-full mt-5 bg-primary py-4 rounded-lg text-white font-medium"
+                    type="button"
+                    className="w-full mt-5 bg-green-500 py-4 rounded-lg text-white font-medium"
                   >
-                    Bayar
+                    Cetak Tiket
                   </button>
-                </form>
+                )}
                 {/* Payment Button End */}
               </div>
             )}
