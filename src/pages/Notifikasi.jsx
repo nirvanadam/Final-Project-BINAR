@@ -35,6 +35,15 @@ function Notifikasi() {
     return date.toLocaleString("en-US", options);
   };
 
+  function formatCurrency(amount) {
+    const formatter = new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    });
+
+    return formatter.format(amount);
+  }
+
   return (
     <div className="font-quickSand">
       {/* Navbar */}
@@ -55,19 +64,6 @@ function Notifikasi() {
           </Link>
           <h1>Beranda</h1>
         </div>
-
-        {/* Filter Button */}
-        <button type="button" className="flex justify-between items-center gap-3 pl-3 pr-4 py-2 border border-gray-400 rounded-full">
-          <img src="/icons/filter_icon.svg" alt="" className="invert" />
-          <h1 className="text-sm font-semibold">Filter</h1>
-        </button>
-        {/* Filter Button End */}
-
-        {/* Search Button */}
-        <button type="button">
-          <img src="/icons/search_icon.svg" alt="" className="invert" />
-        </button>
-        {/* Search Button End */}
       </div>
       {/* Bar, Filter, Search Button End */}
 
@@ -82,7 +78,7 @@ function Notifikasi() {
                   <h1>{formatDate(notifikasi.time)}</h1>
                 </div>
                 <h1 className="font-semibold">{notifikasi.title}</h1>
-                <h1 className="text-sm font-medium text-gray-600">{notifikasi.description}</h1>
+                <h1 className="text-sm font-medium text-gray-600">{`${notifikasi.description.split(",")[0]}, total price ${formatCurrency(Number(notifikasi.description.split("total price ")[1]))}`}</h1>
               </div>
             </div>
 
