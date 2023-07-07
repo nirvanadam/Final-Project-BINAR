@@ -20,7 +20,7 @@ function DetailAccount() {
   const navigate = useNavigate();
 
   return (
-    <div className="font-quickSand">
+    <div className="pb-12 font-quickSand">
       {/* navbar */}
       <div className="hidden lg:block">
         <Navbar />
@@ -28,7 +28,21 @@ function DetailAccount() {
       {/* navbar end  */}
 
       <div className="lg:py-12">
-        <h1 className="text-2xl font-bold mx-7 md:mx-12 lg:mx-36 mt-5 mb-7">Akun</h1>
+        <div className="flex items-center justify-between px-4 py-5">
+          <h1 className="text-2xl font-bold md:mx-12 lg:mx-36 lg:mt-5 lg:mb-7">Akun</h1>
+          {/* logout */}
+          <button
+            onClick={() => {
+              Cookies.remove("token");
+              setIsLoggedIn(false);
+              return navigate("/");
+            }}
+            className="flex items-center lg:hidden gap-3 bg-red-600 px-3 py-2 rounded-lg text-white transition-all hover:translate-x-3"
+          >
+            <img src="/icons/logout-icon.svg" alt="" className="w-7 invert" />
+            <h1 className="font-bold text-base">Keluar</h1>
+          </button>
+        </div>
 
         <Link to={"/"}>
           <div className="hidden lg:flex items-center bg-primary px-6 py-3 mx-40 gap-5 rounded-lg">
@@ -41,9 +55,9 @@ function DetailAccount() {
       </div>
 
       {/* content  */}
-      <div className="flex lg:grid grid-cols-[1fr,4fr] lg:mb-10 flex-col mx-7 md:mx-12 lg:mx-40 gap-12">
+      <div className="flex lg:grid grid-cols-[1fr,4fr] lg:mb-10 flex-col mx-0 md:mx-12 lg:mx-40 gap-12">
         {/* option */}
-        <div className="flex flex-col gap-3">
+        <div className="hidden lg:flex flex-col gap-3">
           {/* Edit Profile */}
           <Link to={"/edit-account"} className="lg:hidden flex gap-5">
             <img src="/icons/edit-icon.svg" alt="" className="w-6" />
@@ -52,7 +66,7 @@ function DetailAccount() {
           {/* Edit Profile End */}
 
           <div className="hidden lg:flex gap-5 transition-all hover:translate-x-3">
-            <img src="/icons//edit-icon.svg" alt="" className="w-6" />
+            <img src="/icons/edit-icon.svg" alt="" className="w-6" />
             <h1 className="font-semibold text-lg">Ubah Profile</h1>
           </div>
 
