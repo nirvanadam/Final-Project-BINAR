@@ -35,7 +35,8 @@ function Login() {
 
       axios.defaults.headers.common["authorization"] = response.data.data;
       Cookies.set("token", response.data.data, {
-        expires: (1 / 24 / 60 / 60) * 10,
+        expires: 1,
+
       });
       navigate(`/`);
     } catch (error) {
