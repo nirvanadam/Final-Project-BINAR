@@ -78,7 +78,7 @@ function Notifikasi() {
                   <h1>{formatDate(notifikasi.time)}</h1>
                 </div>
                 <h1 className="font-semibold">{notifikasi.title}</h1>
-                <h1 className="text-sm font-medium text-gray-600">{`${notifikasi.description.split(",")[0]}, total price ${formatCurrency(Number(notifikasi.description.split("total price ")[1]))}`}</h1>
+                <h1 className="text-sm font-medium text-gray-600">{`${notifikasi.description.split(",")[0]}, total price ${notifikasi.description.split("total price ")[1]}`}</h1>
               </div>
             </div>
 

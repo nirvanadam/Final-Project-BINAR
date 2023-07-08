@@ -32,22 +32,25 @@ function OtpInput() {
   const handleSubmitOtp = async (event) => {
     try {
       event.preventDefault();
-      const response = await axios.get(
-        `${import.meta.env.VITE_REACT_APP_API}/sendotp?user_id=${user_id}`
-      );
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_API}/sendotp?user_id=${user_id}`);
       toast.success(response.data.message);
+      disableResendButton();
     } catch (error) {
       toast.error(error.response.data.message);
     }
   };
 
-  const [countdown, setCountdown] = useState(20);
+  const [countdown, setCountdown] = useState(30);
   const [showButton, setShowButton] = useState(false);
+
+  const disableResendButton = () => {
+    setCountdown(30);
+    setShowButton(false);
+  };
 
   useEffect(() => {
     let interval = null;
 
-    // Mengurangi waktu setiap detik
     if (countdown > 0) {
       interval = setInterval(() => {
         setCountdown((prevCountdown) => prevCountdown - 1);
@@ -69,8 +72,7 @@ function OtpInput() {
 
         <h1 className="text-2xl font-bold mb-5">Masukkan Kode OTP</h1>
         <p className="text-xs font-medium mb-5">
-          Ketik 6 digit kode yang dikirimkan ke{" "}
-          <span className="font-bold">{email}</span>
+          Ketik 6 digit kode yang dikirimkan ke <span className="font-bold">{email}</span>
         </p>
         <form onSubmit={handleSubmit} className="flex flex-col items-center">
           <div className="flex gap-2 md:gap-5 mb-5">
@@ -161,15 +163,10 @@ function OtpInput() {
           </div>
           <p className="text-xs font-bold mb-16">
             {countdown > 0 ? <p>Resend OTP in {countdown} seconds</p> : <p></p>}
-            {showButton && (
-              <button onClick={handleSubmitOtp}>Resend OTP</button>
-            )}
+            {showButton && <button onClick={handleSubmitOtp}>Resend OTP</button>}
           </p>
 
-          <button
-            type="submit"
-            className="bg-primary text-white font-medium w-full rounded-xl py-4"
-          >
+          <button type="submit" className="bg-primary text-white font-medium w-full rounded-xl py-4">
             Verify
           </button>
         </form>
